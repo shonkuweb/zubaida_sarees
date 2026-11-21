@@ -87,12 +87,12 @@ export const CategoryPage = () => {
   };
 
   return (
-    <div className="w-full bg-[#FAF2E9] min-h-screen flex flex-col justify-between">
+    <div className="w-full bg-[#FAF8F5] min-h-screen flex flex-col justify-between">
       
       {/* ========================================================
           CATEGORY PAGE HEADER & BREADCRUMBS
          ======================================================== */}
-      <div className="bg-[#FAF4ED] border-b border-[#DEC49E]/50 relative overflow-hidden select-none">
+      <div className="bg-[#FAF8F5] border-b border-[#DEC49E]/50 relative overflow-hidden select-none">
         
         {/* Botanical Golden Flower Accents in corners */}
         <div className="absolute -top-1 -right-1 w-24 sm:w-36 md:w-48 pointer-events-none opacity-60 z-0">
@@ -113,17 +113,17 @@ export const CategoryPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-7 sm:pb-9 relative z-10">
           
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#8C6D46] mb-4 sm:mb-6">
-            <Link to="/" className="hover:text-[#5C061C] transition-colors flex items-center gap-1">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#C5A059] mb-4 sm:mb-6">
+            <Link to="/" className="hover:text-[#121212] transition-colors flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5 inline sm:hidden" />
               <span>Home</span>
             </Link>
             <ChevronRight className="w-3 h-3 text-[#DEC49E]" />
-            <Link to="/" className="hover:text-[#5C061C] transition-colors">
+            <Link to="/" className="hover:text-[#121212] transition-colors">
               Categories
             </Link>
             <ChevronRight className="w-3 h-3 text-[#DEC49E]" />
-            <span className="font-semibold text-[#5C061C] truncate max-w-[150px] sm:max-w-none">
+            <span className="font-semibold text-[#121212] truncate max-w-[150px] sm:max-w-none">
               {currentCategory.name}
             </span>
           </nav>
@@ -136,18 +136,18 @@ export const CategoryPage = () => {
               className="w-full max-w-[200px] sm:max-w-[300px] h-auto object-contain mx-auto pointer-events-none mb-2 drop-shadow-2xs" 
             />
 
-            <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#270803] font-medium tracking-tight leading-tight">
+            <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#18181B] font-medium tracking-tight leading-tight">
               {currentCategory.name}
             </h1>
 
             {/* Subtitle / Poetical Statement */}
-            <p className="text-[10px] sm:text-xs md:text-sm font-sans font-extrabold uppercase tracking-[0.22em] text-[#5C061C] mt-2">
+            <p className="text-[10px] sm:text-xs md:text-sm font-sans font-extrabold uppercase tracking-[0.22em] text-[#121212] mt-2">
               {currentCategory.subtitle || 'TIMELESS SILHOUETTES • THOUGHTFUL DETAILS'}
             </p>
 
             {/* Piece Count Pill */}
-            <div className="mt-3.5 inline-flex items-center gap-2 px-3 sm:px-4 py-1 rounded-full bg-[#FFF9F2] border border-[#DEC49E] text-[11px] sm:text-xs font-serif text-[#730D26] shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C4924D]" />
+            <div className="mt-3.5 inline-flex items-center gap-2 px-3 sm:px-4 py-1 rounded-full bg-[#FFFFFF] border border-[#DEC49E] text-[11px] sm:text-xs font-serif text-[#262626] shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
               <span>
                 {categoryProducts.length} {categoryProducts.length === 1 ? 'Handcrafted Piece' : 'Handcrafted Pieces'}
               </span>
@@ -162,8 +162,8 @@ export const CategoryPage = () => {
                 onClick={() => navigate('/category/all')}
                 className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-serif transition-all cursor-pointer whitespace-nowrap ${
                   slug === 'all' || !slug
-                    ? 'bg-[#5C061C] text-[#FFF9F2] shadow-xs'
-                    : 'bg-[#FFF9F2] text-[#382017] hover:bg-white border border-[#DEC49E]'
+                    ? 'bg-[#121212] text-[#FFFFFF] shadow-xs'
+                    : 'bg-[#FFFFFF] text-[#18181B] hover:bg-white border border-[#DEC49E]'
                 }`}
               >
                 All Pieces
@@ -177,8 +177,8 @@ export const CategoryPage = () => {
                     onClick={() => navigate(`/category/${c.slug}`)}
                     className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-serif transition-all cursor-pointer whitespace-nowrap ${
                       isSelected
-                        ? 'bg-[#5C061C] text-[#FFF9F2] shadow-xs'
-                        : 'bg-[#FFF9F2] text-[#382017] hover:bg-white border border-[#DEC49E]'
+                        ? 'bg-[#121212] text-[#FFFFFF] shadow-xs'
+                        : 'bg-[#FFFFFF] text-[#18181B] hover:bg-white border border-[#DEC49E]'
                     }`}
                   >
                     {c.name}
@@ -198,18 +198,18 @@ export const CategoryPage = () => {
       <div className="max-w-6xl mx-auto px-3 sm:px-6 py-8 sm:py-12 flex-1 w-full">
         {categoryProducts.length === 0 ? (
           <div className="py-16 text-center bg-white/70 rounded-3xl border border-[#DEC49E] p-8 max-w-md mx-auto space-y-4 my-8 shadow-xs">
-            <Sparkles className="w-10 h-10 text-[#C4924D] mx-auto opacity-80" />
-            <h3 className="font-serif text-xl text-[#270803] font-medium">
+            <Sparkles className="w-10 h-10 text-[#C5A059] mx-auto opacity-80" />
+            <h3 className="font-serif text-xl text-[#18181B] font-medium">
               No pieces in {currentCategory.name} yet
             </h3>
-            <p className="text-xs sm:text-sm text-[#8C6F5A] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#71717A] leading-relaxed">
               New artisanal pieces are crafted in limited studio batches. Browse our complete collection or other categories.
             </p>
             <div className="pt-2">
               <button
                 type="button"
                 onClick={() => navigate('/')}
-                className="px-6 py-2.5 bg-gradient-to-r from-[#5C061C] to-[#730D26] hover:from-[#420312] hover:to-[#420312] text-[#FFF9F2] rounded-full text-xs font-serif tracking-wider uppercase font-semibold shadow-xs transition-all cursor-pointer"
+                className="px-6 py-2.5 bg-gradient-to-r from-[#121212] to-[#262626] hover:from-[#262626] hover:to-[#262626] text-[#FFFFFF] rounded-full text-xs font-serif tracking-wider uppercase font-semibold shadow-xs transition-all cursor-pointer"
               >
                 Explore Complete Studio Catalog
               </button>
@@ -228,18 +228,18 @@ export const CategoryPage = () => {
                 <article
                   key={product.id}
                   onClick={() => navigate(`/product/${product.id}`)}
-                  className="group relative flex flex-col rounded-t-[28px] sm:rounded-t-[40px] md:rounded-t-[48px] rounded-b-[16px] sm:rounded-b-[20px] bg-[#FFF9F2] border-[1.5px] border-[#DEC49E] hover:border-[#C4924D] transition-all duration-300 shadow-[0_4px_16px_-3px_rgba(92,6,28,0.06)] hover:shadow-[0_10px_28px_-4px_rgba(92,6,28,0.18)] hover:-translate-y-1 cursor-pointer overflow-hidden select-none"
+                  className="group relative flex flex-col rounded-t-[28px] sm:rounded-t-[40px] md:rounded-t-[48px] rounded-b-[16px] sm:rounded-b-[20px] bg-[#FFFFFF] border-[1.5px] border-[#DEC49E] hover:border-[#C5A059] transition-all duration-300 shadow-[0_4px_16px_-3px_rgba(92,6,28,0.06)] hover:shadow-[0_10px_28px_-4px_rgba(92,6,28,0.18)] hover:-translate-y-1 cursor-pointer overflow-hidden select-none"
                 >
                   {/* Top Finial ✦ */}
                   <div className="absolute top-1 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                    <span className="text-[#C4924D] text-[8px] sm:text-[9px] drop-shadow-xs leading-none">✦</span>
+                    <span className="text-[#C5A059] text-[8px] sm:text-[9px] drop-shadow-xs leading-none">✦</span>
                   </div>
 
                   {/* Inner Inset Gold Hairline Border */}
                   <div className="absolute inset-0.5 sm:inset-1 rounded-t-[26px] sm:rounded-t-[37px] md:rounded-t-[45px] rounded-b-[14px] sm:rounded-b-[18px] border border-[#DEC49E]/70 pointer-events-none z-10" />
 
                   {/* Product Image Frame */}
-                  <div className="relative w-full aspect-[3/3.8] overflow-hidden bg-[#FAF2E9]">
+                  <div className="relative w-full aspect-[3/3.8] overflow-hidden bg-[#FAF8F5]">
                     <img 
                       src={product.imageUrl || (product.images && product.images[0]) || '/category-kurtas.jpg'} 
                       alt={product.title || product.name}
@@ -248,11 +248,11 @@ export const CategoryPage = () => {
                     />
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#270803]/25 via-transparent to-transparent opacity-20 group-hover:opacity-10 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#18181B]/25 via-transparent to-transparent opacity-20 group-hover:opacity-10 transition-opacity" />
 
                     {/* Tag Badge */}
                     {product.tag && (
-                      <span className="absolute top-2 sm:top-2.5 left-2 sm:left-2.5 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-sans font-bold uppercase tracking-wider text-[#FFF9F2] bg-[#5C061C] shadow-xs z-10">
+                      <span className="absolute top-2 sm:top-2.5 left-2 sm:left-2.5 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-sans font-bold uppercase tracking-wider text-[#FFFFFF] bg-[#121212] shadow-xs z-10">
                         {product.tag}
                       </span>
                     )}
@@ -261,14 +261,14 @@ export const CategoryPage = () => {
                     <button
                       type="button"
                       onClick={(e) => handleWishlistClick(e, product.id)}
-                      className="absolute top-2 sm:top-2.5 right-2 sm:right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFF9F2]/95 hover:bg-white backdrop-blur-xs flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105 shadow-md border border-[#E8D9C8]/70 cursor-pointer z-10"
+                      className="absolute top-2 sm:top-2.5 right-2 sm:right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFFFFF]/95 hover:bg-white backdrop-blur-xs flex items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105 shadow-md border border-[#E8E2D8]/70 cursor-pointer z-10"
                       aria-label={wishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
                     >
                       <Heart 
                         className={`w-3.5 h-3.5 transition-colors ${
                           wishlisted 
-                            ? 'fill-[#5C061C] text-[#5C061C]' 
-                            : 'text-[#5C061C] stroke-[2]'
+                            ? 'fill-[#121212] text-[#121212]' 
+                            : 'text-[#121212] stroke-[2]'
                         }`} 
                       />
                     </button>
@@ -279,7 +279,7 @@ export const CategoryPage = () => {
                     <div className="relative w-full overflow-hidden -mb-[1px]">
                       <svg 
                         viewBox="0 0 400 32" 
-                        className="w-full h-3.5 sm:h-4 block text-[#FFF9F2]" 
+                        className="w-full h-3.5 sm:h-4 block text-[#FFFFFF]" 
                         preserveAspectRatio="none"
                       >
                         <path 
@@ -296,8 +296,8 @@ export const CategoryPage = () => {
                       
                       {/* Centered Lotus Crest on Peak */}
                       <div className="absolute left-1/2 -top-1 -translate-x-1/2 flex items-center justify-center z-20 pointer-events-none">
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B88A58]" fill="none" stroke="currentColor">
-                          <path d="M12 4 C12 4 9.5 8.5 9.5 12.5 C9.5 15 10.7 16.5 12 16.5 C13.3 16.5 14.5 15 14.5 12.5 C14.5 8.5 12 4 12 4 Z" strokeWidth="1.2" fill="#FFF9F2" />
+                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059]" fill="none" stroke="currentColor">
+                          <path d="M12 4 C12 4 9.5 8.5 9.5 12.5 C9.5 15 10.7 16.5 12 16.5 C13.3 16.5 14.5 15 14.5 12.5 C14.5 8.5 12 4 12 4 Z" strokeWidth="1.2" fill="#FFFFFF" />
                           <path d="M9.5 12.5 C7.5 10 5 11 5 13.5 C5 16 7.5 16.5 9.5 16" strokeWidth="1.2" />
                           <path d="M14.5 12.5 C16.5 10 19 11 19 13.5 C19 16 16.5 16.5 14.5 16" strokeWidth="1.2" />
                         </svg>
@@ -305,19 +305,19 @@ export const CategoryPage = () => {
                     </div>
 
                     {/* Cream Info Box */}
-                    <div className="bg-[#FFF9F2] px-3 sm:px-3.5 pt-0.5 pb-2.5 sm:pb-3 flex flex-col flex-1 justify-between relative overflow-hidden">
+                    <div className="bg-[#FFFFFF] px-3 sm:px-3.5 pt-0.5 pb-2.5 sm:pb-3 flex flex-col flex-1 justify-between relative overflow-hidden">
                       <div className="relative z-10">
-                        <span className="text-[8.5px] sm:text-[9.5px] font-sans font-bold tracking-[0.18em] text-[#C4924D] uppercase block">
+                        <span className="text-[8.5px] sm:text-[9.5px] font-sans font-bold tracking-[0.18em] text-[#C5A059] uppercase block">
                           {product.category || currentCategory.name}
                         </span>
-                        <h3 className="font-serif text-[13px] sm:text-[14px] font-medium text-[#270803] group-hover:text-[#5C061C] transition-colors truncate mt-0.5 leading-tight">
+                        <h3 className="font-serif text-[13px] sm:text-[14px] font-medium text-[#18181B] group-hover:text-[#121212] transition-colors truncate mt-0.5 leading-tight">
                           {product.title}
                         </h3>
                       </div>
 
                       {/* Pricing Row */}
                       <div className="mt-1 flex items-baseline gap-1.5 sm:gap-2 relative z-10 flex-wrap">
-                        <span className="font-sans font-bold text-base sm:text-[17px] text-[#5C061C] tracking-tight tabular-nums">
+                        <span className="font-sans font-bold text-base sm:text-[17px] text-[#121212] tracking-tight tabular-nums">
                           ₹{product.price.toLocaleString('en-IN')}
                         </span>
                         {(product.originalPrice || hasDiscount) && (
@@ -325,7 +325,7 @@ export const CategoryPage = () => {
                             ₹{(product.originalPrice || Math.round(product.price * 1.25)).toLocaleString('en-IN')}
                           </span>
                         )}
-                        <span className="text-[8.5px] sm:text-[9px] font-sans font-bold text-[#8C2436] bg-[#FCE7E6] px-1.5 py-0.5 rounded-full tabular-nums">
+                        <span className="text-[8.5px] sm:text-[9px] font-sans font-bold text-[#C5A059] bg-[#FCE7E6] px-1.5 py-0.5 rounded-full tabular-nums">
                           {discountPercent}% OFF
                         </span>
                       </div>
@@ -336,7 +336,7 @@ export const CategoryPage = () => {
                         <button
                           type="button"
                           onClick={(e) => handleQuickAdd(e, product)}
-                          className="px-3 sm:px-4 py-1.5 bg-[#5C061C] hover:bg-[#480516] text-[#FFF9F2] rounded-full text-[9px] sm:text-[9.5px] font-sans font-bold tracking-wider uppercase flex items-center justify-center gap-1 shadow-xs transition-all duration-200 transform active:scale-95 cursor-pointer whitespace-nowrap"
+                          className="px-3 sm:px-4 py-1.5 bg-[#121212] hover:bg-[#262626] text-[#FFFFFF] rounded-full text-[9px] sm:text-[9.5px] font-sans font-bold tracking-wider uppercase flex items-center justify-center gap-1 shadow-xs transition-all duration-200 transform active:scale-95 cursor-pointer whitespace-nowrap"
                         >
                           <ShoppingBag className="w-3 h-3" />
                           <span>ADD TO CART</span>

@@ -7,40 +7,54 @@ export default {
   theme: {
     extend: {
       colors: {
-        // House of Taaga Brand Color Palette
+        // Zubaida Sarees Royal Luxury Color Palette
+        zubaida: {
+          black: '#121212',           // Core deep onyx from logo
+          charcoal: '#18181B',        // Premium dark typography
+          dark: '#121212',            // Primary dark
+          gold: '#C5A059',            // Antique zari gold accent
+          goldLight: '#E8D3AA',       // Soft champagne gold highlight
+          goldDark: '#9E7719',        // Deep burnished gold
+          ivory: '#FAF8F5',           // Silk pearl/ivory background
+          cream: '#F5EFEB',           // Soft cream secondary background
+          pearl: '#FFFFFF',           // Pure white
+          border: '#E8E2D8',          // Soft warm border
+          sand: '#ECE5DC',            // Muted sand neutral
+          muted: '#71717A',           // Slate neutral text
+        },
         taaga: {
-          terracotta: '#B65A37',      // Primary terracotta
-          deep: '#A7472B',            // Deep terracotta
-          ivory: '#FFF9F2',           // Warm ivory
-          cream: '#FAF2E9',           // Cream background
-          dark: '#382017',            // Dark brown typography
-          gold: '#C69B52',            // Muted gold
+          terracotta: '#121212',      // Mapped to Zubaida Royal Black
+          deep: '#262626',            // Mapped to Onyx Charcoal
+          ivory: '#FFFFFF',           // Pure White
+          cream: '#FAF8F5',           // Silk Ivory
+          dark: '#18181B',            // Deep Charcoal typography
+          gold: '#C5A059',            // Antique Zari Gold
           goldLight: '#E8D3AA',       // Soft gold highlight
-          pink: '#D85179',            // Floral bougainvillea pink
-          pinkLight: '#FDECEF',       // Soft blush tint
-          sand: '#F4ECE1',            // Warm sand border
-          border: '#E8D9C8',          // Soft border
-          paper: '#F8F1E7',           // Handmade paper
+          pink: '#C5A059',            // Gold accent
+          pinkLight: '#FAF5EC',       // Soft gold tint
+          sand: '#F5EFEB',            // Sand border/bg
+          border: '#E8E2D8',          // Soft warm border
+          paper: '#FAF8F5',           // Silk paper
         },
         brand: {
-          50: '#FFF9F2',
-          100: '#FAF2E9',
-          200: '#F4ECE1',
+          50: '#FAF8F5',
+          100: '#F5EFEB',
+          200: '#ECE5DC',
           300: '#E8D3AA',
-          400: '#D85179',
-          500: '#B65A37',   // PRIMARY: House of Taaga Terracotta
-          600: '#A7472B',   // Deep Terracotta hover
-          700: '#8C3E20',   // Rich Terracotta title
-          800: '#5A2614',   // Dark Espresso Terracotta
-          900: '#382017',   // Dark Brown typography
-          gold: '#C69B52',
+          400: '#C5A059',
+          500: '#121212',   // PRIMARY: Zubaida Royal Black
+          600: '#262626',   // Deep Charcoal hover
+          700: '#18181B',   // Dark Charcoal title
+          800: '#0F0F11',   // Deep Onyx
+          900: '#000000',   // Jet Black
+          gold: '#C5A059',
           goldLight: '#E8D3AA',
           goldDark: '#9E7719',
-          cream: '#FAF2E9',
-          sand: '#F4ECE1',
-          dark: '#382017',
-          charcoal: '#22140E',
-          accent: '#B65A37',
+          cream: '#FAF8F5',
+          sand: '#ECE5DC',
+          dark: '#18181B',
+          charcoal: '#121212',
+          accent: '#C5A059',
         }
       },
       fontFamily: {
@@ -50,10 +64,11 @@ export default {
         script: ['"Caveat"', '"Dancing Script"', 'cursive'],
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(182, 90, 55, 0.08)',
-        'card': '0 8px 30px -4px rgba(56, 32, 23, 0.08)',
-        'nav': '0 -4px 25px rgba(56, 32, 23, 0.05)',
-        'editorial': '0 12px 35px -8px rgba(56, 32, 23, 0.14)',
+        'soft': '0 4px 20px -2px rgba(18, 18, 18, 0.06)',
+        'card': '0 8px 30px -4px rgba(18, 18, 18, 0.08)',
+        'nav': '0 -4px 25px rgba(18, 18, 18, 0.05)',
+        'editorial': '0 12px 35px -8px rgba(18, 18, 18, 0.12)',
+        'gold': '0 4px 20px -2px rgba(197, 160, 89, 0.25)',
       }
     },
   },

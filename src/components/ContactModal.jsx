@@ -15,8 +15,8 @@ export const ContactModal = () => {
   const [isSuccessAnimating, setIsSuccessAnimating] = useState(false);
   const [progressWidth, setProgressWidth] = useState(0);
 
-  // Business WhatsApp number: 9096669212 (House of Taaga)
-  const BUSINESS_WHATSAPP_NUMBER = (storeConfig?.whatsappNumber || '919096669212').replace(/[^0-9]/g, '');
+  // Business WhatsApp number: 6392531412 (Zubaida Sarees)
+  const BUSINESS_WHATSAPP_NUMBER = (storeConfig?.whatsappNumber || '916392531412').replace(/[^0-9]/g, '');
 
   useEffect(() => {
     if (!isContactOpen) {
@@ -46,7 +46,7 @@ export const ContactModal = () => {
 
     // Prepare formatted WhatsApp message
     const formattedMessage = 
-`✨ *NEW INQUIRY - HOUSE OF TAAGA* ✨
+`✨ *NEW INQUIRY - ZUBAIDA SAREES* ✨
 ━━━━━━━━━━━━━━━━━━━━
 👤 *Customer Name:* ${formData.name.trim()}
 📱 *Phone Number:* ${formData.phone.trim()}
@@ -54,7 +54,7 @@ export const ContactModal = () => {
 💬 *Message:*
 ${formData.message.trim()}
 ━━━━━━━━━━━━━━━━━━━━
-_Sent via House of Taaga Boutique Portal_`;
+_Sent via Zubaida Sarees Boutique Portal_`;
 
     const whatsappUrl = `https://wa.me/${BUSINESS_WHATSAPP_NUMBER}?text=${encodeURIComponent(formattedMessage)}`;
 
@@ -98,16 +98,16 @@ _Sent via House of Taaga Boutique Portal_`;
             </div>
 
             <div>
-              <h3 className="font-serif text-xl font-medium text-[#221B16]">
+              <h3 className="font-serif text-xl font-medium text-[#18181B]">
                 Message Received!
               </h3>
               <p className="text-xs text-neutral-600 mt-1">
-                Redirecting to House of Taaga WhatsApp in a moment...
+                Redirecting to Zubaida Sarees WhatsApp in a moment...
               </p>
             </div>
 
             {/* 2-second progress bar animation */}
-            <div className="w-full bg-[#EAE0D4] h-1.5 rounded-full overflow-hidden mt-4">
+            <div className="w-full bg-[#E8E2D8] h-1.5 rounded-full overflow-hidden mt-4">
               <div 
                 className="bg-emerald-600 h-full transition-all duration-[2000ms] ease-linear rounded-full"
                 style={{ width: `${progressWidth}%` }}
@@ -117,18 +117,18 @@ _Sent via House of Taaga Boutique Portal_`;
         ) : (
           <>
             {/* Modal Header */}
-            <div className="text-center pb-4 border-b border-[#EAE0D4] mb-5">
+            <div className="text-center pb-4 border-b border-[#E8E2D8] mb-5">
               <div className="flex justify-center mb-1">
                 <LotusIcon className="w-8 h-6 text-[#D4AF37]" />
               </div>
-              <h3 className="font-serif text-xl font-medium text-[#221B16]">
-                Contact House of Taaga
+              <h3 className="font-serif text-xl font-medium text-[#18181B]">
+                Contact Zubaida Sarees
               </h3>
               <p className="text-[11px] text-[#796455] font-light mt-0.5">
-                Rooted in love. Worn with grace.
+                Manufacturing Since 1965 • Authentic Banarasi Sarees
               </p>
-              <p className="text-[10px] text-[#7A112A] mt-0.5">
-                WhatsApp: <strong>+91 90966 69212</strong> • @house_of_taaga
+              <p className="text-[10px] text-[#18181B] mt-0.5">
+                WhatsApp: <strong>+91 63925 31412</strong> • @zubaida_sarees63
               </p>
             </div>
 
@@ -157,7 +157,7 @@ _Sent via House of Taaga Boutique Portal_`;
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. 9096669212"
+                  placeholder="e.g. 6392531412"
                   value={formData.phone}
                   onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                   className="w-full p-3 bg-white border border-[#DECBB8] rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-brand-700"
@@ -189,7 +189,7 @@ _Sent via House of Taaga Boutique Portal_`;
                   <span>Send via WhatsApp</span>
                 </button>
                 <p className="text-[10px] text-center text-neutral-500 mt-2">
-                  Opens directly to WhatsApp with <strong>+91 90966 69212</strong>
+                  Opens directly to WhatsApp with <strong>+91 63925 31412</strong>
                 </p>
               </div>
             </form>

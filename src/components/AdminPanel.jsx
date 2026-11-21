@@ -263,7 +263,7 @@ export const AdminPanel = ({ onClose }) => {
   const [heroSettings, setHeroSettings] = useState(() => ({
     mobileBanners: storeConfig?.hero?.mobileBanners || [],
     desktopBanners: storeConfig?.hero?.desktopBanners || ['/hero-banner.jpg'],
-    belowTicker: storeConfig?.hero?.belowTicker || 'House of Taaga · Pune Studio, Maharashtra, India | Call / WhatsApp: +91 90966 69212',
+    belowTicker: storeConfig?.hero?.belowTicker || 'Zubaida Sarees · Pune Studio, Maharashtra, India | Call / WhatsApp: +91 63925 31412',
     endTicker: storeConfig?.hero?.endTicker || '🌿 Each garment is handcrafted with love. Please allow 3–5 days for artisanal finishing and dispatch.'
   }));
 
@@ -840,23 +840,23 @@ export const AdminPanel = ({ onClose }) => {
   if (!isAuthenticated && !isCheckingAuth) {
     return (
       <div className="fixed inset-0 z-50 bg-[#18060B]/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto font-sans">
-        <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-[#E8D9C8] text-center">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-[#E8E2D8] text-center">
           
           <div className="flex justify-center mb-3">
             <img 
               src="/logo-transparent.png" 
-              alt="House of Taaga" 
+              alt="Zubaida Sarees" 
               className="h-12 w-auto object-contain" 
             />
           </div>
 
-          <span className="text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-[#B65A37] block mb-1">
+          <span className="text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-[#121212] block mb-1">
             Studio Admin Portal
           </span>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#382017]">
+          <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#18181B]">
             Admin Access
           </h2>
-          <p className="text-xs text-[#8C6F5A] mt-1 mb-5 font-light">
+          <p className="text-xs text-[#71717A] mt-1 mb-5 font-light">
             Enter master admin password to access dashboard, inventory, and orders.
           </p>
 
@@ -872,7 +872,7 @@ export const AdminPanel = ({ onClose }) => {
                   }}
                   placeholder="Master admin password"
                   autoFocus
-                  className="w-full pl-4 pr-11 py-3 bg-[#FAF2E9]/60 border border-[#E8D9C8] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/30 text-[#382017]"
+                  className="w-full pl-4 pr-11 py-3 bg-[#FAF8F5]/60 border border-[#E8E2D8] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/30 text-[#18181B]"
                 />
                 <button
                   type="button"
@@ -896,7 +896,7 @@ export const AdminPanel = ({ onClose }) => {
             <button
               type="submit"
               disabled={isLoggingIn}
-              className="w-full py-3 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-full text-xs uppercase tracking-wider font-semibold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-full text-xs uppercase tracking-wider font-semibold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {isLoggingIn ? (
                 <>
@@ -913,7 +913,7 @@ export const AdminPanel = ({ onClose }) => {
           </form>
 
           <div className="mt-6 pt-4 border-t border-[#F0E4D5] text-center flex items-center justify-center gap-1.5 text-[11px] text-neutral-400">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#C69B52]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Encrypted Web Crypto Verification</span>
           </div>
         </div>
@@ -938,11 +938,11 @@ export const AdminPanel = ({ onClose }) => {
             <div className="flex items-center gap-2.5">
               <img 
                 src="/logo-transparent.png" 
-                alt="House of Taaga" 
+                alt="Zubaida Sarees" 
                 className="h-9 w-auto object-contain" 
               />
               <div>
-                <p className="text-[9px] text-[#B65A37] font-bold tracking-widest uppercase">
+                <p className="text-[9px] text-[#121212] font-bold tracking-widest uppercase">
                   Pune Studio
                 </p>
                 <p className="text-[11px] text-neutral-400 font-sans">
@@ -964,19 +964,19 @@ export const AdminPanel = ({ onClose }) => {
                   onClick={() => setAdminTab(tab.id)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-[#FAF2E9] text-[#B65A37] font-semibold rounded-xl shadow-2xs'
+                      ? 'bg-[#FAF8F5] text-[#121212] font-semibold rounded-xl shadow-2xs'
                       : 'text-[#4A5568] hover:bg-neutral-100/80 hover:text-neutral-900 rounded-xl font-medium'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <IconComp className={`w-4 h-4 ${isActive ? 'text-[#B65A37]' : 'text-[#4A5568]'}`} />
+                    <IconComp className={`w-4 h-4 ${isActive ? 'text-[#121212]' : 'text-[#4A5568]'}`} />
                     <span>{tab.label}</span>
                   </div>
 
                   {tab.badge !== undefined && (
                     <span className={`text-[10px] px-2 py-0.5 rounded-full font-semibold ${
                       isActive 
-                        ? 'bg-[#B65A37] text-white' 
+                        ? 'bg-[#121212] text-white' 
                         : 'bg-neutral-100 text-neutral-600'
                     }`}>
                       {tab.badge}
@@ -990,7 +990,7 @@ export const AdminPanel = ({ onClose }) => {
         </div>
 
         {/* Sidebar Bottom: Status & Quick Controls */}
-        <div className="p-4 border-t border-[#F1F5F9] bg-[#FAF2E9]/30 space-y-2">
+        <div className="p-4 border-t border-[#F1F5F9] bg-[#FAF8F5]/30 space-y-2">
           
           {/* DB Status Badge */}
           <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-white border border-[#E2E8F0] text-[11px]">
@@ -1006,7 +1006,7 @@ export const AdminPanel = ({ onClose }) => {
               onClick={handleManualSync}
               disabled={isSyncing}
               title="Sync Database"
-              className="p-1 hover:text-[#B65A37] transition-colors cursor-pointer"
+              className="p-1 hover:text-[#121212] transition-colors cursor-pointer"
             >
               <RotateCcw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
             </button>
@@ -1022,7 +1022,7 @@ export const AdminPanel = ({ onClose }) => {
             </button>
             <button
               onClick={handleClose}
-              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-[#B65A37] hover:bg-[#A7472B] text-white rounded-xl text-xs font-medium transition-colors cursor-pointer shadow-xs"
+              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-[#121212] hover:bg-[#262626] text-white rounded-xl text-xs font-medium transition-colors cursor-pointer shadow-xs"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Store</span>
@@ -1055,23 +1055,23 @@ export const AdminPanel = ({ onClose }) => {
               <h1 className="text-sm sm:text-base font-semibold text-[#1C1E21] capitalize">
                 {navTabs.find(t => t.id === adminTab)?.label || 'Dashboard'}
               </h1>
-              <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-[#FAF2E9] text-[#B65A37] font-semibold font-sans tracking-wide uppercase">
+              <span className="hidden sm:inline-block text-[10px] px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#121212] font-semibold font-sans tracking-wide uppercase">
                 Active
               </span>
             </div>
           </div>
 
-          {/* Center: Official House of Taaga Logo */}
+          {/* Center: Official Zubaida Sarees Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none sm:pointer-events-auto">
             <button
               type="button"
               onClick={() => setAdminTab('dashboard')}
               className="flex items-center justify-center p-1 hover:opacity-85 transition-opacity cursor-pointer pointer-events-auto"
-              title="House of Taaga"
+              title="Zubaida Sarees"
             >
               <img
                 src="/logo-transparent.png"
-                alt="House of Taaga"
+                alt="Zubaida Sarees"
                 className="h-9 sm:h-11 w-auto max-w-[130px] sm:max-w-[170px] object-contain drop-shadow-2xs"
               />
             </button>
@@ -1083,14 +1083,14 @@ export const AdminPanel = ({ onClose }) => {
               onClick={handleManualSync}
               disabled={isSyncing}
               title="Sync Database"
-              className="p-2 text-neutral-500 hover:text-[#B65A37] rounded-xl hover:bg-neutral-100 transition-colors hidden sm:flex items-center justify-center cursor-pointer"
+              className="p-2 text-neutral-500 hover:text-[#121212] rounded-xl hover:bg-neutral-100 transition-colors hidden sm:flex items-center justify-center cursor-pointer"
             >
-              <RotateCcw className={`w-4 h-4 ${isSyncing ? 'animate-spin text-[#B65A37]' : ''}`} />
+              <RotateCcw className={`w-4 h-4 ${isSyncing ? 'animate-spin text-[#121212]' : ''}`} />
             </button>
 
             <button
               onClick={handleOpenAddProduct}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <Plus className="w-4 h-4 stroke-[2.5]" />
               <span className="hidden sm:inline">Add Product</span>
@@ -1195,16 +1195,16 @@ export const AdminPanel = ({ onClose }) => {
               </div>
 
               {/* Quick Actions Bar */}
-              <div className="bg-gradient-to-r from-[#FAF2E9] to-[#FFF9F2] p-5 rounded-2xl border border-[#E8D9C8] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="bg-gradient-to-r from-[#FAF8F5] to-[#FFFFFF] p-5 rounded-2xl border border-[#E8E2D8] flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#B65A37] text-white flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#121212] text-white flex items-center justify-center shrink-0">
                     <Sparkles className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-base font-bold text-[#382017]">
-                      Welcome to House of Taaga Admin
+                    <h3 className="font-serif text-base font-bold text-[#18181B]">
+                      Welcome to Zubaida Sarees Admin
                     </h3>
-                    <p className="text-xs text-[#8C6F5A] font-light">
+                    <p className="text-xs text-[#71717A] font-light">
                       Manage inventory, fulfill orders, publish journal stories, and configure boutique settings.
                     </p>
                   </div>
@@ -1213,13 +1213,13 @@ export const AdminPanel = ({ onClose }) => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setAdminTab('orders')}
-                    className="px-4 py-2 bg-white hover:bg-neutral-50 text-[#382017] border border-[#E8D9C8] rounded-xl text-xs font-semibold transition-colors shadow-2xs"
+                    className="px-4 py-2 bg-white hover:bg-neutral-50 text-[#18181B] border border-[#E8E2D8] rounded-xl text-xs font-semibold transition-colors shadow-2xs"
                   >
                     View Orders ({orders.length})
                   </button>
                   <button
                     onClick={handleOpenAddProduct}
-                    className="px-4 py-2 bg-[#B65A37] hover:bg-[#A7472B] text-white rounded-xl text-xs font-semibold transition-colors shadow-2xs"
+                    className="px-4 py-2 bg-[#121212] hover:bg-[#262626] text-white rounded-xl text-xs font-semibold transition-colors shadow-2xs"
                   >
                     + Add New Piece
                   </button>
@@ -1239,7 +1239,7 @@ export const AdminPanel = ({ onClose }) => {
                   </div>
                   <button
                     onClick={() => setAdminTab('orders')}
-                    className="text-xs text-[#B65A37] hover:underline font-semibold flex items-center gap-1"
+                    className="text-xs text-[#121212] hover:underline font-semibold flex items-center gap-1"
                   >
                     <span>Manage all orders</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -1294,7 +1294,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={adminSearch}
                     onChange={(e) => setAdminSearch(e.target.value)}
                     placeholder="Search inventory by title or collection..."
-                    className="w-full pl-10 pr-4 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full pl-10 pr-4 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                   {adminSearch && (
                     <button 
@@ -1308,7 +1308,7 @@ export const AdminPanel = ({ onClose }) => {
 
                 <button
                   onClick={handleOpenAddProduct}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs font-semibold shadow-xs transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4 stroke-[2.5]" />
                   <span>Add Product</span>
@@ -1325,7 +1325,7 @@ export const AdminPanel = ({ onClose }) => {
                   return (
                     <div 
                       key={prod.id} 
-                      className="bg-white rounded-2xl border border-[#E2E8F0] p-4 shadow-xs hover:border-[#B65A37]/50 transition-all flex flex-col justify-between"
+                      className="bg-white rounded-2xl border border-[#E2E8F0] p-4 shadow-xs hover:border-[#121212]/50 transition-all flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex gap-3 items-start">
@@ -1355,7 +1355,7 @@ export const AdminPanel = ({ onClose }) => {
                             </h4>
 
                             <div className="flex items-baseline gap-2 mt-1">
-                              <span className="font-bold text-sm text-[#B65A37]">
+                              <span className="font-bold text-sm text-[#121212]">
                                 ₹{Number(prod.price).toLocaleString('en-IN')}
                               </span>
                               {prod.originalPrice > prod.price && (
@@ -1402,7 +1402,7 @@ export const AdminPanel = ({ onClose }) => {
                         <div className="flex items-center gap-1.5">
                           <button
                             onClick={() => handleOpenEditProduct(prod)}
-                            className="inline-flex items-center gap-1 px-3.5 py-1.5 text-[11px] font-medium text-[#B65A37] bg-[#FAF2E9] hover:bg-[#B65A37] hover:text-white rounded-xl transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1 px-3.5 py-1.5 text-[11px] font-medium text-[#121212] bg-[#FAF8F5] hover:bg-[#121212] hover:text-white rounded-xl transition-colors cursor-pointer"
                           >
                             <Edit3 className="w-3.5 h-3.5" />
                             <span>Edit</span>
@@ -1431,7 +1431,7 @@ export const AdminPanel = ({ onClose }) => {
                     <p className="text-sm font-semibold text-neutral-700">No products found</p>
                     <button
                       onClick={handleOpenAddProduct}
-                      className="mt-3 px-5 py-2 bg-[#B65A37] hover:bg-[#A7472B] text-white rounded-xl text-xs font-semibold shadow-xs"
+                      className="mt-3 px-5 py-2 bg-[#121212] hover:bg-[#262626] text-white rounded-xl text-xs font-semibold shadow-xs"
                     >
                       + Add First Product
                     </button>
@@ -1469,7 +1469,7 @@ export const AdminPanel = ({ onClose }) => {
                   </div>
                   <button
                     onClick={() => handleOpenAddCategory('')}
-                    className="px-4 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer shrink-0"
+                    className="px-4 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer shrink-0"
                   >
                     <Plus className="w-4 h-4 stroke-[2.5]" />
                     <span>New category</span>
@@ -1512,7 +1512,7 @@ export const AdminPanel = ({ onClose }) => {
                       >
                         <div>
                           {/* Thumbnail */}
-                          <div className="aspect-[4/3] rounded-xl overflow-hidden bg-[#FAF2E9] border border-[#E8D9C8] mb-3 relative flex items-center justify-center">
+                          <div className="aspect-[4/3] rounded-xl overflow-hidden bg-[#FAF8F5] border border-[#E8E2D8] mb-3 relative flex items-center justify-center">
                             {(cat.imageUrl || cat.image) ? (
                               <img 
                                 src={cat.imageUrl || cat.image} 
@@ -1520,15 +1520,15 @@ export const AdminPanel = ({ onClose }) => {
                                 className="w-full h-full object-cover" 
                               />
                             ) : (
-                              <div className="w-full h-full flex flex-col items-center justify-center bg-[#FAF4ED] text-neutral-400 p-3 text-center">
-                                <ImageIcon className="w-7 h-7 text-[#B65A37]/40 mb-1" />
+                              <div className="w-full h-full flex flex-col items-center justify-center bg-[#FAF8F5] text-neutral-400 p-3 text-center">
+                                <ImageIcon className="w-7 h-7 text-[#121212]/40 mb-1" />
                                 <span className="text-[11px] font-medium text-neutral-500">No image uploaded</span>
                               </div>
                             )}
                             {/* Hierarchy Badge on Thumbnail */}
                             <div className="absolute top-2 left-2">
                               {isParent ? (
-                                <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#B65A37] text-white shadow-xs">
+                                <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#121212] text-white shadow-xs">
                                   Parent
                                 </span>
                               ) : (
@@ -1557,7 +1557,7 @@ export const AdminPanel = ({ onClose }) => {
                           </div>
 
                           <div className="flex items-center gap-1.5 mt-2.5">
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FAF2E9] text-[#B65A37] font-semibold">
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#121212] font-semibold">
                               {itemsCount} pieces
                             </span>
                             {isParent && childSubcategories.length > 0 && (
@@ -1574,7 +1574,7 @@ export const AdminPanel = ({ onClose }) => {
                             <button
                               onClick={() => handleOpenAddCategory(cat.id || cat.slug)}
                               title="Add subcategory under this parent"
-                              className="text-[11px] font-medium text-[#B65A37] hover:underline flex items-center gap-1 cursor-pointer"
+                              className="text-[11px] font-medium text-[#121212] hover:underline flex items-center gap-1 cursor-pointer"
                             >
                               <Plus className="w-3 h-3" />
                               <span>+ Sub</span>
@@ -1611,7 +1611,7 @@ export const AdminPanel = ({ onClose }) => {
                       <p className="text-sm font-semibold text-neutral-700">No categories match this filter</p>
                       <button
                         onClick={() => handleOpenAddCategory('')}
-                        className="mt-3 px-5 py-2 bg-[#B65A37] hover:bg-[#A7472B] text-white rounded-xl text-xs font-semibold shadow-xs"
+                        className="mt-3 px-5 py-2 bg-[#121212] hover:bg-[#262626] text-white rounded-xl text-xs font-semibold shadow-xs"
                       >
                         + Create Category
                       </button>
@@ -1637,7 +1637,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={orderSearchQuery}
                     onChange={(e) => setOrderSearchQuery(e.target.value)}
                     placeholder="Search by order ID, customer name, phone..."
-                    className="w-full pl-10 pr-4 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full pl-10 pr-4 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -1677,7 +1677,7 @@ export const AdminPanel = ({ onClose }) => {
                           {order.date}
                         </span>
                       </div>
-                      <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-[#FAF2E9] text-[#B65A37] border border-[#E8D9C8]">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-[#FAF8F5] text-[#121212] border border-[#E8E2D8]">
                         {order.statusTitle || 'Processing'}
                       </span>
                     </div>
@@ -1689,12 +1689,12 @@ export const AdminPanel = ({ onClose }) => {
                     </div>
 
                     <div className="pt-2 border-t border-neutral-100 flex items-center justify-between">
-                      <span className="font-bold text-sm text-[#B65A37]">
+                      <span className="font-bold text-sm text-[#121212]">
                         Total: ₹{(order.total || 0).toLocaleString('en-IN')}
                       </span>
                       <a
                         href={`https://wa.me/${order.phone?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                          `Hello ${order.customerName}! Thank you for your order #${order.id} with House of Taaga. We are preparing your artisanal pieces!`
+                          `Hello ${order.customerName}! Thank you for your order #${order.id} with Zubaida Sarees. We are preparing your artisanal pieces!`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1734,7 +1734,7 @@ export const AdminPanel = ({ onClose }) => {
                       Store Admin Profile
                     </h3>
                     <p className="text-xs text-neutral-400">
-                      Super Administrator • House of Taaga, Pune
+                      Super Administrator • Zubaida Sarees, Pune
                     </p>
                   </div>
                 </div>
@@ -1777,7 +1777,7 @@ export const AdminPanel = ({ onClose }) => {
                     customerList.map((cust, idx) => (
                       <div key={idx} className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-full bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center font-bold">
+                          <div className="w-9 h-9 rounded-full bg-[#FAF8F5] text-[#121212] flex items-center justify-center font-bold">
                             {cust.name[0]?.toUpperCase() || 'C'}
                           </div>
                           <div>
@@ -1793,13 +1793,13 @@ export const AdminPanel = ({ onClose }) => {
                           </div>
                           <div className="text-right">
                             <span className="text-neutral-500 block text-[10px] uppercase">Lifetime Spend</span>
-                            <span className="font-bold text-[#B65A37]">₹{cust.totalSpent.toLocaleString('en-IN')}</span>
+                            <span className="font-bold text-[#121212]">₹{cust.totalSpent.toLocaleString('en-IN')}</span>
                           </div>
                           <a
                             href={`https://wa.me/${cust.phone.replace(/[^0-9]/g, '')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-3 py-1.5 bg-[#FAF2E9] hover:bg-[#B65A37] text-[#B65A37] hover:text-white rounded-xl text-xs font-medium transition-colors"
+                            className="px-3 py-1.5 bg-[#FAF8F5] hover:bg-[#121212] text-[#121212] hover:text-white rounded-xl text-xs font-medium transition-colors"
                           >
                             Chat
                           </a>
@@ -1836,13 +1836,13 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Card 1: Offers & Discounts */}
                 <div
                   onClick={() => setActiveSettingModal('offers')}
-                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#B65A37]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
+                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#121212]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center">
                       <Percent className="w-6 h-6 stroke-[2.2]" />
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#B65A37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-bold text-base text-[#1C1E21]">
@@ -1857,13 +1857,13 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Card 2: Hero Banner Editing */}
                 <div
                   onClick={() => setActiveSettingModal('hero')}
-                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#B65A37]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
+                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#121212]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center">
                       <ImageIcon className="w-6 h-6 stroke-[2.2]" />
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#B65A37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-bold text-base text-[#1C1E21]">
@@ -1878,13 +1878,13 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Card 3: Delivery & Shipping */}
                 <div
                   onClick={() => setActiveSettingModal('shipping')}
-                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#B65A37]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
+                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#121212]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center">
                       <Truck className="w-6 h-6 stroke-[2.2]" />
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#B65A37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-bold text-base text-[#1C1E21]">
@@ -1899,13 +1899,13 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Card 4: Password Update */}
                 <div
                   onClick={() => setActiveSettingModal('password')}
-                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#B65A37]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
+                  className="bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-7 hover:border-[#121212]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between min-h-[190px] group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center">
                       <Lock className="w-6 h-6 stroke-[2.2]" />
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#B65A37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-5 h-5 text-neutral-400 group-hover:text-[#121212] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-bold text-base text-[#1C1E21]">
@@ -1970,7 +1970,7 @@ export const AdminPanel = ({ onClose }) => {
                     required
                     value={shippingSettings.standardCharge}
                     onChange={(e) => setShippingSettings(prev => ({ ...prev, standardCharge: Number(e.target.value) || 0 }))}
-                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37] text-[#1C1E21]"
+                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] text-[#1C1E21]"
                   />
                   <p className="text-xs text-neutral-400 mt-1.5">
                     Fee added when order total is below the free delivery minimum.
@@ -1988,7 +1988,7 @@ export const AdminPanel = ({ onClose }) => {
                     required
                     value={shippingSettings.freeDeliveryMin}
                     onChange={(e) => setShippingSettings(prev => ({ ...prev, freeDeliveryMin: Number(e.target.value) || 0 }))}
-                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37] text-[#1C1E21]"
+                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] text-[#1C1E21]"
                   />
                   <p className="text-xs text-neutral-400 mt-1.5">
                     Minimum items total for free shipping. Set to 0 for free delivery on all orders.
@@ -1996,10 +1996,10 @@ export const AdminPanel = ({ onClose }) => {
                 </div>
 
                 {/* Active Rule Summary Card */}
-                <div className="p-4 sm:p-5 rounded-2xl border border-[#E8D9C8] bg-[#FFF9F2] flex items-start gap-3">
-                  <Truck className="w-5 h-5 text-[#B65A37] shrink-0 mt-0.5" />
+                <div className="p-4 sm:p-5 rounded-2xl border border-[#E8E2D8] bg-[#FFFFFF] flex items-start gap-3">
+                  <Truck className="w-5 h-5 text-[#121212] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-xs sm:text-sm text-[#B65A37]">
+                    <h4 className="font-bold text-xs sm:text-sm text-[#121212]">
                       Active Rule Summary
                     </h4>
                     <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
@@ -2023,7 +2023,7 @@ export const AdminPanel = ({ onClose }) => {
               <button
                 type="submit"
                 form="shippingSettingsForm"
-                className="px-6 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-6 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Save delivery settings
               </button>
@@ -2066,7 +2066,7 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Section 1: Announcement Bar Header */}
                 <div className="p-5 rounded-2xl border border-[#CBD5E1] bg-white space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center shrink-0">
                       <Tag className="w-4 h-4" />
                     </div>
                     <div>
@@ -2095,7 +2095,7 @@ export const AdminPanel = ({ onClose }) => {
                         onChange={(e) => setOffersSettings(prev => ({ ...prev, showAnnouncement: e.target.checked }))} 
                         className="sr-only peer" 
                       />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#B65A37]"></div>
+                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
                     </label>
                   </div>
 
@@ -2108,7 +2108,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={offersSettings.announcementMessage}
                       onChange={(e) => setOffersSettings(prev => ({ ...prev, announcementMessage: e.target.value }))}
                       placeholder="Special Offer: Free shipping on orders above ₹3,999! 🌿"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                     <p className="text-[11px] text-neutral-400 mt-1">
                       Displayed prominently at the very top of the store.
@@ -2119,7 +2119,7 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Section 2: Automatic Discount Rule */}
                 <div className="p-5 rounded-2xl border border-[#CBD5E1] bg-white space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center shrink-0">
                       <Percent className="w-4 h-4" />
                     </div>
                     <div>
@@ -2148,7 +2148,7 @@ export const AdminPanel = ({ onClose }) => {
                         onChange={(e) => setOffersSettings(prev => ({ ...prev, enableDiscount: e.target.checked }))} 
                         className="sr-only peer" 
                       />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#B65A37]"></div>
+                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
                     </label>
                   </div>
 
@@ -2225,7 +2225,7 @@ export const AdminPanel = ({ onClose }) => {
                 {/* Section 3: Conversion Nudge Banner */}
                 <div className="p-5 rounded-2xl border border-[#CBD5E1] bg-white space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#FAF8F5] text-[#121212] flex items-center justify-center shrink-0">
                       <Gift className="w-4 h-4" />
                     </div>
                     <div>
@@ -2254,12 +2254,12 @@ export const AdminPanel = ({ onClose }) => {
                         onChange={(e) => setOffersSettings(prev => ({ ...prev, enableNudgeBanner: e.target.checked }))} 
                         className="sr-only peer" 
                       />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#B65A37]"></div>
+                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
                     </label>
                   </div>
 
                   {/* Banner Preview */}
-                  <div className="p-4 rounded-xl border border-dashed border-[#E8D9C8] bg-[#FFF9F2] space-y-2">
+                  <div className="p-4 rounded-xl border border-dashed border-[#E8E2D8] bg-[#FFFFFF] space-y-2">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 font-semibold block">
                       CUSTOMER BANNER PREVIEW (WHEN 51%+ OF THRESHOLD)
                     </span>
@@ -2268,7 +2268,7 @@ export const AdminPanel = ({ onClose }) => {
                         <span className="text-xs font-bold text-neutral-900">
                           🎉 Almost There!
                         </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF2E9] text-[#B65A37]">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#121212]">
                           {offersSettings.discountPercentage}% OFF
                         </span>
                       </div>
@@ -2276,7 +2276,7 @@ export const AdminPanel = ({ onClose }) => {
                         Add just ₹350 more to unlock {offersSettings.discountPercentage}% OFF on your order!
                       </p>
                       <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden mt-2">
-                        <div className="w-3/5 h-full bg-[#B65A37] rounded-full"></div>
+                        <div className="w-3/5 h-full bg-[#121212] rounded-full"></div>
                       </div>
                     </div>
                   </div>
@@ -2297,7 +2297,7 @@ export const AdminPanel = ({ onClose }) => {
               <button
                 type="submit"
                 form="offersSettingsForm"
-                className="px-6 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-6 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Save discount settings
               </button>
@@ -2350,7 +2350,7 @@ export const AdminPanel = ({ onClose }) => {
                         1. Mobile Hero Banners
                       </h4>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF2E9] text-[#B65A37] border border-[#E8D9C8]">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#121212] border border-[#E8E2D8]">
                       Visible on Mobile Screen (&lt; 768px)
                     </span>
                   </div>
@@ -2405,9 +2405,9 @@ export const AdminPanel = ({ onClose }) => {
                       }
                       showToast('Mobile banner(s) uploaded to Cloudflare R2!');
                     }}
-                    className="p-6 rounded-2xl border-2 border-dashed border-[#E8D9C8] hover:border-[#B65A37] hover:bg-[#FAF2E9]/40 text-center cursor-pointer transition-colors"
+                    className="p-6 rounded-2xl border-2 border-dashed border-[#E8E2D8] hover:border-[#121212] hover:bg-[#FAF8F5]/40 text-center cursor-pointer transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center mx-auto mb-2">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] text-[#121212] flex items-center justify-center mx-auto mb-2">
                       <Upload className="w-5 h-5" />
                     </div>
                     <span className="text-xs font-bold text-neutral-800 block">
@@ -2428,7 +2428,7 @@ export const AdminPanel = ({ onClose }) => {
                         2. Desktop Hero Banners
                       </h4>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF2E9] text-[#B65A37] border border-[#E8D9C8]">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#121212] border border-[#E8E2D8]">
                       Visible on Desktop &amp; Tablet (≥ 768px)
                     </span>
                   </div>
@@ -2483,9 +2483,9 @@ export const AdminPanel = ({ onClose }) => {
                       }
                       showToast('Desktop banner(s) uploaded to Cloudflare R2!');
                     }}
-                    className="p-6 rounded-2xl border-2 border-dashed border-[#E8D9C8] hover:border-[#B65A37] hover:bg-[#FAF2E9]/40 text-center cursor-pointer transition-colors"
+                    className="p-6 rounded-2xl border-2 border-dashed border-[#E8E2D8] hover:border-[#121212] hover:bg-[#FAF8F5]/40 text-center cursor-pointer transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#FAF2E9] text-[#B65A37] flex items-center justify-center mx-auto mb-2">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF8F5] text-[#121212] flex items-center justify-center mx-auto mb-2">
                       <Upload className="w-5 h-5" />
                     </div>
                     <span className="text-xs font-bold text-neutral-800 block">
@@ -2510,7 +2510,7 @@ export const AdminPanel = ({ onClose }) => {
                     rows={2}
                     value={heroSettings.belowTicker}
                     onChange={(e) => setHeroSettings(prev => ({ ...prev, belowTicker: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -2527,7 +2527,7 @@ export const AdminPanel = ({ onClose }) => {
                     rows={2}
                     value={heroSettings.endTicker}
                     onChange={(e) => setHeroSettings(prev => ({ ...prev, endTicker: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -2546,7 +2546,7 @@ export const AdminPanel = ({ onClose }) => {
               <button
                 type="submit"
                 form="heroSettingsForm"
-                className="px-6 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-6 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 Save settings
               </button>
@@ -2592,11 +2592,11 @@ export const AdminPanel = ({ onClose }) => {
                 {passFeedback && (
                   <div className={`p-3 rounded-xl text-xs flex items-center gap-2 ${
                     passFeedback.type === 'success' 
-                      ? 'bg-[#FAF2E9] text-[#B65A37] border border-[#E8D9C8]' 
+                      ? 'bg-[#FAF8F5] text-[#121212] border border-[#E8E2D8]' 
                       : 'bg-rose-50 text-rose-800 border border-rose-200'
                   }`}>
                     {passFeedback.type === 'success' ? (
-                      <CheckCircle2 className="w-4 h-4 text-[#B65A37] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#121212] shrink-0" />
                     ) : (
                       <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
                     )}
@@ -2615,7 +2615,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={currentPassword}
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       placeholder="Current password"
-                      className="w-full pl-3.5 pr-10 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full pl-3.5 pr-10 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                     <button
                       type="button"
@@ -2638,7 +2638,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       placeholder="At least 6 characters"
-                      className="w-full pl-3.5 pr-10 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full pl-3.5 pr-10 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                     <button
                       type="button"
@@ -2660,7 +2660,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Repeat new password"
-                    className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-3.5 py-2.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
               </form>
@@ -2679,7 +2679,7 @@ export const AdminPanel = ({ onClose }) => {
                 type="submit"
                 form="passwordSettingsForm"
                 disabled={isChangingPass}
-                className="px-5 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs font-semibold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="px-5 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs font-semibold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {isChangingPass ? (
                   <>
@@ -2711,7 +2711,7 @@ export const AdminPanel = ({ onClose }) => {
                 <div className="flex items-center gap-2">
                   <img 
                     src="/logo-transparent.png" 
-                    alt="House of Taaga" 
+                    alt="Zubaida Sarees" 
                     className="h-8 w-auto object-contain" 
                   />
                   <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">
@@ -2739,12 +2739,12 @@ export const AdminPanel = ({ onClose }) => {
                       }}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-all rounded-xl ${
                         isActive
-                          ? 'bg-[#FAF2E9] text-[#B65A37] font-semibold'
+                          ? 'bg-[#FAF8F5] text-[#121212] font-semibold'
                           : 'text-[#4A5568] hover:bg-neutral-100 font-medium'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <IconComp className={`w-4 h-4 ${isActive ? 'text-[#B65A37]' : 'text-[#4A5568]'}`} />
+                        <IconComp className={`w-4 h-4 ${isActive ? 'text-[#121212]' : 'text-[#4A5568]'}`} />
                         <span>{tab.label}</span>
                       </div>
                       {tab.badge !== undefined && (
@@ -2761,7 +2761,7 @@ export const AdminPanel = ({ onClose }) => {
             <div className="pt-3 border-t border-neutral-100">
               <button
                 onClick={handleClose}
-                className="w-full py-2.5 bg-[#B65A37] text-white rounded-xl text-xs font-semibold"
+                className="w-full py-2.5 bg-[#121212] text-white rounded-xl text-xs font-semibold"
               >
                 Return to Storefront
               </button>
@@ -2806,7 +2806,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={productForm.title}
                     onChange={(e) => setProductForm(prev => ({ ...prev, title: e.target.value }))}
                     placeholder="e.g. Mustard Bandhani Kurta Set, Mulberry Silk Saree"
-                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -2843,7 +2843,7 @@ export const AdminPanel = ({ onClose }) => {
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => {}}
-                            className="w-4 h-4 rounded text-[#B65A37] focus:ring-[#B65A37] border-neutral-300 pointer-events-none"
+                            className="w-4 h-4 rounded text-[#121212] focus:ring-[#121212] border-neutral-300 pointer-events-none"
                           />
                           {cat.depth > 0 && <span className="text-neutral-400 font-mono">└</span>}
                           <span className={cat.depth === 0 ? 'font-bold uppercase tracking-wider text-xs' : 'text-xs'}>
@@ -2869,7 +2869,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.price}
                       onChange={(e) => setProductForm(prev => ({ ...prev, price: e.target.value }))}
                       placeholder="0.00"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                   <div>
@@ -2883,7 +2883,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.originalPrice}
                       onChange={(e) => setProductForm(prev => ({ ...prev, originalPrice: e.target.value }))}
                       placeholder="Before discount"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                 </div>
@@ -2917,7 +2917,7 @@ export const AdminPanel = ({ onClose }) => {
                             }
                           }
                         }}
-                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8D9C8] bg-[#FAF2E9]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
+                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8E2D8] bg-[#FAF8F5]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
                       >
                         {productForm.primaryImage ? (
                           <>
@@ -2931,7 +2931,7 @@ export const AdminPanel = ({ onClose }) => {
                             </button>
                           </>
                         ) : (
-                          <ImageIcon className="w-8 h-8 text-[#B65A37]/50" />
+                          <ImageIcon className="w-8 h-8 text-[#121212]/50" />
                         )}
                       </div>
 
@@ -2981,7 +2981,7 @@ export const AdminPanel = ({ onClose }) => {
                             }
                           }
                         }}
-                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8D9C8] bg-[#FAF2E9]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
+                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8E2D8] bg-[#FAF8F5]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
                       >
                         {productForm.secondImage ? (
                           <>
@@ -2995,7 +2995,7 @@ export const AdminPanel = ({ onClose }) => {
                             </button>
                           </>
                         ) : (
-                          <ImageIcon className="w-8 h-8 text-[#B65A37]/50" />
+                          <ImageIcon className="w-8 h-8 text-[#121212]/50" />
                         )}
                       </div>
 
@@ -3035,7 +3035,7 @@ export const AdminPanel = ({ onClose }) => {
                       onClick={() => setProductForm(prev => ({ ...prev, shippingScope: 'all_india' }))}
                       className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                         productForm.shippingScope === 'all_india'
-                          ? 'border-[#B65A37] bg-[#FAF2E9]/40 ring-1 ring-[#B65A37]'
+                          ? 'border-[#121212] bg-[#FAF8F5]/40 ring-1 ring-[#121212]'
                           : 'border-[#CBD5E1] bg-white hover:border-neutral-400'
                       }`}
                     >
@@ -3045,7 +3045,7 @@ export const AdminPanel = ({ onClose }) => {
                           name="shippingScope"
                           checked={productForm.shippingScope === 'all_india'}
                           onChange={() => {}}
-                          className="w-4 h-4 text-[#B65A37] focus:ring-[#B65A37] pointer-events-none"
+                          className="w-4 h-4 text-[#121212] focus:ring-[#121212] pointer-events-none"
                         />
                         <span className="font-bold text-xs text-[#1C1E21]">
                           All India Delivery
@@ -3061,7 +3061,7 @@ export const AdminPanel = ({ onClose }) => {
                       onClick={() => setProductForm(prev => ({ ...prev, shippingScope: 'specific_states' }))}
                       className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                         productForm.shippingScope === 'specific_states'
-                          ? 'border-[#B65A37] bg-[#FAF2E9]/40 ring-1 ring-[#B65A37]'
+                          ? 'border-[#121212] bg-[#FAF8F5]/40 ring-1 ring-[#121212]'
                           : 'border-[#CBD5E1] bg-white hover:border-neutral-400'
                       }`}
                     >
@@ -3071,7 +3071,7 @@ export const AdminPanel = ({ onClose }) => {
                           name="shippingScope"
                           checked={productForm.shippingScope === 'specific_states'}
                           onChange={() => {}}
-                          className="w-4 h-4 text-[#B65A37] focus:ring-[#B65A37] pointer-events-none"
+                          className="w-4 h-4 text-[#121212] focus:ring-[#121212] pointer-events-none"
                         />
                         <span className="font-bold text-xs text-[#1C1E21]">
                           Specific States Only
@@ -3087,7 +3087,7 @@ export const AdminPanel = ({ onClose }) => {
                       onClick={() => setProductForm(prev => ({ ...prev, shippingScope: 'specific_pincodes' }))}
                       className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${
                         productForm.shippingScope === 'specific_pincodes'
-                          ? 'border-[#B65A37] bg-[#FAF2E9]/40 ring-1 ring-[#B65A37]'
+                          ? 'border-[#121212] bg-[#FAF8F5]/40 ring-1 ring-[#121212]'
                           : 'border-[#CBD5E1] bg-white hover:border-neutral-400'
                       }`}
                     >
@@ -3097,7 +3097,7 @@ export const AdminPanel = ({ onClose }) => {
                           name="shippingScope"
                           checked={productForm.shippingScope === 'specific_pincodes'}
                           onChange={() => {}}
-                          className="w-4 h-4 text-[#B65A37] focus:ring-[#B65A37] pointer-events-none"
+                          className="w-4 h-4 text-[#121212] focus:ring-[#121212] pointer-events-none"
                         />
                         <span className="font-bold text-xs text-[#1C1E21]">
                           Specific Pincodes Only
@@ -3112,13 +3112,13 @@ export const AdminPanel = ({ onClose }) => {
 
                   {/* Specific States Configuration Box */}
                   {productForm.shippingScope === 'specific_states' && (
-                    <div className="p-4 rounded-2xl bg-[#FAF4ED] border border-[#DEC49E] space-y-3 animate-in fade-in duration-200">
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC49E] space-y-3 animate-in fade-in duration-200">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div>
-                          <span className="font-bold text-xs text-[#270803] block">
+                          <span className="font-bold text-xs text-[#18181B] block">
                             Select Serviceable States / UTs ({productForm.allowedStates.length} selected)
                           </span>
-                          <span className="text-[11px] text-[#8C6F5A]">
+                          <span className="text-[11px] text-[#71717A]">
                             Only customers residing in these states will be allowed to purchase this item.
                           </span>
                         </div>
@@ -3126,7 +3126,7 @@ export const AdminPanel = ({ onClose }) => {
                           <button
                             type="button"
                             onClick={() => setProductForm(prev => ({ ...prev, allowedStates: [...INDIAN_STATES] }))}
-                            className="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white border border-[#DEC49E] text-[#5C061C] hover:bg-[#FAF3EA] cursor-pointer"
+                            className="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white border border-[#DEC49E] text-[#121212] hover:bg-[#FAF8F5] cursor-pointer"
                           >
                             Select All
                           </button>
@@ -3143,7 +3143,7 @@ export const AdminPanel = ({ onClose }) => {
                               ...prev, 
                               allowedStates: ['Maharashtra', 'Gujarat', 'Goa', 'Karnataka'] 
                             }))}
-                            className="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white border border-[#DEC49E] text-[#C4924D] hover:bg-[#FAF3EA] cursor-pointer"
+                            className="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white border border-[#DEC49E] text-[#C5A059] hover:bg-[#FAF8F5] cursor-pointer"
                           >
                             West &amp; South Hubs
                           </button>
@@ -3158,7 +3158,7 @@ export const AdminPanel = ({ onClose }) => {
                           placeholder="Search state or territory (e.g. Maharashtra, West Bengal)..."
                           value={stateSearchFilter}
                           onChange={(e) => setStateSearchFilter(e.target.value)}
-                          className="w-full pl-8 pr-3 py-1.5 bg-white border border-[#DEC49E] rounded-xl text-xs text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C]"
+                          className="w-full pl-8 pr-3 py-1.5 bg-white border border-[#DEC49E] rounded-xl text-xs text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212]"
                         />
                       </div>
 
@@ -3182,8 +3182,8 @@ export const AdminPanel = ({ onClose }) => {
                                 }}
                                 className={`px-2.5 py-1.5 rounded-lg text-left text-xs transition-all flex items-center justify-between border cursor-pointer ${
                                   isChecked
-                                    ? 'bg-[#5C061C] text-white border-[#5C061C] font-semibold shadow-2xs'
-                                    : 'bg-[#FAF5EF] text-[#270803] border-transparent hover:border-[#DEC49E]'
+                                    ? 'bg-[#121212] text-white border-[#121212] font-semibold shadow-2xs'
+                                    : 'bg-[#FAF8F5] text-[#18181B] border-transparent hover:border-[#DEC49E]'
                                 }`}
                               >
                                 <span className="truncate pr-1 text-[11px]">{stateName}</span>
@@ -3197,12 +3197,12 @@ export const AdminPanel = ({ onClose }) => {
 
                   {/* Specific Pincodes Configuration Box */}
                   {productForm.shippingScope === 'specific_pincodes' && (
-                    <div className="p-4 rounded-2xl bg-[#FAF4ED] border border-[#DEC49E] space-y-3 animate-in fade-in duration-200">
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC49E] space-y-3 animate-in fade-in duration-200">
                       <div>
-                        <span className="font-bold text-xs text-[#270803] block">
+                        <span className="font-bold text-xs text-[#18181B] block">
                           Enter Serviceable 6-digit Pincodes
                         </span>
-                        <span className="text-[11px] text-[#8C6F5A]">
+                        <span className="text-[11px] text-[#71717A]">
                           Only customers with an exact matching delivery pincode will be able to place an order.
                         </span>
                       </div>
@@ -3212,7 +3212,7 @@ export const AdminPanel = ({ onClose }) => {
                         placeholder="Enter 6-digit pincodes separated by commas or spaces. Example: 411001, 411038, 411014, 700001, 110001"
                         value={productForm.allowedPincodes}
                         onChange={(e) => setProductForm(prev => ({ ...prev, allowedPincodes: e.target.value }))}
-                        className="w-full px-3 py-2 bg-white border border-[#DEC49E] rounded-xl text-xs sm:text-sm font-mono text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C]"
+                        className="w-full px-3 py-2 bg-white border border-[#DEC49E] rounded-xl text-xs sm:text-sm font-mono text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212]"
                       />
 
                       {/* Live Parsed Pincodes Preview */}
@@ -3223,19 +3223,19 @@ export const AdminPanel = ({ onClose }) => {
                           .filter(p => /^\d{6}$/.test(p));
                         return (
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-[11px] font-bold text-[#5C061C]">
+                            <span className="text-[11px] font-bold text-[#121212]">
                               {parsed.length} Valid Pincode{parsed.length === 1 ? '' : 's'} Configured:
                             </span>
                             {parsed.slice(0, 10).map((pin) => (
                               <span 
                                 key={pin} 
-                                className="px-2 py-0.5 rounded-full bg-white border border-[#DEC49E] text-[10px] font-mono font-bold text-[#270803]"
+                                className="px-2 py-0.5 rounded-full bg-white border border-[#DEC49E] text-[10px] font-mono font-bold text-[#18181B]"
                               >
                                 {pin}
                               </span>
                             ))}
                             {parsed.length > 10 && (
-                              <span className="text-[10px] font-bold text-[#C4924D]">
+                              <span className="text-[10px] font-bold text-[#C5A059]">
                                 +{parsed.length - 10} more
                               </span>
                             )}
@@ -3256,7 +3256,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={productForm.description}
                     onChange={(e) => setProductForm(prev => ({ ...prev, description: e.target.value }))}
                     placeholder="Describe this handcrafted artisanal piece, silhouette, craftsmanship..."
-                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -3274,7 +3274,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.deliveryReturns}
                       onChange={(e) => setProductForm(prev => ({ ...prev, deliveryReturns: e.target.value }))}
                       placeholder="Delivery times and the return/exchange policy for this product"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                 </div>
@@ -3293,7 +3293,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.replacement}
                       onChange={(e) => setProductForm(prev => ({ ...prev, replacement: e.target.value }))}
                       placeholder="e.g. 7-day easy exchange guarantee"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                   <div>
@@ -3305,7 +3305,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.delivery}
                       onChange={(e) => setProductForm(prev => ({ ...prev, delivery: e.target.value }))}
                       placeholder="e.g. Ships across India in 3-5 days"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                   <div>
@@ -3317,7 +3317,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.guidance}
                       onChange={(e) => setProductForm(prev => ({ ...prev, guidance: e.target.value }))}
                       placeholder="e.g. Lifetime WhatsApp gardening advice"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                   <div>
@@ -3329,7 +3329,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.packaging}
                       onChange={(e) => setProductForm(prev => ({ ...prev, packaging: e.target.value }))}
                       placeholder="e.g. 5-layer corrugated ventilated box"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                   <div>
@@ -3341,7 +3341,7 @@ export const AdminPanel = ({ onClose }) => {
                       value={productForm.soldInLast24Hours}
                       onChange={(e) => setProductForm(prev => ({ ...prev, soldInLast24Hours: e.target.value }))}
                       placeholder="Enter count or leave blank"
-                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                      className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                     />
                   </div>
                 </div>
@@ -3364,7 +3364,7 @@ export const AdminPanel = ({ onClose }) => {
                         onChange={(e) => setProductForm(prev => ({ ...prev, showSampleReviews: e.target.checked }))}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#B65A37]"></div>
+                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
                     </label>
                   </div>
 
@@ -3384,7 +3384,7 @@ export const AdminPanel = ({ onClose }) => {
                         onChange={(e) => setProductForm(prev => ({ ...prev, inStock: e.target.checked }))}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#B65A37]"></div>
+                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
                     </label>
                   </div>
                 </div>
@@ -3404,7 +3404,7 @@ export const AdminPanel = ({ onClose }) => {
               <button
                 type="submit"
                 form="productFormSubmit"
-                className="px-6 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
+                className="px-6 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-colors cursor-pointer"
               >
                 {editingProductId ? 'Save product' : 'Add product'}
               </button>
@@ -3450,7 +3450,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={categoryForm.name}
                     onChange={(e) => setCategoryForm(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="e.g. Sarees, Kurtas, Anarkalis"
-                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37] placeholder:text-neutral-400 text-[#1C1E21]"
+                    className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] placeholder:text-neutral-400 text-[#1C1E21]"
                   />
                 </div>
 
@@ -3463,7 +3463,7 @@ export const AdminPanel = ({ onClose }) => {
                     <select
                       value={categoryForm.parentId}
                       onChange={(e) => setCategoryForm(prev => ({ ...prev, parentId: e.target.value }))}
-                      className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37] appearance-none cursor-pointer pr-10 text-[#1C1E21]"
+                      className="w-full px-4 py-3 bg-white border border-[#CBD5E1] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] appearance-none cursor-pointer pr-10 text-[#1C1E21]"
                     >
                       <option value="">None (Top-level Category)</option>
                       {categories
@@ -3510,7 +3510,7 @@ export const AdminPanel = ({ onClose }) => {
                           }
                         }
                       }}
-                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8D9C8] bg-[#FAF2E9]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
+                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-dashed border-[#E8E2D8] bg-[#FAF8F5]/40 flex items-center justify-center shrink-0 overflow-hidden relative group"
                     >
                       {categoryForm.imageUrl ? (
                         <>
@@ -3528,7 +3528,7 @@ export const AdminPanel = ({ onClose }) => {
                           </button>
                         </>
                       ) : (
-                        <ImageIcon className="w-8 h-8 text-[#B65A37]/50" />
+                        <ImageIcon className="w-8 h-8 text-[#121212]/50" />
                       )}
                     </div>
 
@@ -3566,7 +3566,7 @@ export const AdminPanel = ({ onClose }) => {
                     value={categoryForm.subtitle}
                     onChange={(e) => setCategoryForm(prev => ({ ...prev, subtitle: e.target.value }))}
                     placeholder="e.g. Everyday Grace & Handcrafted Silhouettes"
-                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#B65A37]/20 focus:border-[#B65A37]"
+                    className="w-full px-4 py-2.5 bg-white border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
@@ -3585,7 +3585,7 @@ export const AdminPanel = ({ onClose }) => {
               <button
                 type="submit"
                 form="categoryFormSubmit"
-                className="px-5 py-2.5 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-xl text-xs font-semibold shadow-xs cursor-pointer transition-colors"
+                className="px-5 py-2.5 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-xl text-xs font-semibold shadow-xs cursor-pointer transition-colors"
               >
                 {editingCategoryId ? 'Save Category' : 'Create category'}
               </button>

@@ -3,7 +3,7 @@ import { FloralDivider } from './FloralDecorations';
 
 // Star Rating Component (5 Gold Stars)
 const StarRating = () => (
-  <div className="flex items-center gap-1 text-[#C4924D]" aria-label="5 out of 5 stars">
+  <div className="flex items-center gap-1 text-[#C5A059]" aria-label="5 out of 5 stars">
     {[...Array(5)].map((_, i) => (
       <svg 
         key={i} 
@@ -25,7 +25,7 @@ const ReviewCard = ({ review }) => {
     : 'HT';
 
   return (
-    <div className="relative w-[320px] sm:w-[370px] shrink-0 bg-[#FFF9F2] rounded-2xl sm:rounded-3xl border border-[#DEC49E]/80 shadow-[0_4px_20px_-4px_rgba(56,32,23,0.06)] hover:shadow-[0_12px_32px_-6px_rgba(92,6,28,0.15)] hover:border-[#5C061C]/50 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between cursor-default group/card hover:-translate-y-1 select-none overflow-hidden">
+    <div className="relative w-[320px] sm:w-[370px] shrink-0 bg-[#FFFFFF] rounded-2xl sm:rounded-3xl border border-[#DEC49E]/80 shadow-[0_4px_20px_-4px_rgba(56,32,23,0.06)] hover:shadow-[0_12px_32px_-6px_rgba(92,6,28,0.15)] hover:border-[#121212]/50 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between cursor-default group/card hover:-translate-y-1 select-none overflow-hidden">
       
       {/* Delicate Corner Floral Line Art (Top Right) */}
       <svg 
@@ -43,15 +43,15 @@ const ReviewCard = ({ review }) => {
       {/* Top Row: Stars + Verified Badge */}
       <div className="flex items-center justify-between mb-3 relative z-10">
         <StarRating />
-        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#8C2436] bg-[#FCE7E6] px-2 py-0.5 rounded-full flex items-center gap-1">
-          <span className="text-[#8C2436] text-[10px]">✓</span>
+        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#C5A059] bg-[#FCE7E6] px-2 py-0.5 rounded-full flex items-center gap-1">
+          <span className="text-[#C5A059] text-[10px]">✓</span>
           <span>Verified Patron</span>
         </span>
       </div>
 
       {/* Review Quote */}
       <div className="relative z-10 mb-4">
-        <p className="font-serif italic text-sm sm:text-[15px] text-[#270803] leading-relaxed">
+        <p className="font-serif italic text-sm sm:text-[15px] text-[#18181B] leading-relaxed">
           "{review.text}"
         </p>
       </div>
@@ -59,28 +59,28 @@ const ReviewCard = ({ review }) => {
       {/* Decorative Gold Hairline with Diamond */}
       <div className="relative flex items-center justify-center my-1 select-none">
         <div className="w-full h-px bg-gradient-to-r from-transparent via-[#DEC49E]/70 to-transparent" />
-        <span className="absolute bg-[#FFF9F2] px-2 text-[#C4924D] text-[9px]">✦</span>
+        <span className="absolute bg-[#FFFFFF] px-2 text-[#C5A059] text-[9px]">✦</span>
       </div>
 
       {/* Patron Info & Product Tag */}
       <div className="flex items-center justify-between pt-2 relative z-10">
         <div className="flex items-center gap-2.5">
           {/* Monogram Crest */}
-          <div className="w-8 h-8 rounded-full bg-[#FAF3EA] border border-[#DEC49E] flex items-center justify-center font-serif text-xs font-bold text-[#5C061C] shadow-2xs">
+          <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#DEC49E] flex items-center justify-center font-serif text-xs font-bold text-[#121212] shadow-2xs">
             {initials}
           </div>
           <div>
-            <h4 className="font-serif font-bold text-sm text-[#270803] leading-tight">
+            <h4 className="font-serif font-bold text-sm text-[#18181B] leading-tight">
               {review.name}
             </h4>
-            <span className="text-[10px] font-sans text-[#8C6F5A] tracking-wide">
+            <span className="text-[10px] font-sans text-[#71717A] tracking-wide">
               {review.city}, India
             </span>
           </div>
         </div>
 
         {/* Piece Tag */}
-        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#5C061C] bg-[#FAF3EA] border border-[#DEC49E]/70 px-2.5 py-1 rounded-full whitespace-nowrap">
+        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#121212] bg-[#FAF8F5] border border-[#DEC49E]/70 px-2.5 py-1 rounded-full whitespace-nowrap">
           {review.tag}
         </span>
       </div>
@@ -200,15 +200,15 @@ export const CustomerReviewsSection = () => {
     <section 
       id="reviews-section"
       aria-label="Customer Reviews" 
-      className="py-14 sm:py-20 bg-[#FAF5EF] overflow-hidden relative select-none border-y border-[#DEC49E]/40"
+      className="py-14 sm:py-20 bg-[#FAF8F5] overflow-hidden relative select-none border-y border-[#DEC49E]/40"
     >
       {/* Subtle edge fade overlays for infinite smooth entrance/exit */}
       <div 
-        className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-r from-[#FAF5EF] via-[#FAF5EF]/80 to-transparent z-10" 
+        className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent z-10" 
         aria-hidden="true" 
       />
       <div 
-        className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-l from-[#FAF5EF] via-[#FAF5EF]/80 to-transparent z-10" 
+        className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-l from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent z-10" 
         aria-hidden="true" 
       />
 
@@ -219,7 +219,7 @@ export const CustomerReviewsSection = () => {
           subtitle="PATRON STORIES • CHERISHED ACROSS INDIA"
           className="mb-2"
         />
-        <p className="text-xs sm:text-sm font-serif italic text-[#8C6F5A] max-w-md mx-auto mt-2">
+        <p className="text-xs sm:text-sm font-serif italic text-[#71717A] max-w-md mx-auto mt-2">
           "Heirloom textiles, thoughtful details, and heartfelt notes crafted with love."
         </p>
       </div>

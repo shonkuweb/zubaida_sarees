@@ -37,7 +37,7 @@ const WhatsAppOutlineIcon = () => (
   </svg>
 );
 
-export const LotusIcon = ({ className = "w-6 h-6", color = "#C69B52" }) => (
+export const LotusIcon = ({ className = "w-6 h-6", color = "#C5A059" }) => (
   <svg 
     viewBox="0 0 48 36" 
     fill="none" 
@@ -49,31 +49,31 @@ export const LotusIcon = ({ className = "w-6 h-6", color = "#C69B52" }) => (
       d="M24 2C24 2 20 12 20 22C20 25.5 21.8 28 24 28C26.2 28 28 25.5 28 22C28 12 24 2 24 2Z" 
       stroke={color} 
       strokeWidth="1.8" 
-      fill="#FAF2E9" 
+      fill="#FAF8F5" 
     />
     <path 
       d="M21 9C21 9 14 17 15 25C15.5 28 18 29.5 21 28.5C19 25 19 19 21 9Z" 
       stroke={color} 
       strokeWidth="1.6" 
-      fill="#FAF2E9" 
+      fill="#FAF8F5" 
     />
     <path 
       d="M27 9C27 9 34 17 33 25C32.5 28 30 29.5 27 28.5C29 25 29 19 27 9Z" 
       stroke={color} 
       strokeWidth="1.6" 
-      fill="#FAF2E9" 
+      fill="#FAF8F5" 
     />
     <path 
       d="M16 19C16 19 8 23 8 28C8 31 12 32 17 30C15 27 15.5 23 16 19Z" 
       stroke={color} 
       strokeWidth="1.4" 
-      fill="#FAF2E9" 
+      fill="#FAF8F5" 
     />
     <path 
       d="M32 19C32 19 40 23 40 28C40 31 36 32 31 30C33 27 32.5 23 32 19Z" 
       stroke={color} 
       strokeWidth="1.4" 
-      fill="#FAF2E9" 
+      fill="#FAF8F5" 
     />
     <path 
       d="M14 33C19 35 29 35 34 33" 
@@ -124,7 +124,7 @@ export const Header = () => {
     }, 150);
   };
 
-  const phone = storeConfig?.whatsappNumber || '+91 90966 69212';
+  const phone = storeConfig?.whatsappNumber || '+91 63925 31412';
   const cleanPhone = phone.replace(/[^0-9]/g, '');
 
   const handleCategoryNav = (slug) => {
@@ -156,26 +156,26 @@ export const Header = () => {
           Desktop enhancement: Side boutique notes
          ======================================================== */}
       {storeConfig?.offers?.showAnnouncement !== false && (
-        <aside aria-label="Announcement" className="w-full bg-[#B65A37] text-[#FFF9F2] py-2 px-4 relative z-50 select-none shadow-xs">
+        <aside aria-label="Announcement" className="w-full bg-[#121212] text-[#FFFFFF] py-2 px-4 relative z-50 select-none shadow-xs">
           <div className="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm">
             
             {/* Desktop Left Note */}
-            <div className="hidden lg:flex items-center gap-1.5 text-[11px] font-sans font-medium text-[#FFF9F2]/90 tracking-wide">
+            <div className="hidden lg:flex items-center gap-1.5 text-[11px] font-sans font-medium text-[#FFFFFF]/90 tracking-wide">
               <Truck className="w-3.5 h-3.5 text-[#E8D3AA]" />
-              <span>Pan-India Express Delivery</span>
+              <span>Worldwide & Pan-India Shipping</span>
             </div>
 
             {/* Centered Main Announcement */}
             <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3">
               <FloralOrnament className="w-3.5 h-3.5 text-[#E8D3AA] shrink-0 opacity-90" />
               <span className="font-serif italic font-normal tracking-wider text-xs sm:text-sm text-center">
-                {storeConfig?.offers?.announcementMessage || storeConfig?.announcement || 'A little tradition, a lot of love'}
+                {storeConfig?.offers?.announcementMessage || storeConfig?.announcement || 'Manufacturing Since 1965 · Authentic Banarasi Sarees · GST Verified'}
               </span>
               <FloralOrnament className="w-3.5 h-3.5 text-[#E8D3AA] shrink-0 opacity-90" />
             </div>
 
             {/* Desktop Right Note */}
-            <div className="hidden lg:flex items-center gap-2 text-[11px] font-sans font-medium text-[#FFF9F2]/90 tracking-wide">
+            <div className="hidden lg:flex items-center gap-2 text-[11px] font-sans font-medium text-[#FFFFFF]/90 tracking-wide">
               <a 
                 href={`https://wa.me/${cleanPhone}`} 
                 target="_blank" 
@@ -197,7 +197,7 @@ export const Header = () => {
           Layout: Logo on LEFT, Search bar in MIDDLE, Actions on RIGHT.
           No sub-navigation options under the navbar.
          ======================================================== */}
-      <header className="sticky top-0 z-40 bg-[#FFF9F2]/95 backdrop-blur-md border-b border-[#E8D9C8] transition-all shadow-xs">
+      <header className="sticky top-0 z-40 bg-[#FFFFFF]/95 backdrop-blur-md border-b border-[#E8E2D8] transition-all shadow-xs">
         
         {/* Main Header Row */}
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
@@ -206,7 +206,7 @@ export const Header = () => {
           <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="p-1.5 -ml-1 text-[#382017] hover:text-[#B65A37] hover:bg-[#FAF2E9] rounded-full transition-colors cursor-pointer lg:hidden"
+              className="p-1.5 -ml-1 text-[#18181B] hover:text-[#121212] hover:bg-[#FAF8F5] rounded-full transition-colors cursor-pointer lg:hidden"
               aria-label="Open Navigation Menu"
             >
               <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
@@ -224,11 +224,11 @@ export const Header = () => {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') navigate('/');
               }}
-              aria-label="House of Taaga Home"
+              aria-label="Zubaida Sarees Home"
             >
               <img 
                 src="/logo-transparent.png" 
-                alt="House of Taaga" 
+                alt="Zubaida Sarees" 
                 className="h-8 sm:h-10 lg:h-12 w-auto max-w-[130px] sm:max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>
@@ -237,19 +237,19 @@ export const Header = () => {
           {/* Middle: Prominent Centered Search Bar */}
           <div className="flex-1 max-w-sm sm:max-w-md lg:max-w-xl mx-1 sm:mx-4 lg:mx-8 flex items-center justify-center">
             <div className="relative w-full">
-              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8C6F5A] absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#71717A] absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search kurtas, sarees, festive edit..."
-                className="w-full pl-8 sm:pl-10 pr-8 py-1.5 sm:py-2.5 bg-[#FAF2E9] border border-[#E8D9C8] rounded-full text-xs sm:text-sm text-[#382017] placeholder:text-[#8C6F5A]/70 focus:outline-none focus:ring-1.5 focus:ring-[#B65A37] focus:bg-white focus:border-[#B65A37] transition-all shadow-2xs"
+                placeholder="Search Banarasi sarees, Katan silk, bridal weaves..."
+                className="w-full pl-8 sm:pl-10 pr-8 py-1.5 sm:py-2.5 bg-[#FAF8F5] border border-[#E8E2D8] rounded-full text-xs sm:text-sm text-[#18181B] placeholder:text-[#71717A]/70 focus:outline-none focus:ring-1.5 focus:ring-[#121212] focus:bg-white focus:border-[#121212] transition-all shadow-2xs"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8C6F5A] hover:text-[#382017] p-1 cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#71717A] hover:text-[#18181B] p-1 cursor-pointer"
                   aria-label="Clear Search"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -267,14 +267,14 @@ export const Header = () => {
                 const el = document.getElementById('catalog-section');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="flex items-center gap-1.5 p-1.5 sm:p-2 text-[#382017] hover:text-[#B65A37] hover:bg-[#FAF2E9] rounded-full transition-colors cursor-pointer text-xs font-sans"
+              className="flex items-center gap-1.5 p-1.5 sm:p-2 text-[#18181B] hover:text-[#121212] hover:bg-[#FAF8F5] rounded-full transition-colors cursor-pointer text-xs font-sans"
               title="View Wishlist"
               aria-label="Wishlist"
             >
               <div className="relative">
                 <Heart className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
                 {wishlist.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#D85179] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-[#C5A059] text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">
                     {wishlist.length}
                   </span>
                 )}
@@ -285,7 +285,7 @@ export const Header = () => {
             {/* Patron Account Portal */}
             <button
               onClick={() => navigate('/account')}
-              className="p-1.5 sm:p-2 text-[#382017] hover:text-[#B65A37] hover:bg-[#FAF2E9] rounded-full transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-sans"
+              className="p-1.5 sm:p-2 text-[#18181B] hover:text-[#121212] hover:bg-[#FAF8F5] rounded-full transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-sans"
               aria-label="Patron Account"
               title="My Account"
             >
@@ -296,18 +296,18 @@ export const Header = () => {
             {/* Shopping Bag Icon with Quantity Badge & Subtotal Preview */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-1.5 sm:p-2 lg:px-3 lg:py-1.5 text-[#382017] hover:text-[#B65A37] hover:bg-[#FAF2E9] rounded-full transition-all cursor-pointer touch-manipulation flex items-center gap-2"
+              className="relative p-1.5 sm:p-2 lg:px-3 lg:py-1.5 text-[#18181B] hover:text-[#121212] hover:bg-[#FAF8F5] rounded-full transition-all cursor-pointer touch-manipulation flex items-center gap-2"
               aria-label="Shopping Bag"
             >
               <div className="relative">
                 <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#B65A37] text-white text-[10px] font-bold min-w-4 h-4 px-1 rounded-full flex items-center justify-center shadow-xs select-none">
+                  <span className="absolute -top-1 -right-1 bg-[#121212] text-white text-[10px] font-bold min-w-4 h-4 px-1 rounded-full flex items-center justify-center shadow-xs select-none">
                     {cartCount > 99 ? '99+' : cartCount}
                   </span>
                 )}
               </div>
-              <span className="hidden lg:inline text-xs font-sans font-medium text-[#382017]">
+              <span className="hidden lg:inline text-xs font-sans font-medium text-[#18181B]">
                 Bag {cartCount > 0 && `(₹${cartSubtotal.toLocaleString('en-IN')})`}
               </span>
             </button>
@@ -317,21 +317,21 @@ export const Header = () => {
 
         {/* Mobile Dropdown Live Search Bar */}
         {isSearchOpen && (
-          <div className="border-t border-[#E8D9C8] bg-[#FFF9F2] px-4 py-3 shadow-inner animate-in fade-in slide-in-from-top-1 duration-200 lg:hidden">
+          <div className="border-t border-[#E8E2D8] bg-[#FFFFFF] px-4 py-3 shadow-inner animate-in fade-in slide-in-from-top-1 duration-200 lg:hidden">
             <div className="max-w-md mx-auto relative flex items-center">
-              <Search className="w-4 h-4 text-[#8C6F5A] absolute left-3 pointer-events-none" />
+              <Search className="w-4 h-4 text-[#71717A] absolute left-3 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search kurtas, sarees, co-ord sets..."
                 autoFocus
-                className="w-full pl-9 pr-9 py-2 bg-white border border-[#E8D9C8] rounded-full text-xs text-[#382017] placeholder:text-[#8C6F5A]/70 focus:outline-none focus:ring-1 focus:ring-[#B65A37] focus:border-[#B65A37]"
+                className="w-full pl-9 pr-9 py-2 bg-white border border-[#E8E2D8] rounded-full text-xs text-[#18181B] placeholder:text-[#71717A]/70 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 text-[#8C6F5A] hover:text-[#382017]"
+                  className="absolute right-3 text-[#71717A] hover:text-[#18181B]"
                   aria-label="Clear Search"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -350,13 +350,13 @@ export const Header = () => {
           {/* Backdrop */}
           <div 
             onClick={() => setIsDrawerOpen(false)}
-            className="absolute inset-0 bg-[#270803]/60 backdrop-blur-xs transition-opacity duration-300"
+            className="absolute inset-0 bg-[#18181B]/60 backdrop-blur-xs transition-opacity duration-300"
           />
 
-          <div className="absolute inset-y-0 left-0 max-w-[340px] w-full bg-[#FCF8F2] shadow-2xl flex flex-col border-r border-[#E8D9C8] h-full overflow-hidden">
+          <div className="absolute inset-y-0 left-0 max-w-[340px] w-full bg-[#FAF8F5] shadow-2xl flex flex-col border-r border-[#E8E2D8] h-full overflow-hidden">
             
             {/* Top Brand Header with Faint Floral Watermark (Sticky Locked Header) */}
-            <div className="relative pt-5 pb-3.5 px-6 border-b border-[#EAD7C5] bg-[#FAF3EA] shrink-0 z-20">
+            <div className="relative pt-5 pb-3.5 px-6 border-b border-[#E8E2D8] bg-[#FAF8F5] shrink-0 z-20">
               {/* Corner Watermark */}
               <img 
                 src="/yellow-floral.png" 
@@ -373,18 +373,18 @@ export const Header = () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="flex items-center text-left cursor-pointer group py-1"
-                  aria-label="House of Taaga Home"
+                  aria-label="Zubaida Sarees Home"
                 >
                   <img 
                     src="/logo-transparent.png" 
-                    alt="House of Taaga" 
+                    alt="Zubaida Sarees" 
                     className="h-9 sm:h-10 w-auto max-w-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </button>
 
                 <button
                   onClick={() => setIsDrawerOpen(false)}
-                  className="p-1.5 text-[#6B0D23] hover:text-[#5C061C] hover:bg-[#6B0D23]/10 rounded-full transition-colors cursor-pointer"
+                  className="p-1.5 text-[#18181B] hover:text-[#121212] hover:bg-[#18181B]/10 rounded-full transition-colors cursor-pointer"
                   aria-label="Close menu"
                 >
                   <X className="w-6 h-6 stroke-[1.5]" />
@@ -398,10 +398,10 @@ export const Header = () => {
               {/* ================= SECTION 1: DISCOVER ================= */}
               <div>
                 <div className="flex items-center gap-3 mb-3.5">
-                  <span className="text-[11px] font-sans font-bold uppercase tracking-[0.22em] text-[#8C2436]">
+                  <span className="text-[11px] font-sans font-bold uppercase tracking-[0.22em] text-[#C5A059]">
                     DISCOVER
                   </span>
-                  <div className="flex-1 h-px bg-[#E6D2BF]" />
+                  <div className="flex-1 h-px bg-[#E8E2D8]" />
                 </div>
 
                 <nav className="space-y-3.5">
@@ -415,12 +415,12 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Home className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Home className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Home
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   {/* Shop */}
@@ -429,12 +429,12 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left"
                   >
                     <div className="flex items-center gap-3.5">
-                      <ShoppingBag className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <ShoppingBag className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Shop
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   {/* Collection (Expandable) */}
@@ -444,20 +444,20 @@ export const Header = () => {
                       className="w-full flex items-center justify-between group py-1 text-left"
                     >
                       <div className="flex items-center gap-3.5">
-                        <LayoutGrid className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                        <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                        <LayoutGrid className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                        <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                           Collection
                         </span>
                       </div>
-                      <ChevronRight className={`w-4 h-4 text-[#C4924D] transition-transform duration-200 ${isCollectionExpanded ? 'rotate-90' : 'group-hover:translate-x-0.5'}`} />
+                      <ChevronRight className={`w-4 h-4 text-[#C5A059] transition-transform duration-200 ${isCollectionExpanded ? 'rotate-90' : 'group-hover:translate-x-0.5'}`} />
                     </button>
 
                     {/* Subcategories list */}
                     {isCollectionExpanded && (
-                      <div className="mt-2 ml-8 pl-3 border-l border-[#C4924D]/30 space-y-2 py-1 animate-in fade-in slide-in-from-top-1 duration-200">
+                      <div className="mt-2 ml-8 pl-3 border-l border-[#C5A059]/30 space-y-2 py-1 animate-in fade-in slide-in-from-top-1 duration-200">
                         <button
                           onClick={() => handleCategoryNav('all')}
-                          className="block text-left text-sm font-serif text-[#6B0D23] hover:underline"
+                          className="block text-left text-sm font-serif text-[#18181B] hover:underline"
                         >
                           All Collections
                         </button>
@@ -465,7 +465,7 @@ export const Header = () => {
                           <button
                             key={cat.id || cat.slug}
                             onClick={() => handleCategoryNav(cat.slug)}
-                            className="block text-left text-sm font-serif text-[#5C3D2E] hover:text-[#6B0D23] hover:underline"
+                            className="block text-left text-sm font-serif text-[#71717A] hover:text-[#18181B] hover:underline"
                           >
                             {cat.name}
                           </button>
@@ -480,12 +480,12 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Info className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Info className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         About us
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   {/* Contact (Smooth scroll to Studio Contact without modal) */}
@@ -494,29 +494,29 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Mail className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Mail className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Contact
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 </nav>
               </div>
 
               {/* Ornamental Divider */}
               <div className="relative flex items-center justify-center my-3">
-                <div className="w-full h-px bg-[#EAD7C5]" />
-                <span className="absolute bg-[#FCF8F2] px-2 text-[#C4924D] text-[10px]">✦</span>
+                <div className="w-full h-px bg-[#E8E2D8]" />
+                <span className="absolute bg-[#FAF8F5] px-2 text-[#C5A059] text-[10px]">✦</span>
               </div>
 
               {/* ================= SECTION 2: MORE TO EXPLORE ================= */}
               <div>
                 <div className="flex items-center gap-3 mb-3.5">
-                  <span className="text-[11px] font-sans font-bold uppercase tracking-[0.22em] text-[#8C2436]">
+                  <span className="text-[11px] font-sans font-bold uppercase tracking-[0.22em] text-[#C5A059]">
                     MORE TO EXPLORE
                   </span>
-                  <div className="flex-1 h-px bg-[#E6D2BF]" />
+                  <div className="flex-1 h-px bg-[#E8E2D8]" />
                 </div>
 
                 <nav className="space-y-3.5">
@@ -526,12 +526,12 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Sparkles className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Sparkles className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Our Story
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   {/* Style Guide */}
@@ -543,12 +543,12 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Shirt className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Shirt className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Style Guide
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   {/* Offers & More */}
@@ -560,26 +560,26 @@ export const Header = () => {
                     className="w-full flex items-center justify-between group py-1 text-left"
                   >
                     <div className="flex items-center gap-3.5">
-                      <Gift className="w-5 h-5 text-[#6B0D23] stroke-[1.8] group-hover:scale-105 transition-transform" />
-                      <span className="font-serif text-[17px] text-[#270803] group-hover:text-[#6B0D23] transition-colors">
+                      <Gift className="w-5 h-5 text-[#18181B] stroke-[1.8] group-hover:scale-105 transition-transform" />
+                      <span className="font-serif text-[17px] text-[#18181B] group-hover:text-[#18181B] transition-colors">
                         Offers & More
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#C4924D] group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 </nav>
               </div>
 
               {/* Ornamental Divider */}
               <div className="relative flex items-center justify-center my-3">
-                <div className="w-full h-px bg-[#EAD7C5]" />
-                <span className="absolute bg-[#FCF8F2] px-2 text-[#C4924D] text-[10px]">✦</span>
+                <div className="w-full h-px bg-[#E8E2D8]" />
+                <span className="absolute bg-[#FAF8F5] px-2 text-[#C5A059] text-[10px]">✦</span>
               </div>
 
               {/* Promo Card: Tradition meets Elegance */}
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FDF2EC] via-[#FBF0E8] to-[#F5E2DA] p-4 border border-[#EACEC1] shadow-xs">
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#FFFFFF] via-[#FAF8F5] to-[#F5E2DA] p-4 border border-[#EACEC1] shadow-xs">
                 {/* Haveli/Palace Silhouette Backdrop */}
-                <div className="absolute right-0 bottom-0 w-36 h-28 opacity-20 pointer-events-none text-[#8C2436]">
+                <div className="absolute right-0 bottom-0 w-36 h-28 opacity-20 pointer-events-none text-[#C5A059]">
                   <svg viewBox="0 0 160 120" fill="currentColor" className="w-full h-full">
                     <path d="M120,120 L120,60 C120,40 100,20 80,10 C60,20 40,40 40,60 L40,120 Z" opacity="0.3" />
                     <path d="M70,120 L70,80 C70,72 90,72 90,80 L90,120 Z" fill="#FFF" opacity="0.6" />
@@ -591,12 +591,12 @@ export const Header = () => {
                 </div>
 
                 <div className="relative z-10 max-w-[70%]">
-                  <p className="font-serif italic text-lg leading-tight text-[#6B0D23]">
+                  <p className="font-serif italic text-lg leading-tight text-[#18181B]">
                     Tradition<br />meets Elegance
                   </p>
                   <button 
                     onClick={() => handleCategoryNav('all')}
-                    className="mt-2.5 inline-flex items-center gap-1.5 text-[9.5px] font-sans font-bold uppercase tracking-[0.18em] text-[#8C2436] hover:text-[#5C061C] transition-colors"
+                    className="mt-2.5 inline-flex items-center gap-1.5 text-[9.5px] font-sans font-bold uppercase tracking-[0.18em] text-[#C5A059] hover:text-[#121212] transition-colors"
                   >
                     <span>EXPLORE OUR COLLECTION</span>
                     <span className="text-xs">→</span>
@@ -606,18 +606,18 @@ export const Header = () => {
 
               {/* Ornamental Divider */}
               <div className="relative flex items-center justify-center my-3">
-                <div className="w-full h-px bg-[#EAD7C5]" />
-                <span className="absolute bg-[#FCF8F2] px-2 text-[#C4924D] text-[10px]">✦</span>
+                <div className="w-full h-px bg-[#E8E2D8]" />
+                <span className="absolute bg-[#FAF8F5] px-2 text-[#C5A059] text-[10px]">✦</span>
               </div>
 
               {/* Social Channels & Heritage Creed */}
               <div className="text-center pt-1 pb-2">
                 <div className="flex items-center justify-center gap-4">
                   <a 
-                    href="https://instagram.com/house_of_taaga" 
+                    href="https://www.instagram.com/zubaida_sarees63/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full border border-[#8C2436]/40 flex items-center justify-center text-[#8C2436] hover:bg-[#8C2436] hover:text-white transition-all shadow-xs"
+                    className="w-9 h-9 rounded-full border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-white transition-all shadow-xs"
                     aria-label="Instagram"
                   >
                     <InstagramOutlineIcon />
@@ -626,14 +626,14 @@ export const Header = () => {
                     href={`https://wa.me/${cleanPhone}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full border border-[#8C2436]/40 flex items-center justify-center text-[#8C2436] hover:bg-[#8C2436] hover:text-white transition-all shadow-xs"
+                    className="w-9 h-9 rounded-full border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-white transition-all shadow-xs"
                     aria-label="WhatsApp"
                   >
                     <WhatsAppOutlineIcon />
                   </a>
                 </div>
 
-                <p className="text-[10px] font-serif uppercase tracking-[0.3em] text-[#6B0D23] font-semibold text-center mt-3">
+                <p className="text-[10px] font-serif uppercase tracking-[0.3em] text-[#18181B] font-semibold text-center mt-3">
                   WEAR THE HERITAGE
                 </p>
               </div>
@@ -651,17 +651,17 @@ export const Header = () => {
                 {/* Wave Arch with gold contour */}
                 <path 
                   d="M0,40 C90,65 190,10 270,30 C300,38 325,48 340,50 L340,70 L0,70 Z" 
-                  fill="#5C061C" 
+                  fill="#121212" 
                 />
                 <path 
                   d="M0,40 C90,65 190,10 270,30 C300,38 325,48 340,50" 
-                  stroke="#C4924D" 
+                  stroke="#C5A059" 
                   strokeWidth="1.5" 
                   fill="none" 
                   opacity="0.8"
                 />
               </svg>
-              <div className="bg-[#5C061C] h-6 w-full relative">
+              <div className="bg-[#121212] h-6 w-full relative">
                 {/* Gold floral line art watermark in corner */}
                 <div className="absolute right-1 -top-6 w-16 h-16 opacity-30 pointer-events-none">
                   <img 

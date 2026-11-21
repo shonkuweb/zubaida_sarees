@@ -57,7 +57,7 @@ export const HeroSection = () => {
   return (
     <section 
       aria-label="Hero Showcase" 
-      className="w-full bg-[#FAF2E9] overflow-hidden pt-0"
+      className="w-full bg-[#FAF8F5] overflow-hidden pt-0"
     >
       {/* 
         Hero Banner: Edge-to-edge full width across mobile and desktop.
@@ -68,7 +68,7 @@ export const HeroSection = () => {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#FAF2E9] cursor-pointer group">
+        <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#FAF8F5] cursor-pointer group">
           
           <img 
             src={currentBanner}
@@ -77,7 +77,7 @@ export const HeroSection = () => {
                 e.target.src = '/hero-banner.jpg';
               }
             }}
-            alt="House of Taaga — Rooted in love. Worn with grace. A mother-daughter label born from our shared love for Indian wear." 
+            alt="Zubaida Sarees — Manufacturing Since 1965. Master Weavers of Authentic Banarasi Sarees. GST Verified with Worldwide Shipping." 
             className="w-full h-full object-cover object-center block transition-transform duration-700 group-hover:scale-[1.01]"
             loading="eager"
             fetchpriority="high"
@@ -91,14 +91,14 @@ export const HeroSection = () => {
             onClick={handleScrollToCatalog}
             type="button"
             className="absolute left-[8.8%] top-[78.1%] w-[22.5%] h-[7.2%] rounded-md cursor-pointer opacity-0 focus:opacity-100 focus:outline-2 focus:outline-white focus:bg-white/20 transition-opacity z-10"
-            aria-label="Explore House of Taaga Collection"
+            aria-label="Explore Zubaida Sarees Collection"
             title="Explore Collection"
           />
 
           {/* Desktop Hover Navigation Arrows */}
           <button
             onClick={handlePrev}
-            className="hidden lg:flex absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/70 hover:bg-white text-[#382017] items-center justify-center shadow-md backdrop-blur-xs opacity-0 group-hover:opacity-90 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0 z-20 cursor-pointer"
+            className="hidden lg:flex absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/70 hover:bg-white text-[#18181B] items-center justify-center shadow-md backdrop-blur-xs opacity-0 group-hover:opacity-90 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0 z-20 cursor-pointer"
             aria-label="Previous Slide"
           >
             <ChevronLeft className="w-5 h-5 stroke-[2]" />
@@ -106,7 +106,7 @@ export const HeroSection = () => {
 
           <button
             onClick={handleNext}
-            className="hidden lg:flex absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/70 hover:bg-white text-[#382017] items-center justify-center shadow-md backdrop-blur-xs opacity-0 group-hover:opacity-90 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 z-20 cursor-pointer"
+            className="hidden lg:flex absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/70 hover:bg-white text-[#18181B] items-center justify-center shadow-md backdrop-blur-xs opacity-0 group-hover:opacity-90 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 z-20 cursor-pointer"
             aria-label="Next Slide"
           >
             <ChevronRight className="w-5 h-5 stroke-[2]" />
@@ -123,7 +123,7 @@ export const HeroSection = () => {
         {/* 
           Three small circular carousel indicators below the banner
         */}
-        <div className="flex items-center justify-center gap-2 py-3 sm:py-4 bg-[#FAF2E9]">
+        <div className="flex items-center justify-center gap-2 py-3 sm:py-4 bg-[#FAF8F5]">
           {[0, 1, 2].map((idx) => {
             const isActive = activeSlide === idx;
             return (
@@ -132,8 +132,8 @@ export const HeroSection = () => {
                 onClick={() => setActiveSlide(idx)}
                 className={`transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? 'w-6 h-1.5 bg-[#B65A37] rounded-full shadow-xs' 
-                    : 'w-1.5 h-1.5 bg-[#E8D9C8] hover:bg-[#B65A37]/50 rounded-full'
+                    ? 'w-6 h-1.5 bg-[#121212] rounded-full shadow-xs' 
+                    : 'w-1.5 h-1.5 bg-[#E8E2D8] hover:bg-[#121212]/50 rounded-full'
                 }`}
                 aria-label={`Go to banner slide ${idx + 1}`}
                 aria-current={isActive ? 'true' : 'false'}

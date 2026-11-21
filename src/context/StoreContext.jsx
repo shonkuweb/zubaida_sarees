@@ -65,45 +65,25 @@ export const StoreProvider = ({ children }) => {
       const saved = localStorage.getItem('taaga_config') || localStorage.getItem('kundan_config');
       if (saved) {
         const parsed = JSON.parse(saved);
-        parsed.whatsappNumber = '+91 90966 69212';
-        parsed.phone = '+91 90966 69212';
-        parsed.paymentUpiId = '9096669212@upi';
+        parsed.whatsappNumber = '+91 63925 31412';
+        parsed.phone = '+91 63925 31412';
+        parsed.paymentUpiId = '6392531412@upi';
         if (parsed.hero?.belowTicker || parsed.heroBanners?.belowTicker) {
-          if (parsed.hero) parsed.hero.belowTicker = 'House of Taaga · Pune Studio, Maharashtra, India | WhatsApp: +91 90966 69212';
-          if (parsed.heroBanners) parsed.heroBanners.belowTicker = 'House of Taaga · Pune Studio, Maharashtra, India | WhatsApp: +91 90966 69212';
+          if (parsed.hero) parsed.hero.belowTicker = 'Zubaida Sarees · Manufacturing Since 1965 | Banarasi Sarees | Worldwide Shipping | WhatsApp: +91 63925 31412';
+          if (parsed.heroBanners) parsed.heroBanners.belowTicker = 'Zubaida Sarees · Manufacturing Since 1965 | Banarasi Sarees | Worldwide Shipping | WhatsApp: +91 63925 31412';
         }
         if (parsed.bannerText) {
-          parsed.bannerText = 'Handcrafted in Pune · Worldwide & Pan-India Shipping · WhatsApp Orders: +91 90966 69212';
+          parsed.bannerText = '📍 Manufacturing Since 1965 · ✨ Authentic Banarasi Sarees · 🌍 Worldwide Shipping · GST Verified · WhatsApp: +91 63925 31412';
         }
-        if (
-          !parsed.storeName ||
-          parsed.storeName === 'KUNDAN WORKS' ||
-          parsed.storeName === 'Kundan Work Creation' ||
-          parsed.storeName === 'Kundan Works' ||
-          parsed.storeName === 'RADHA SANG' ||
-          parsed.storeName.includes('POOJA') ||
-          parsed.storeName.includes('Pooja')
-        ) {
-          parsed.storeName = 'HOUSE OF TAAGA';
-          parsed.shortName = 'House of Taaga';
-        }
-        if (
-          !parsed.tagline ||
-          parsed.tagline === 'WEAR YOUR STORY' ||
-          parsed.tagline === 'Artisanal Ethnic & Western Wear' ||
-          parsed.tagline === 'GIRLISH & LADIES FASHION HUB' ||
-          parsed.tagline.includes('BANJARA')
-        ) {
-          parsed.tagline = 'Rooted in love. Worn with grace.';
-        }
-        if (!parsed.subHeading || parsed.subHeading.includes('Unique Lace') || parsed.subHeading === 'Tradition Meets Everyday Style' || parsed.subHeading === 'Kurti | Cord Set | Tops') {
-          parsed.subHeading = 'A mother-daughter label born from shared love for Indian wear';
-        }
-        parsed.shortName = 'House of Taaga';
-        parsed.location = 'House of Taaga Studio';
-        parsed.instagram = 'house_of_taaga';
-        parsed.facebook = 'House of Taaga';
-        parsed.westernWear = 'house_of_taaga';
+        parsed.storeName = 'Zubaida Sarees';
+        parsed.shortName = 'Zubaida Sarees';
+        parsed.tagline = 'Manufacturing Since 1965 · Authentic Banarasi Sarees';
+        parsed.subHeading = 'Master weavers of heirloom Banarasi silk sarees, regal Katan silks, and zari brocades. GST verified manufacturer with worldwide shipping.';
+        parsed.location = 'Varanasi, Uttar Pradesh, India';
+        parsed.instagram = 'zubaida_sarees63';
+        parsed.instagramUrl = 'https://www.instagram.com/zubaida_sarees63/';
+        parsed.facebook = 'Zubaida Sarees';
+        parsed.westernWear = 'zubaida_sarees63';
         return parsed;
       }
       return INITIAL_CONFIG;
@@ -189,7 +169,7 @@ export const StoreProvider = ({ children }) => {
       localStorage.setItem('taaga_customer_accounts', JSON.stringify(updatedAccounts));
       localStorage.setItem('taaga_current_user', JSON.stringify(newCustomer));
     } catch (e) {}
-    showToast(`Welcome to House of Taaga, ${newCustomer.fullName}! ♡`);
+    showToast(`Welcome to Zubaida Sarees, ${newCustomer.fullName}! ♡`);
     return newCustomer;
   };
 
@@ -360,9 +340,9 @@ export const StoreProvider = ({ children }) => {
         setStoreConfig(prev => ({
           ...prev,
           ...cfgRes.value,
-          whatsappNumber: '+91 90966 69212',
-          phone: '+91 90966 69212',
-          paymentUpiId: '9096669212@upi'
+          whatsappNumber: '+91 63925 31412',
+          phone: '+91 63925 31412',
+          paymentUpiId: '6392531412@upi'
         }));
       }
     } catch (err) {

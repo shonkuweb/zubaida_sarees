@@ -20,13 +20,13 @@ const Layout = () => {
   } = useStore();
 
   return (
-    <div className="min-h-screen bg-[#FAF2E9] flex flex-col justify-between text-[#382017] selection:bg-[#B65A37]/20 selection:text-[#382017]">
+    <div className="min-h-screen bg-[#FAF8F5] flex flex-col justify-between text-[#18181B] selection:bg-[#C5A059]/30 selection:text-[#121212]">
       
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-20 right-4 z-50 animate-bounce">
-          <div className="bg-[#382017] text-[#FFF9F2] text-xs px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 border border-[#B65A37]/40">
-            <Sparkles className="w-4 h-4 text-[#C69B52]" />
+          <div className="bg-[#121212] text-[#FFFFFF] text-xs px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 border border-[#C5A059]/40">
+            <Sparkles className="w-4 h-4 text-[#C5A059]" />
             <span>{toast.message}</span>
           </div>
         </div>

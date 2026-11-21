@@ -10,7 +10,7 @@ import { Footer } from '../components/Footer';
 
 export const HomePage = () => {
   return (
-    <div className="w-full bg-[#FAF2E9] overflow-x-hidden">
+    <div className="w-full bg-[#FAF8F5] overflow-x-hidden">
       {/* 
         SECTION 3: HERO BANNER
         Edge-to-edge on mobile, 16:9 banner with accessible CTA overlay,

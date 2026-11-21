@@ -37,12 +37,12 @@ export class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-4">
-          <div className="max-w-md w-full bg-white rounded-2xl border border-[#EAE0D4] p-6 sm:p-8 text-center shadow-lg space-y-4">
+          <div className="max-w-md w-full bg-white rounded-2xl border border-[#E8E2D8] p-6 sm:p-8 text-center shadow-lg space-y-4">
             <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto border border-amber-200">
               <AlertTriangle className="w-7 h-7 stroke-[2]" />
             </div>
             
-            <h2 className="font-serif text-xl sm:text-2xl text-[#221B16] font-medium">
+            <h2 className="font-serif text-xl sm:text-2xl text-[#18181B] font-medium">
               Something went wrong
             </h2>
             
@@ -59,7 +59,7 @@ export class ErrorBoundary extends React.Component {
             <div className="pt-2 flex flex-col sm:flex-row gap-2.5 justify-center">
               <button
                 onClick={() => window.location.reload()}
-                className="py-2.5 px-5 bg-[#1E1A17] hover:bg-[#342D28] text-white rounded-xl text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all"
+                className="py-2.5 px-5 bg-[#18181B] hover:bg-[#342D28] text-white rounded-xl text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
                 <span>Reload Page</span>
@@ -67,7 +67,7 @@ export class ErrorBoundary extends React.Component {
 
               <button
                 onClick={this.handleReset}
-                className="py-2.5 px-4 bg-white border border-[#D7BEA8] hover:bg-[#F7F2EB] text-[#221B16] rounded-xl text-xs uppercase tracking-wider font-medium flex items-center justify-center gap-2 cursor-pointer transition-all"
+                className="py-2.5 px-4 bg-white border border-[#D7BEA8] hover:bg-[#F7F2EB] text-[#18181B] rounded-xl text-xs uppercase tracking-wider font-medium flex items-center justify-center gap-2 cursor-pointer transition-all"
               >
                 <Trash2 className="w-3.5 h-3.5" />
                 <span>Clear Cache & Reset</span>

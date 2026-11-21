@@ -62,7 +62,7 @@ export const AccountPage = () => {
     state: ''
   });
 
-  const boutiquePhone = storeConfig?.whatsappNumber || '+91 90966 69212';
+  const boutiquePhone = storeConfig?.whatsappNumber || '+91 63925 31412';
   const cleanPhone = boutiquePhone.replace(/[^0-9]/g, '');
 
   // Filter orders matching current logged-in user
@@ -162,7 +162,7 @@ export const AccountPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF4ED] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#FAF8F5] flex flex-col justify-between">
       
       <div className="flex-1 py-8 sm:py-14 px-4 sm:px-6">
         <div className="max-w-md mx-auto">
@@ -175,18 +175,18 @@ export const AccountPage = () => {
               
               {/* Brand Top Pill */}
               <div className="flex justify-center mb-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF3EA] border border-[#C4924D]/50 text-[11px] font-sans font-bold text-[#5C061C] tracking-wide">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#C5A059]/50 text-[11px] font-sans font-bold text-[#121212] tracking-wide">
                   <span>🌸</span>
-                  <span>House of Taaga</span>
+                  <span>Zubaida Sarees</span>
                 </span>
               </div>
 
               {/* Title & Subtitle */}
               <div className="text-center mb-6">
-                <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#270803] leading-tight">
+                <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#18181B] leading-tight">
                   {authMode === 'login' ? 'Welcome Back' : 'Create an Account'}
                 </h1>
-                <p className="text-xs text-[#5C3D2E] mt-1.5 leading-relaxed">
+                <p className="text-xs text-[#71717A] mt-1.5 leading-relaxed">
                   {authMode === 'login' 
                     ? 'Log in with your mobile number and password to track orders and manage your account.' 
                     : 'Sign up to track live orders, view purchase history, and enjoy smooth bespoke shopping.'}
@@ -200,8 +200,8 @@ export const AccountPage = () => {
                   onClick={() => setAuthMode('login')}
                   className={`flex-1 py-2 text-xs font-sans font-bold rounded-full transition-all cursor-pointer ${
                     authMode === 'login'
-                      ? 'bg-white text-[#5C061C] shadow-xs'
-                      : 'text-[#8C6F5A] hover:text-[#270803]'
+                      ? 'bg-white text-[#121212] shadow-xs'
+                      : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
                   Log In
@@ -211,8 +211,8 @@ export const AccountPage = () => {
                   onClick={() => setAuthMode('signup')}
                   className={`flex-1 py-2 text-xs font-sans font-bold rounded-full transition-all cursor-pointer ${
                     authMode === 'signup'
-                      ? 'bg-white text-[#5C061C] shadow-xs'
-                      : 'text-[#8C6F5A] hover:text-[#270803]'
+                      ? 'bg-white text-[#121212] shadow-xs'
+                      : 'text-[#71717A] hover:text-[#18181B]'
                   }`}
                 >
                   Sign Up
@@ -224,11 +224,11 @@ export const AccountPage = () => {
                 <form onSubmit={handleLoginSubmit} className="space-y-4">
                   {/* Mobile Number */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1.5">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1.5">
                       Mobile Number
                     </label>
-                    <div className="flex items-center border border-[#DEC49E] rounded-xl overflow-hidden bg-white focus-within:ring-1 focus-within:ring-[#5C061C] focus-within:border-[#5C061C]">
-                      <span className="px-3 py-2.5 bg-[#FAF3EA] text-xs font-bold text-[#5C061C] border-r border-[#DEC49E]">
+                    <div className="flex items-center border border-[#DEC49E] rounded-xl overflow-hidden bg-white focus-within:ring-1 focus-within:ring-[#121212] focus-within:border-[#121212]">
+                      <span className="px-3 py-2.5 bg-[#FAF8F5] text-xs font-bold text-[#121212] border-r border-[#DEC49E]">
                         +91
                       </span>
                       <input
@@ -238,14 +238,14 @@ export const AccountPage = () => {
                         placeholder="10-digit mobile number"
                         value={loginForm.mobile}
                         onChange={(e) => setLoginForm(prev => ({ ...prev, mobile: e.target.value.replace(/[^0-9]/g, '') }))}
-                        className="flex-1 px-3 py-2.5 text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none"
+                        className="flex-1 px-3 py-2.5 text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* Password */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1.5">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1.5">
                       Password
                     </label>
                     <div className="relative">
@@ -255,12 +255,12 @@ export const AccountPage = () => {
                         placeholder="Enter your password"
                         value={loginForm.password}
                         onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                        className="w-full px-3 py-2.5 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                        className="w-full px-3 py-2.5 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#270803] cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#18181B] cursor-pointer"
                       >
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -272,7 +272,7 @@ export const AccountPage = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 bg-[#5C061C] hover:bg-[#450313] text-[#FFF9F2] rounded-xl font-sans font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer disabled:opacity-60"
+                      className="w-full py-3 bg-[#121212] hover:bg-[#0A0A0A] text-[#FFFFFF] rounded-xl font-sans font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer disabled:opacity-60"
                     >
                       <span>Log In</span>
                       <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -281,12 +281,12 @@ export const AccountPage = () => {
 
                   {/* Switch to Sign Up */}
                   <div className="text-center pt-2">
-                    <p className="text-xs text-[#5C3D2E]">
+                    <p className="text-xs text-[#71717A]">
                       Don't have an account yet?{' '}
                       <button
                         type="button"
                         onClick={() => setAuthMode('signup')}
-                        className="font-bold text-[#5C061C] hover:underline cursor-pointer"
+                        className="font-bold text-[#121212] hover:underline cursor-pointer"
                       >
                         Create one now
                       </button>
@@ -298,7 +298,7 @@ export const AccountPage = () => {
                 <form onSubmit={handleSignupSubmit} className="space-y-3.5">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       Full Name *
                     </label>
                     <input
@@ -307,17 +307,17 @@ export const AccountPage = () => {
                       placeholder="e.g. Riddhi Sharma"
                       value={signupForm.fullName}
                       onChange={(e) => setSignupForm(prev => ({ ...prev, fullName: e.target.value }))}
-                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                     />
                   </div>
 
                   {/* Mobile Number */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       Mobile Number *
                     </label>
-                    <div className="flex items-center border border-[#DEC49E] rounded-xl overflow-hidden bg-white focus-within:ring-1 focus-within:ring-[#5C061C] focus-within:border-[#5C061C]">
-                      <span className="px-3 py-2 bg-[#FAF3EA] text-xs font-bold text-[#5C061C] border-r border-[#DEC49E]">
+                    <div className="flex items-center border border-[#DEC49E] rounded-xl overflow-hidden bg-white focus-within:ring-1 focus-within:ring-[#121212] focus-within:border-[#121212]">
+                      <span className="px-3 py-2 bg-[#FAF8F5] text-xs font-bold text-[#121212] border-r border-[#DEC49E]">
                         +91
                       </span>
                       <input
@@ -327,14 +327,14 @@ export const AccountPage = () => {
                         placeholder="10-digit mobile number"
                         value={signupForm.mobile}
                         onChange={(e) => setSignupForm(prev => ({ ...prev, mobile: e.target.value.replace(/[^0-9]/g, '') }))}
-                        className="flex-1 px-3 py-2 text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none"
+                        className="flex-1 px-3 py-2 text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* Password */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       Password *
                     </label>
                     <div className="relative">
@@ -344,12 +344,12 @@ export const AccountPage = () => {
                         placeholder="Set password (min 6 characters)"
                         value={signupForm.password}
                         onChange={(e) => setSignupForm(prev => ({ ...prev, password: e.target.value }))}
-                        className="w-full px-3 py-2 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                        className="w-full px-3 py-2 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#270803] cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#18181B] cursor-pointer"
                       >
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -358,7 +358,7 @@ export const AccountPage = () => {
 
                   {/* Confirm Password */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       Confirm Password *
                     </label>
                     <div className="relative">
@@ -368,12 +368,12 @@ export const AccountPage = () => {
                         placeholder="Re-enter your password"
                         value={signupForm.confirmPassword}
                         onChange={(e) => setSignupForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                        className="w-full px-3 py-2 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                        className="w-full px-3 py-2 pr-10 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#270803] cursor-pointer"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-[#18181B] cursor-pointer"
                       >
                         {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -382,7 +382,7 @@ export const AccountPage = () => {
 
                   {/* Delivery Pincode */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       Delivery Pincode *
                     </label>
                     <input
@@ -392,20 +392,20 @@ export const AccountPage = () => {
                       placeholder="6-digit PIN code (e.g. 411001)"
                       value={signupForm.pincode}
                       onChange={(e) => setSignupForm(prev => ({ ...prev, pincode: e.target.value.replace(/[^0-9]/g, '') }))}
-                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                     />
                   </div>
 
                   {/* State / Region Dropdown */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#270803] mb-1">
+                    <label className="block text-xs font-semibold text-[#18181B] mb-1">
                       State / Region *
                     </label>
                     <select
                       required
                       value={signupForm.state}
                       onChange={(e) => setSignupForm(prev => ({ ...prev, state: e.target.value }))}
-                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#270803] bg-white focus:outline-none focus:ring-1 focus:ring-[#5C061C] focus:border-[#5C061C]"
+                      className="w-full px-3 py-2 border border-[#DEC49E] rounded-xl text-xs sm:text-sm text-[#18181B] bg-white focus:outline-none focus:ring-1 focus:ring-[#121212] focus:border-[#121212]"
                     >
                       <option value="">-- Select Your State --</option>
                       {INDIAN_STATES.map(s => (
@@ -419,7 +419,7 @@ export const AccountPage = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 bg-[#5C061C] hover:bg-[#450313] text-[#FFF9F2] rounded-xl font-sans font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer disabled:opacity-60"
+                      className="w-full py-3 bg-[#121212] hover:bg-[#0A0A0A] text-[#FFFFFF] rounded-xl font-sans font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-98 cursor-pointer disabled:opacity-60"
                     >
                       <span>Create Account</span>
                       <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -428,12 +428,12 @@ export const AccountPage = () => {
 
                   {/* Switch to Log In */}
                   <div className="text-center pt-2">
-                    <p className="text-xs text-[#5C3D2E]">
+                    <p className="text-xs text-[#71717A]">
                       Already have an account?{' '}
                       <button
                         type="button"
                         onClick={() => setAuthMode('login')}
-                        className="font-bold text-[#5C061C] hover:underline cursor-pointer"
+                        className="font-bold text-[#121212] hover:underline cursor-pointer"
                       >
                         Log In
                       </button>
@@ -454,20 +454,20 @@ export const AccountPage = () => {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
                     {/* Initials Avatar */}
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5C061C] to-[#8C1733] text-[#FFF9F2] flex items-center justify-center font-serif text-xl font-bold shadow-md">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#121212] to-[#8C1733] text-[#FFFFFF] flex items-center justify-center font-serif text-xl font-bold shadow-md">
                       {currentUser.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'P'}
                     </div>
 
                     <div>
                       <div className="flex items-center gap-2">
-                        <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#270803] leading-tight">
+                        <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#18181B] leading-tight">
                           {currentUser.fullName}
                         </h2>
-                        <span className="px-2 py-0.5 rounded-full bg-[#FAF3EA] border border-[#DEC49E] text-[10px] font-sans font-bold text-[#5C061C]">
+                        <span className="px-2 py-0.5 rounded-full bg-[#FAF8F5] border border-[#DEC49E] text-[10px] font-sans font-bold text-[#121212]">
                           ✓ Patron
                         </span>
                       </div>
-                      <p className="text-xs font-sans text-[#8C6F5A] mt-0.5">
+                      <p className="text-xs font-sans text-[#71717A] mt-0.5">
                         +91 {currentUser.mobile}
                       </p>
                       <p className="text-[11px] text-[#A68A78] mt-0.5">
@@ -480,7 +480,7 @@ export const AccountPage = () => {
                   <button
                     type="button"
                     onClick={logoutCustomer}
-                    className="p-2 text-neutral-400 hover:text-[#5C061C] hover:bg-[#FAF3EA] rounded-full transition-colors cursor-pointer"
+                    className="p-2 text-neutral-400 hover:text-[#121212] hover:bg-[#FAF8F5] rounded-full transition-colors cursor-pointer"
                     title="Log Out"
                   >
                     <LogOut className="w-5 h-5" />
@@ -489,19 +489,19 @@ export const AccountPage = () => {
 
                 {/* Primary Shipping Details Summary */}
                 <div className="mt-5 pt-4 border-t border-[#F0E4D5] grid grid-cols-2 gap-3 text-xs">
-                  <div className="p-3 bg-[#FAF4ED] rounded-xl border border-[#DEC49E]/50">
-                    <span className="text-[10px] font-bold text-[#8C6F5A] uppercase block">
+                  <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#DEC49E]/50">
+                    <span className="text-[10px] font-bold text-[#71717A] uppercase block">
                       Delivery Pincode
                     </span>
-                    <span className="font-sans font-bold text-[#270803] text-sm mt-0.5 block">
+                    <span className="font-sans font-bold text-[#18181B] text-sm mt-0.5 block">
                       {currentUser.pincode || '411001'}
                     </span>
                   </div>
-                  <div className="p-3 bg-[#FAF4ED] rounded-xl border border-[#DEC49E]/50">
-                    <span className="text-[10px] font-bold text-[#8C6F5A] uppercase block">
+                  <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#DEC49E]/50">
+                    <span className="text-[10px] font-bold text-[#71717A] uppercase block">
                       State / Region
                     </span>
-                    <span className="font-sans font-bold text-[#270803] text-sm mt-0.5 block truncate">
+                    <span className="font-sans font-bold text-[#18181B] text-sm mt-0.5 block truncate">
                       {currentUser.state || 'Maharashtra'}
                     </span>
                   </div>
@@ -513,7 +513,7 @@ export const AccountPage = () => {
                     <button
                       type="button"
                       onClick={handleStartEdit}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#5C061C] hover:underline cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#121212] hover:underline cursor-pointer"
                     >
                       <Edit2 className="w-3.5 h-3.5" />
                       <span>Edit Details</span>
@@ -521,9 +521,9 @@ export const AccountPage = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSaveProfile} className="mt-4 pt-4 border-t border-[#F0E4D5] space-y-3">
-                    <h3 className="font-serif text-sm font-bold text-[#270803]">Update Profile Details</h3>
+                    <h3 className="font-serif text-sm font-bold text-[#18181B]">Update Profile Details</h3>
                     <div>
-                      <label className="block text-[11px] font-semibold text-[#270803] mb-1">Full Name</label>
+                      <label className="block text-[11px] font-semibold text-[#18181B] mb-1">Full Name</label>
                       <input
                         type="text"
                         required
@@ -534,7 +534,7 @@ export const AccountPage = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <label className="block text-[11px] font-semibold text-[#270803] mb-1">Pincode</label>
+                        <label className="block text-[11px] font-semibold text-[#18181B] mb-1">Pincode</label>
                         <input
                           type="text"
                           maxLength={6}
@@ -545,7 +545,7 @@ export const AccountPage = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-[11px] font-semibold text-[#270803] mb-1">State</label>
+                        <label className="block text-[11px] font-semibold text-[#18181B] mb-1">State</label>
                         <select
                           required
                           value={editForm.state}
@@ -568,7 +568,7 @@ export const AccountPage = () => {
                       </button>
                       <button
                         type="submit"
-                        className="px-4 py-1.5 bg-[#5C061C] text-white rounded-lg text-xs font-bold"
+                        className="px-4 py-1.5 bg-[#121212] text-white rounded-lg text-xs font-bold"
                       >
                         Save
                       </button>
@@ -582,28 +582,28 @@ export const AccountPage = () => {
               <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_4px_24px_rgba(92,6,28,0.06)] border border-[#DEC49E]/70">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="font-serif text-lg font-bold text-[#270803]">
+                    <h3 className="font-serif text-lg font-bold text-[#18181B]">
                       My Orders &amp; Purchases
                     </h3>
-                    <p className="text-xs text-[#8C6F5A]">
+                    <p className="text-xs text-[#71717A]">
                       Live order status and previous studio commissions
                     </p>
                   </div>
-                  <Package className="w-5 h-5 text-[#C4924D]" />
+                  <Package className="w-5 h-5 text-[#C5A059]" />
                 </div>
 
                 {userOrders.length === 0 ? (
-                  <div className="text-center py-8 px-4 bg-[#FAF5EF] rounded-2xl border border-dashed border-[#DEC49E]">
-                    <ShoppingBag className="w-8 h-8 text-[#C4924D] mx-auto mb-2 opacity-60" />
-                    <p className="font-serif text-sm font-medium text-[#270803]">
+                  <div className="text-center py-8 px-4 bg-[#FAF8F5] rounded-2xl border border-dashed border-[#DEC49E]">
+                    <ShoppingBag className="w-8 h-8 text-[#C5A059] mx-auto mb-2 opacity-60" />
+                    <p className="font-serif text-sm font-medium text-[#18181B]">
                       No orders placed yet
                     </p>
-                    <p className="text-xs text-[#8C6F5A] mt-1 max-w-xs mx-auto">
+                    <p className="text-xs text-[#71717A] mt-1 max-w-xs mx-auto">
                       Explore our handcrafted kurtas, sarees, and festive silhouettes.
                     </p>
                     <Link
                       to="/"
-                      className="inline-block mt-4 px-6 py-2 bg-[#5C061C] text-white rounded-full text-xs font-bold tracking-wider uppercase hover:bg-[#450313] transition-colors"
+                      className="inline-block mt-4 px-6 py-2 bg-[#121212] text-white rounded-full text-xs font-bold tracking-wider uppercase hover:bg-[#0A0A0A] transition-colors"
                     >
                       Explore Collection
                     </Link>
@@ -613,18 +613,18 @@ export const AccountPage = () => {
                     {userOrders.map((order) => (
                       <div 
                         key={order.id} 
-                        className="p-4 rounded-2xl bg-[#FAF5EF] border border-[#DEC49E]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                        className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC49E]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                       >
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-mono font-bold text-xs text-[#5C061C]">
+                            <span className="font-mono font-bold text-xs text-[#121212]">
                               {order.id}
                             </span>
                             <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#E8F5E9] text-[#2E7D32]">
                               {order.paymentStatus || 'Order Placed'}
                             </span>
                           </div>
-                          <p className="text-xs text-[#5C3D2E] mt-1">
+                          <p className="text-xs text-[#71717A] mt-1">
                             {order.items?.length || 1} item(s) • ₹{(order.total || order.subtotal || 0).toLocaleString('en-IN')}
                           </p>
                           <p className="text-[10px] text-neutral-400 mt-0.5">
@@ -633,10 +633,10 @@ export const AccountPage = () => {
                         </div>
 
                         <a
-                          href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hi House of Taaga, inquiring about my order ${order.id}`)}`}
+                          href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hi Zubaida Sarees, inquiring about my order ${order.id}`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-[#DEC49E] text-xs font-medium text-[#5C061C] hover:bg-[#FAF3EA] transition-colors self-start sm:self-auto"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-[#DEC49E] text-xs font-medium text-[#121212] hover:bg-[#FAF8F5] transition-colors self-start sm:self-auto"
                         >
                           <span>Track WhatsApp</span>
                           <ExternalLink className="w-3 h-3" />
@@ -648,16 +648,16 @@ export const AccountPage = () => {
               </div>
 
               {/* Studio Concierge Assistance */}
-              <div className="p-4 rounded-2xl bg-[#FAF3EA] border border-[#DEC49E]/70 flex items-center justify-between gap-3 text-xs">
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC49E]/70 flex items-center justify-between gap-3 text-xs">
                 <div>
-                  <span className="font-bold text-[#5C061C] block">Need assistance with your account?</span>
-                  <span className="text-[#8C6F5A]">Our Pune studio team is available on WhatsApp</span>
+                  <span className="font-bold text-[#121212] block">Need assistance with your account?</span>
+                  <span className="text-[#71717A]">Our Pune studio team is available on WhatsApp</span>
                 </div>
                 <a
-                  href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello House of Taaga, I need help with my account.')}`}
+                  href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I need help with my account.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-1.5 bg-[#5C061C] text-white rounded-full text-xs font-bold shrink-0 hover:bg-[#450313] transition-colors"
+                  className="px-3.5 py-1.5 bg-[#121212] text-white rounded-full text-xs font-bold shrink-0 hover:bg-[#0A0A0A] transition-colors"
                 >
                   Contact
                 </a>

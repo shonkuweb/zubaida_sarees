@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Elegant floral ornament for title dividers and accents
-export const FloralOrnament = ({ className = "w-4 h-4 text-[#B65A37]" }) => (
+export const FloralOrnament = ({ className = "w-4 h-4 text-[#121212]" }) => (
   <svg 
     viewBox="0 0 24 24" 
     fill="currentColor" 
@@ -9,7 +9,7 @@ export const FloralOrnament = ({ className = "w-4 h-4 text-[#B65A37]" }) => (
     aria-hidden="true"
   >
     {/* 8-Petal Delicate Indian Floral Motif */}
-    <circle cx="12" cy="12" r="2.2" fill="#C69B52" />
+    <circle cx="12" cy="12" r="2.2" fill="#C5A059" />
     <path d="M12 2 C13.5 6 13.5 8 12 9.5 C10.5 8 10.5 6 12 2 Z" opacity="0.9" />
     <path d="M12 22 C13.5 18 13.5 16 12 14.5 C10.5 16 10.5 18 12 22 Z" opacity="0.9" />
     <path d="M2 12 C6 13.5 8 13.5 9.5 12 C8 10.5 6 10.5 2 12 Z" opacity="0.9" />
@@ -31,28 +31,28 @@ export const FloralDivider = ({
     <div className="flex items-center justify-center gap-3 sm:gap-4 max-w-md sm:max-w-lg mx-auto px-4">
       {/* Left Hairline & Flourish */}
       <div className="flex-1 flex items-center justify-end">
-        <span className="h-[1px] w-full max-w-[80px] sm:max-w-[120px] bg-gradient-to-r from-transparent via-[#B65A37]/50 to-[#B65A37]" />
-        <span className="w-1.5 h-1.5 rounded-full bg-[#C69B52] ml-1.5 shrink-0" />
+        <span className="h-[1px] w-full max-w-[80px] sm:max-w-[120px] bg-gradient-to-r from-transparent via-[#121212]/50 to-[#121212]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] ml-1.5 shrink-0" />
       </div>
 
-      <FloralOrnament className="w-4 h-4 text-[#B65A37] shrink-0 transform rotate-12" />
+      <FloralOrnament className="w-4 h-4 text-[#121212] shrink-0 transform rotate-12" />
 
       {/* Title */}
-      <h2 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#382017] font-normal tracking-wide shrink-0">
+      <h2 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#18181B] font-normal tracking-wide shrink-0">
         {title}
       </h2>
 
-      <FloralOrnament className="w-4 h-4 text-[#B65A37] shrink-0 transform -rotate-12" />
+      <FloralOrnament className="w-4 h-4 text-[#121212] shrink-0 transform -rotate-12" />
 
       {/* Right Hairline & Flourish */}
       <div className="flex-1 flex items-center justify-start">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#C69B52] mr-1.5 shrink-0" />
-        <span className="h-[1px] w-full max-w-[80px] sm:max-w-[120px] bg-gradient-to-l from-transparent via-[#B65A37]/50 to-[#B65A37]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] mr-1.5 shrink-0" />
+        <span className="h-[1px] w-full max-w-[80px] sm:max-w-[120px] bg-gradient-to-l from-transparent via-[#121212]/50 to-[#121212]" />
       </div>
     </div>
 
     {subtitle && (
-      <p className="mt-1 text-[10px] sm:text-[11px] font-sans font-medium tracking-[0.25em] uppercase text-[#8C6F5A]">
+      <p className="mt-1 text-[10px] sm:text-[11px] font-sans font-medium tracking-[0.25em] uppercase text-[#71717A]">
         {subtitle}
       </p>
     )}
@@ -81,31 +81,31 @@ export const BougainvilleaSprig = ({ className = "w-28 h-28", mirrored = false }
 
     {/* Bougainvillea Flower 1 */}
     <g transform="translate(45, 75)">
-      <path d="M0 0 C-8 -12 8 -16 10 -4 C11 8 -4 9 0 0 Z" fill="#D85179" />
+      <path d="M0 0 C-8 -12 8 -16 10 -4 C11 8 -4 9 0 0 Z" fill="#C5A059" />
       <path d="M4 -2 C14 -8 19 6 8 11 C-1 14 -3 3 4 -2 Z" fill="#C53963" />
       <path d="M-2 4 C-12 10 -4 20 6 15 C11 9 3 0 -2 4 Z" fill="#EA698F" />
-      <circle cx="4" cy="4" r="1.8" fill="#FFF9F2" />
+      <circle cx="4" cy="4" r="1.8" fill="#FFFFFF" />
     </g>
 
     {/* Bougainvillea Flower 2 */}
     <g transform="translate(85, 42)">
-      <path d="M0 0 C-9 -14 9 -18 11 -5 C12 9 -5 10 0 0 Z" fill="#D85179" />
+      <path d="M0 0 C-9 -14 9 -18 11 -5 C12 9 -5 10 0 0 Z" fill="#C5A059" />
       <path d="M5 -2 C16 -9 22 7 9 13 C-1 16 -3 4 5 -2 Z" fill="#EA698F" />
       <path d="M-2 4 C-14 11 -5 23 7 17 C13 10 4 0 -2 4 Z" fill="#C53963" />
-      <circle cx="5" cy="4" r="2" fill="#FFF9F2" />
+      <circle cx="5" cy="4" r="2" fill="#FFFFFF" />
     </g>
 
     {/* Bougainvillea Flower 3 (Small Bud at tip) */}
     <g transform="translate(108, 18)">
-      <path d="M0 0 C-6 -9 6 -12 8 -3 C9 6 -3 7 0 0 Z" fill="#D85179" />
+      <path d="M0 0 C-6 -9 6 -12 8 -3 C9 6 -3 7 0 0 Z" fill="#C5A059" />
       <path d="M3 -2 C11 -6 15 4 6 9 C-1 11 -2 2 3 -2 Z" fill="#C53963" />
-      <circle cx="3" cy="2" r="1.4" fill="#FFF9F2" />
+      <circle cx="3" cy="2" r="1.4" fill="#FFFFFF" />
     </g>
   </svg>
 );
 
 // Soft organic torn paper top/bottom divider
-export const TornPaperEdge = ({ flip = false, className = "h-4 w-full text-[#FAF2E9]" }) => (
+export const TornPaperEdge = ({ flip = false, className = "h-4 w-full text-[#FAF8F5]" }) => (
   <svg 
     viewBox="0 0 1200 24" 
     preserveAspectRatio="none" 
@@ -143,7 +143,7 @@ export const MughalArchCard = ({
 }) => (
   <div 
     onClick={onClick}
-    className={`group relative overflow-hidden bg-[#FFF9F2] rounded-t-[40px] rounded-b-xl border border-[#B65A37]/35 shadow-sm hover:shadow-editorial hover:border-[#B65A37] transition-all duration-500 cursor-pointer ${className}`}
+    className={`group relative overflow-hidden bg-[#FFFFFF] rounded-t-[40px] rounded-b-xl border border-[#121212]/35 shadow-sm hover:shadow-editorial hover:border-[#121212] transition-all duration-500 cursor-pointer ${className}`}
   >
     {/* Inner cusped arch shape SVG border accent */}
     <svg 
@@ -154,7 +154,7 @@ export const MughalArchCard = ({
     >
       <path 
         d="M 6 254 L 6 85 C 6 48 26 28 55 35 C 70 20 85 10 100 5 C 115 10 130 20 145 35 C 174 28 194 48 194 85 L 194 254 Z" 
-        stroke="#C69B52" 
+        stroke="#C5A059" 
         strokeWidth="1" 
         strokeDasharray="3 3"
       />

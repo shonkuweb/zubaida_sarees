@@ -35,7 +35,7 @@ export const OrderSection = () => {
   const [searchError, setSearchError] = useState('');
   const [isSearching, setIsSearching] = useState(false);
 
-  const rawPhone = storeConfig?.whatsappNumber || '9096669212';
+  const rawPhone = storeConfig?.whatsappNumber || '6392531412';
   const cleanPhone = rawPhone.replace(/[^0-9]/g, '');
   const whatsappPhone = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
 
@@ -124,7 +124,7 @@ export const OrderSection = () => {
         </div>
 
         {/* 1. SEARCH & TRACK BAR */}
-        <div className="bg-white p-5 sm:p-6 rounded-2xl border border-[#EAE0D4] shadow-xs space-y-4">
+        <div className="bg-white p-5 sm:p-6 rounded-2xl border border-[#E8E2D8] shadow-xs space-y-4">
           <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2.5">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-brand-600 absolute left-3.5 top-3.5" />
@@ -139,7 +139,7 @@ export const OrderSection = () => {
             <button
               type="submit"
               disabled={isSearching}
-              className="px-6 py-3 bg-[#7A112A] hover:bg-[#640B20] disabled:bg-neutral-400 text-white rounded-full text-xs font-semibold shadow-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 min-w-[120px]"
+              className="px-6 py-3 bg-[#18181B] hover:bg-[#18181B] disabled:bg-neutral-400 text-white rounded-full text-xs font-semibold shadow-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 min-w-[120px]"
             >
               {isSearching ? (
                 <>
@@ -166,7 +166,7 @@ export const OrderSection = () => {
             
             {/* DELIVERED CELEBRATION HERO BANNER */}
             {isDelivered ? (
-              <div className="relative overflow-hidden bg-gradient-to-br from-[#4A0A17] via-[#6B0E1E] to-[#7A112A] text-white p-6 sm:p-8">
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#4A0A17] via-[#6B0E1E] to-[#18181B] text-white p-6 sm:p-8">
                 {/* Radiant luxury background effects */}
                 <div className="absolute -top-12 -right-12 w-56 h-56 bg-emerald-300/20 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-12 -left-12 w-56 h-56 bg-[#FD9AA7]/20 rounded-full blur-3xl pointer-events-none" />
@@ -195,7 +195,7 @@ export const OrderSection = () => {
                       </h2>
 
                       <p className="text-xs sm:text-sm text-emerald-50/90 font-light mt-1.5 max-w-lg leading-relaxed">
-                        Your handcrafted House of Taaga pieces have arrived safely. We hope you cherish every detail of your handcrafted Indian wear!
+                        Your handcrafted Zubaida Sarees pieces have arrived safely. We hope you cherish every detail of your authentic Banarasi saree!
                       </p>
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export const OrderSection = () => {
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#1C1E21]">
-                      Thank You for Choosing House of Taaga!
+                      Thank You for Choosing Zubaida Sarees!
                     </h4>
                     <p className="text-[11px] text-neutral-600 mt-0.5">
                       Need custom styling advice or assistance from our studio?
@@ -283,7 +283,7 @@ export const OrderSection = () => {
 
                 <a
                   href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
-                    `Hello House of Taaga! I received my order #${searchedOrder.id} and would love to share feedback / get styling assistance.`
+                    `Hello Zubaida Sarees! I received my order #${searchedOrder.id} and would love to share feedback / get styling assistance.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -315,7 +315,7 @@ export const OrderSection = () => {
                               : isCurrent 
                                 ? 'bg-[#FDF2F4] border border-[#F9CCD4] shadow-xs' 
                                 : isCompleted 
-                                  ? 'bg-[#FAF8F5] border border-[#EAE0D4]' 
+                                  ? 'bg-[#FAF8F5] border border-[#E8E2D8]' 
                                   : 'bg-white border border-[#E2E8F0]'
                           }`}
                         >
@@ -325,7 +325,7 @@ export const OrderSection = () => {
                               isDeliveredState || isCompleted
                                 ? 'bg-emerald-600 text-white shadow-xs' 
                                 : isCurrent 
-                                  ? 'bg-[#7A112A] text-white ring-4 ring-[#7A112A]/20 shadow-md scale-105' 
+                                  ? 'bg-[#18181B] text-white ring-4 ring-[#18181B]/20 shadow-md scale-105' 
                                   : 'bg-neutral-100 text-neutral-400 border border-neutral-300'
                             }`}
                           >
@@ -343,7 +343,7 @@ export const OrderSection = () => {
                                 isDeliveredState
                                   ? 'text-emerald-900'
                                   : isCurrent 
-                                    ? 'text-[#7A112A]' 
+                                    ? 'text-[#18181B]' 
                                     : isCompleted 
                                       ? 'text-neutral-800' 
                                       : 'text-neutral-400'
@@ -367,7 +367,7 @@ export const OrderSection = () => {
             )}
 
             {/* Customer & Shipping Summary */}
-            <div className={`px-5 sm:px-8 py-4 border-t border-[#EAE0D4] flex flex-col sm:flex-row justify-between gap-4 text-xs ${
+            <div className={`px-5 sm:px-8 py-4 border-t border-[#E8E2D8] flex flex-col sm:flex-row justify-between gap-4 text-xs ${
               isDelivered ? 'bg-emerald-50/40' : 'bg-[#FAF8F5]/50'
             }`}>
               <div className="space-y-1">
@@ -386,7 +386,7 @@ export const OrderSection = () => {
             {/* Ordered Items Breakdown */}
             {searchedOrder.items && searchedOrder.items.length > 0 && (
               <div className="px-5 sm:px-8 pb-6 space-y-4">
-                <div className="flex items-center justify-between border-b border-[#EAE0D4] pb-2">
+                <div className="flex items-center justify-between border-b border-[#E8E2D8] pb-2">
                   <h3 className="font-serif text-sm font-semibold text-neutral-900">
                     {isDelivered ? 'Delivered Items' : 'Ordered Ensemble'} ({searchedOrder.items.length} {searchedOrder.items.length === 1 ? 'item' : 'items'})
                   </h3>
@@ -398,7 +398,7 @@ export const OrderSection = () => {
                   )}
                 </div>
 
-                <div className="divide-y divide-[#EAE0D4]">
+                <div className="divide-y divide-[#E8E2D8]">
                   {searchedOrder.items.map((item, idx) => {
                     const itemImage = item.product?.images?.[0] || item.product?.imageUrl;
                     return (
@@ -449,7 +449,7 @@ export const OrderSection = () => {
                         navigate('/');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="w-full sm:flex-1 py-3 bg-[#7A112A] hover:bg-[#640B20] text-white rounded-full text-xs font-semibold shadow-xs transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full sm:flex-1 py-3 bg-[#18181B] hover:bg-[#18181B] text-white rounded-full text-xs font-semibold shadow-xs transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <ShoppingBag className="w-4 h-4" />
                       <span>Browse New Boutique Arrivals</span>

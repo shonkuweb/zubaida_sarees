@@ -49,16 +49,16 @@ export const CartDrawer = () => {
       />
 
       {/* Slide Drawer with 100dvh for mobile viewport accuracy */}
-      <div className="relative w-full max-w-md bg-[#FAF2E9] h-[100dvh] max-h-[100dvh] shadow-2xl z-10 flex flex-col justify-between overflow-hidden animate-slideInRight">
+      <div className="relative w-full max-w-md bg-[#FAF8F5] h-[100dvh] max-h-[100dvh] shadow-2xl z-10 flex flex-col justify-between overflow-hidden animate-slideInRight">
         
         {/* Cart Header */}
-        <div className="p-4 sm:p-5 border-b border-[#E8D9C8] flex items-center justify-between bg-[#FFF9F2] shrink-0">
+        <div className="p-4 sm:p-5 border-b border-[#E8E2D8] flex items-center justify-between bg-[#FFFFFF] shrink-0">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="w-5 h-5 text-[#B65A37]" />
-            <h2 className="font-serif text-lg font-medium text-[#382017]">
+            <ShoppingBag className="w-5 h-5 text-[#121212]" />
+            <h2 className="font-serif text-lg font-medium text-[#18181B]">
               Your Shopping Bag
             </h2>
-            <span className="text-xs bg-[#FAF2E9] text-[#B65A37] px-2 py-0.5 rounded-full font-medium">
+            <span className="text-xs bg-[#FAF8F5] text-[#121212] px-2 py-0.5 rounded-full font-medium">
               {cart.length} {cart.length === 1 ? 'piece' : 'pieces'}
             </span>
           </div>
@@ -80,7 +80,7 @@ export const CartDrawer = () => {
               <div className="w-16 h-16 rounded-full bg-[#F4EDE4] flex items-center justify-center text-brand-700 shadow-sm">
                 <ShoppingBag className="w-7 h-7" />
               </div>
-              <h3 className="font-serif text-lg text-[#25201C] font-medium">Your bag is empty</h3>
+              <h3 className="font-serif text-lg text-[#18181B] font-medium">Your bag is empty</h3>
               <p className="text-xs text-neutral-500 max-w-xs mx-auto leading-relaxed">
                 Explore our handcrafted ethnic sets and contemporary western apparel to add your favorite looks.
               </p>
@@ -91,7 +91,7 @@ export const CartDrawer = () => {
                   navigate('/');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="mt-2 px-7 py-3 bg-[#7A112A] hover:bg-[#640B20] active:scale-95 text-white rounded-full text-xs uppercase tracking-wider font-semibold cursor-pointer transition-all shadow-sm"
+                className="mt-2 px-7 py-3 bg-[#18181B] hover:bg-[#18181B] active:scale-95 text-white rounded-full text-xs uppercase tracking-wider font-semibold cursor-pointer transition-all shadow-sm"
               >
                 Browse Catalog
               </button>
@@ -109,12 +109,12 @@ export const CartDrawer = () => {
               return (
                 <div 
                   key={`${pid}-${idx}`}
-                  className="bg-white p-3 rounded-xl border border-[#EAE0D4] flex gap-3 shadow-sm hover:border-[#D8C7B5] transition-colors"
+                  className="bg-white p-3 rounded-xl border border-[#E8E2D8] flex gap-3 shadow-sm hover:border-[#D8C7B5] transition-colors"
                 >
                   {/* Image */}
                   <div 
                     onClick={() => handleOpenProduct(pid)}
-                    className="w-20 h-24 rounded-lg overflow-hidden shrink-0 bg-[#F4ECE3] cursor-pointer hover:opacity-90 transition-opacity border border-[#EDE3D8]"
+                    className="w-20 h-24 rounded-lg overflow-hidden shrink-0 bg-[#F4ECE3] cursor-pointer hover:opacity-90 transition-opacity border border-[#E8E2D8]"
                   >
                     <FashionPlaceholder 
                       type={product.placeholderKey || 'kurta'} 
@@ -130,7 +130,7 @@ export const CartDrawer = () => {
                       <div className="flex items-start justify-between gap-1">
                         <h4 
                           onClick={() => handleOpenProduct(pid)}
-                          className="font-serif text-sm font-medium text-[#221B16] line-clamp-1 cursor-pointer hover:text-brand-700 transition-colors"
+                          className="font-serif text-sm font-medium text-[#18181B] line-clamp-1 cursor-pointer hover:text-brand-700 transition-colors"
                         >
                           {title}
                         </h4>
@@ -164,7 +164,7 @@ export const CartDrawer = () => {
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="w-7 text-center text-xs font-semibold text-[#25201C] select-none">
+                        <span className="w-7 text-center text-xs font-semibold text-[#18181B] select-none">
                           {quantity}
                         </span>
                         <button
@@ -178,7 +178,7 @@ export const CartDrawer = () => {
                         </button>
                       </div>
 
-                      <span className="font-serif font-semibold text-sm text-[#1E1A17]">
+                      <span className="font-serif font-semibold text-sm text-[#18181B]">
                         ₹{itemTotal.toLocaleString('en-IN')}
                       </span>
                     </div>
@@ -191,20 +191,20 @@ export const CartDrawer = () => {
 
         {/* Cart Summary & Checkout Footer - with Safe Area padding */}
         {cart.length > 0 && (
-          <div className="p-4 sm:p-5 bg-white border-t border-[#EAE0D4] space-y-3 shrink-0 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+          <div className="p-4 sm:p-5 bg-white border-t border-[#E8E2D8] space-y-3 shrink-0 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-[max(1.25rem,env(safe-area-inset-bottom))]">
             
-            <div className="space-y-1.5 text-xs text-[#52443A]">
+            <div className="space-y-1.5 text-xs text-[#71717A]">
               <div className="flex justify-between">
                 <span>Subtotal</span>
                 <span className="font-sans font-semibold text-neutral-800 tabular-nums">₹{cartSubtotal.toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Delivery</span>
-                <span className="text-[#1E1A17] font-medium">Decided by the Admin</span>
+                <span className="text-[#18181B] font-medium">Decided by the Admin</span>
               </div>
-              <div className="flex justify-between text-sm font-semibold text-[#221B16] pt-2 border-t border-[#EAE0D4]">
+              <div className="flex justify-between text-sm font-semibold text-[#18181B] pt-2 border-t border-[#E8E2D8]">
                 <span>Total Amount</span>
-                <span className="font-sans text-base font-bold text-[#5C061C] tabular-nums">₹{cartSubtotal.toLocaleString('en-IN')}</span>
+                <span className="font-sans text-base font-bold text-[#121212] tabular-nums">₹{cartSubtotal.toLocaleString('en-IN')}</span>
               </div>
             </div>
 
@@ -212,7 +212,7 @@ export const CartDrawer = () => {
             <button
               type="button"
               onClick={handleProceedToCheckout}
-              className="w-full py-4 bg-[#B65A37] hover:bg-[#A7472B] active:bg-[#8C3E20] text-white rounded-full text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg shadow-[#B65A37]/25 transition-all active:scale-98 cursor-pointer touch-manipulation"
+              className="w-full py-4 bg-[#121212] hover:bg-[#262626] active:bg-[#18181B] text-white rounded-full text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg shadow-[#121212]/25 transition-all active:scale-98 cursor-pointer touch-manipulation"
             >
               <span>Proceed to Checkout</span>
               <ArrowRight className="w-4 h-4" />
