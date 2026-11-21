@@ -263,15 +263,35 @@ export const AdminPanel = ({ onClose }) => {
     enableNudgeBanner: storeConfig?.offers?.enableNudgeBanner ?? true
   }));
 
-  const [heroSettings, setHeroSettings] = useState(() => ({
-    mobileBanners: storeConfig?.hero?.mobileBanners || [],
-    desktopBanners: storeConfig?.hero?.desktopBanners || ['/hero-banner.jpg'],
-    belowTicker: storeConfig?.hero?.belowTicker || 'Zubaida Sarees · Varanasi Studio, Uttar Pradesh, India | Call / WhatsApp: +91 63925 31412',
-    endTicker: storeConfig?.hero?.endTicker || '🌿 Each Banarasi saree is handcrafted on our Varanasi looms with love. Please allow 3–5 days for artisanal finishing and dispatch.'
-  }));
+  const [heroSettings, setHeroSettings] = useState(() => {
+    const d = storeConfig?.hero?.desktopBanners ?? storeConfig?.heroBanners?.desktop ?? [];
+    const m = storeConfig?.hero?.mobileBanners ?? storeConfig?.heroBanners?.mobile ?? [];
+    return {
+      mobileBanners: Array.isArray(m) ? m : [],
+      desktopBanners: Array.isArray(d) ? d : [],
+      belowTicker: storeConfig?.hero?.belowTicker || storeConfig?.heroBanners?.belowTicker || 'Zubaida Sarees · Varanasi Studio, Uttar Pradesh, India | Call / WhatsApp: +91 63925 31412',
+      endTicker: storeConfig?.hero?.endTicker || storeConfig?.heroBanners?.endTicker || '🌿 Each Banarasi saree is handcrafted on our Varanasi looms with love. Please allow 3–5 days for artisanal finishing and dispatch.'
+    };
+  });
 
+  const [desktopUrlInput, setDesktopUrlInput] = useState('');
+  const [mobileUrlInput, setMobileUrlInput] = useState('');
   const heroMobileInputRef = useRef(null);
   const heroDesktopInputRef = useRef(null);
+
+  useEffect(() => {
+    if (storeConfig) {
+      const d = storeConfig?.hero?.desktopBanners ?? storeConfig?.heroBanners?.desktop ?? [];
+      const m = storeConfig?.hero?.mobileBanners ?? storeConfig?.heroBanners?.mobile ?? [];
+      setHeroSettings(prev => ({
+        ...prev,
+        mobileBanners: Array.isArray(m) ? m : [],
+        desktopBanners: Array.isArray(d) ? d : [],
+        belowTicker: storeConfig?.hero?.belowTicker || storeConfig?.heroBanners?.belowTicker || prev.belowTicker,
+        endTicker: storeConfig?.hero?.endTicker || storeConfig?.heroBanners?.endTicker || prev.endTicker
+      }));
+    }
+  }, [storeConfig]);
 
   // Affiliates State
   const [affiliates, setAffiliates] = useState(() => {
@@ -744,12 +764,48 @@ export const AdminPanel = ({ onClose }) => {
 
   const handleSaveHeroSettings = (e) => {
     e?.preventDefault();
+    const updatedHero = {
+      mobileBanners: heroSettings.mobileBanners,
+      desktopBanners: heroSettings.desktopBanners,
+      belowTicker: heroSettings.belowTicker,
+      endTicker: heroSettings.endTicker
+    };
     setStoreConfig(prev => ({
       ...prev,
-      hero: heroSettings
+      hero: updatedHero,
+      heroBanners: {
+        mobile: heroSettings.mobileBanners,
+        desktop: heroSettings.desktopBanners,
+        belowTicker: heroSettings.belowTicker,
+        endTicker: heroSettings.endTicker
+      }
     }));
     showToast('Hero banner & ticker settings saved successfully!', 'success');
     setActiveSettingModal(null);
+  };
+
+  const handleAddMobileUrl = (e) => {
+    e?.preventDefault();
+    const trimmed = (mobileUrlInput || '').trim();
+    if (!trimmed) return;
+    setHeroSettings(prev => ({
+      ...prev,
+      mobileBanners: [...prev.mobileBanners, trimmed]
+    }));
+    setMobileUrlInput('');
+    showToast('Mobile banner added from URL!');
+  };
+
+  const handleAddDesktopUrl = (e) => {
+    e?.preventDefault();
+    const trimmed = (desktopUrlInput || '').trim();
+    if (!trimmed) return;
+    setHeroSettings(prev => ({
+      ...prev,
+      desktopBanners: [...prev.desktopBanners, trimmed]
+    }));
+    setDesktopUrlInput('');
+    showToast('Desktop banner added from URL!');
   };
 
   const handleMobileBannerUpload = async (e) => {
@@ -2616,6 +2672,31 @@ export const AdminPanel = ({ onClose }) => {
                     </div>
                   )}
 
+                  {/* Add via direct Image URL */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <input
+                      type="url"
+                      placeholder="Or paste direct image URL (https://...)"
+                      value={mobileUrlInput}
+                      onChange={(e) => setMobileUrlInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleAddMobileUrl(e);
+                        }
+                      }}
+                      className="flex-1 px-3 py-2 bg-neutral-50 border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] focus:bg-white transition-all"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleAddMobileUrl}
+                      disabled={!mobileUrlInput.trim()}
+                      className="px-3.5 py-2 bg-[#121212] hover:bg-[#262626] disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-semibold rounded-xl transition-all shrink-0 cursor-pointer"
+                    >
+                      Add URL
+                    </button>
+                  </div>
+
                   {/* Upload Box with Drag & Drop */}
                   <input 
                     type="file" 
@@ -2693,6 +2774,31 @@ export const AdminPanel = ({ onClose }) => {
                       ))}
                     </div>
                   )}
+
+                  {/* Add via direct Image URL */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <input
+                      type="url"
+                      placeholder="Or paste direct image URL (https://...)"
+                      value={desktopUrlInput}
+                      onChange={(e) => setDesktopUrlInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleAddDesktopUrl(e);
+                        }
+                      }}
+                      className="flex-1 px-3 py-2 bg-neutral-50 border border-[#CBD5E1] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212] focus:bg-white transition-all"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleAddDesktopUrl}
+                      disabled={!desktopUrlInput.trim()}
+                      className="px-3.5 py-2 bg-[#121212] hover:bg-[#262626] disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-semibold rounded-xl transition-all shrink-0 cursor-pointer"
+                    >
+                      Add URL
+                    </button>
+                  </div>
 
                   {/* Upload Box with Drag & Drop */}
                   <input 
