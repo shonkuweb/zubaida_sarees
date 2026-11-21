@@ -203,7 +203,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <a 
-                    href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I would like to get in touch with your Pune studio.')}`}
+                    href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I would like to get in touch with your Varanasi studio.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors cursor-pointer text-left block"

@@ -45,9 +45,9 @@ export const HomePage = () => {
       <TrustFeaturesSection />
 
       {/* 
-        SECTION 9: PUNE HERITAGE FOOTER ARTWORK
-        Hand-drawn terracotta line art of Shaniwar Wada in Pune,
-        hills, foliage, corner flowers, "Proudly rooted in Pune ♡".
+        SECTION 9: VARANASI HERITAGE FOOTER ARTWORK
+        Hand-drawn watercolor artwork of the historic ghats and temples of Varanasi,
+        sacred Ganges river, sunrise, and pink lotuses, "Rooted from Varanasi ♡".
       */}
       <PuneHeritageSection />
 

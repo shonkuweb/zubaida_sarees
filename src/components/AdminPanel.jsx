@@ -207,8 +207,11 @@ export const AdminPanel = ({ onClose }) => {
     categorySlug: '',
     price: '',
     originalPrice: '',
+    stock: '10',
     primaryImage: '',
     secondImage: '',
+    hasSizes: false,
+    sizesInput: '',
     shippingScope: 'all_india', // 'all_india' | 'specific_states' | 'specific_pincodes'
     allowedStates: [],
     allowedPincodes: '',
@@ -263,8 +266,8 @@ export const AdminPanel = ({ onClose }) => {
   const [heroSettings, setHeroSettings] = useState(() => ({
     mobileBanners: storeConfig?.hero?.mobileBanners || [],
     desktopBanners: storeConfig?.hero?.desktopBanners || ['/hero-banner.jpg'],
-    belowTicker: storeConfig?.hero?.belowTicker || 'Zubaida Sarees · Pune Studio, Maharashtra, India | Call / WhatsApp: +91 63925 31412',
-    endTicker: storeConfig?.hero?.endTicker || '🌿 Each garment is handcrafted with love. Please allow 3–5 days for artisanal finishing and dispatch.'
+    belowTicker: storeConfig?.hero?.belowTicker || 'Zubaida Sarees · Varanasi Studio, Uttar Pradesh, India | Call / WhatsApp: +91 63925 31412',
+    endTicker: storeConfig?.hero?.endTicker || '🌿 Each Banarasi saree is handcrafted on our Varanasi looms with love. Please allow 3–5 days for artisanal finishing and dispatch.'
   }));
 
   const heroMobileInputRef = useRef(null);
@@ -280,7 +283,7 @@ export const AdminPanel = ({ onClose }) => {
       {
         id: 'aff_1',
         name: 'Priya Kulkarni',
-        role: 'Pune Fashion Stylist',
+        role: 'Varanasi Saree Stylist',
         code: 'PRIYA10',
         discount: '10% OFF',
         sales: 24800,
@@ -456,8 +459,11 @@ export const AdminPanel = ({ onClose }) => {
       categorySlug: categories[0]?.slug || '',
       price: '',
       originalPrice: '',
+      stock: '10',
       primaryImage: '',
       secondImage: '',
+      hasSizes: false,
+      sizesInput: '',
       shippingScope: 'all_india',
       allowedStates: [],
       allowedPincodes: '',
@@ -484,6 +490,10 @@ export const AdminPanel = ({ onClose }) => {
 
     const catIds = prod.categoryIds || (prod.categorySlug ? [prod.categorySlug] : []);
 
+    const existingSizes = Array.isArray(prod.sizes) && prod.sizes.length > 0
+      ? prod.sizes
+      : (typeof prod.sizes === 'string' && prod.sizes.trim() ? prod.sizes.split(',').map(s => s.trim()).filter(Boolean) : []);
+
     setProductForm({
       title: prod.title || prod.name || '',
       categoryIds: catIds,
@@ -491,8 +501,11 @@ export const AdminPanel = ({ onClose }) => {
       categorySlug: prod.categorySlug || (categories[0]?.slug || ''),
       price: prod.price !== undefined ? String(prod.price) : '',
       originalPrice: prod.originalPrice !== undefined ? String(prod.originalPrice) : '',
+      stock: prod.stock !== undefined ? String(prod.stock) : (prod.inStock === false ? '0' : '10'),
       primaryImage: existingImages[0] || prod.imageUrl || '',
       secondImage: existingImages[1] || '',
+      hasSizes: existingSizes.length > 0,
+      sizesInput: existingSizes.join(', '),
       shippingScope: prod.shippingScope || 'all_india',
       allowedStates: Array.isArray(prod.allowedStates) ? prod.allowedStates : [],
       allowedPincodes: Array.isArray(prod.allowedPincodes) 
@@ -552,7 +565,22 @@ export const AdminPanel = ({ onClose }) => {
 
     const origPriceNum = productForm.originalPrice ? Number(productForm.originalPrice) : priceNum;
     const images = [productForm.primaryImage, productForm.secondImage].filter(Boolean);
-    const finalImageUrl = images[0] || '/category-kurtas.jpg';
+    // User requirement: Do NOT pick a default picture when admin adds a product
+    const finalImageUrl = images[0] || '';
+
+    // Stock management
+    const stockVal = productForm.stock !== '' ? Number(productForm.stock) : (productForm.inStock ? 10 : 0);
+    const validStock = isNaN(stockVal) || stockVal < 0 ? 0 : Math.floor(stockVal);
+    const isInStock = validStock > 0 && productForm.inStock;
+
+    // Sizes management (disabled by default for Banarasi sarees unless specified)
+    let parsedSizes = [];
+    if (productForm.hasSizes && productForm.sizesInput) {
+      parsedSizes = productForm.sizesInput
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+    }
 
     // Find primary category name & slug from selected categoryIds
     const selectedCat = categories.find(c => productForm.categoryIds.includes(c.id || c.slug)) || categories[0];
@@ -584,10 +612,11 @@ export const AdminPanel = ({ onClose }) => {
       categoryIds: productForm.categoryIds,
       price: priceNum,
       originalPrice: origPriceNum >= priceNum ? origPriceNum : priceNum,
-      stock: productForm.inStock ? 10 : 0,
-      inStock: productForm.inStock,
+      stock: validStock,
+      inStock: isInStock,
+      sizes: parsedSizes,
       description: productForm.description.trim(),
-      images: images.length > 0 ? images : [finalImageUrl],
+      images: images,
       imageUrl: finalImageUrl,
       shippingScope: productForm.shippingScope,
       allowedStates: productForm.shippingScope === 'specific_states' ? productForm.allowedStates : [],
@@ -779,9 +808,16 @@ export const AdminPanel = ({ onClose }) => {
     setIsAffiliateModalOpen(false);
   };
 
-  // Metrics
+  // Metrics & Order counts
   const totalRevenue = orders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
-  const pendingOrdersCount = orders.filter(o => o.decision === 'pending').length;
+  const isOrderPaid = (o) => {
+    if (!o) return false;
+    const status = String(o.paymentStatus || '').toLowerCase();
+    const method = String(o.paymentMethod || '').toLowerCase();
+    return status.includes('paid') || status.includes('completed') || method.includes('razorpay') || !!o.razorpayPaymentId;
+  };
+  const paidOrdersCount = orders.filter(isOrderPaid).length;
+  const pendingOrdersCount = orders.filter(o => o.decision === 'pending' && !isOrderPaid(o)).length;
   const acceptedOrdersCount = orders.filter(o => o.decision === 'accepted').length;
 
   const filteredAdminProducts = products.filter(p => {
@@ -795,13 +831,26 @@ export const AdminPanel = ({ onClose }) => {
 
   const filteredOrders = orders.filter(order => {
     if (!order) return false;
-    if (orderStatusFilter !== 'all' && order.decision !== orderStatusFilter) return false;
+    const paid = isOrderPaid(order);
+
+    if (orderStatusFilter === 'paid') {
+      if (!paid) return false;
+    } else if (orderStatusFilter === 'pending') {
+      if (paid || order.decision !== 'pending') return false;
+    } else if (orderStatusFilter === 'accepted') {
+      if (order.decision !== 'accepted') return false;
+    } else if (orderStatusFilter !== 'all') {
+      if (order.decision !== orderStatusFilter && order.status !== orderStatusFilter) return false;
+    }
+
     if (!orderSearchQuery.trim()) return true;
     const q = orderSearchQuery.toLowerCase();
     const id = String(order.id || '').toLowerCase();
-    const name = String(order.customerName || '').toLowerCase();
-    const phone = String(order.phone || '').toLowerCase();
-    return id.includes(q) || name.includes(q) || phone.includes(q);
+    const name = String(order.customerName || order.name || '').toLowerCase();
+    const phone = String(order.phone || order.customerPhone || '').toLowerCase();
+    const rzpId = String(order.razorpayPaymentId || order.transactionId || '').toLowerCase();
+    const loc = String(order.shippingAddress || order.location || order.customerLocation || '').toLowerCase();
+    return id.includes(q) || name.includes(q) || phone.includes(q) || rzpId.includes(q) || loc.includes(q);
   });
 
   // Extract unique customer accounts from orders
@@ -812,7 +861,7 @@ export const AdminPanel = ({ onClose }) => {
       acc[key] = {
         name: order.customerName || 'Customer',
         phone: order.phone || '',
-        address: order.shippingAddress || 'Pune, India',
+        address: order.shippingAddress || 'Varanasi, India',
         ordersCount: 1,
         totalSpent: Number(order.total) || 0,
         lastOrderDate: order.date || 'Recent'
@@ -831,7 +880,7 @@ export const AdminPanel = ({ onClose }) => {
     { id: 'dashboard', label: 'Dashboard', icon: TrendingUp },
     { id: 'inventory', label: 'Inventory', icon: Package, badge: products.length },
     { id: 'categories', label: 'Categories', icon: LayoutGrid, badge: categories.length },
-    { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: pendingOrdersCount > 0 ? `${pendingOrdersCount} new` : orders.length },
+    { id: 'orders', label: 'Orders', icon: ShoppingBag, badge: paidOrdersCount > 0 ? `${paidOrdersCount} Paid` : (pendingOrdersCount > 0 ? `${pendingOrdersCount} new` : orders.length) },
     { id: 'accounts', label: 'Accounts', icon: Users },
     { id: 'settings', label: 'Store Settings', icon: Settings },
   ];
@@ -943,7 +992,7 @@ export const AdminPanel = ({ onClose }) => {
               />
               <div>
                 <p className="text-[9px] text-[#121212] font-bold tracking-widest uppercase">
-                  Pune Studio
+                  Varanasi Looms
                 </p>
                 <p className="text-[11px] text-neutral-400 font-sans">
                   Admin Portal
@@ -1624,92 +1673,279 @@ export const AdminPanel = ({ onClose }) => {
           })()}
 
           {/* ========================================================
-              TAB 4: ORDERS
+              TAB 4: ORDERS (With Paid via Razorpay Details)
              ======================================================== */}
           {adminTab === 'orders' && (
             <div className="space-y-4 max-w-6xl mx-auto">
               
-              <div className="bg-white p-3.5 rounded-2xl border border-[#E2E8F0] shadow-xs space-y-3">
+              {/* Filter Bar & Search */}
+              <div className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-xs space-y-3">
                 <div className="relative">
                   <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-3" />
                   <input
                     type="text"
                     value={orderSearchQuery}
                     onChange={(e) => setOrderSearchQuery(e.target.value)}
-                    placeholder="Search by order ID, customer name, phone..."
+                    placeholder="Search by Order ID, Razorpay Payment ID, customer name, phone, address..."
                     className="w-full pl-10 pr-4 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
                   />
                 </div>
 
                 <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5">
                   {[
-                    { id: 'all', label: `All (${orders.length})` },
+                    { id: 'all', label: `All Orders (${orders.length})` },
+                    { id: 'paid', label: `Paid via Razorpay (${paidOrdersCount})`, isSpecial: true },
                     { id: 'pending', label: `Pending (${pendingOrdersCount})` },
-                    { id: 'accepted', label: `Accepted (${acceptedOrdersCount})` }
+                    { id: 'accepted', label: `Processing (${acceptedOrdersCount})` }
                   ].map(filter => (
                     <button
                       key={filter.id}
                       onClick={() => setOrderStatusFilter(filter.id)}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all whitespace-nowrap cursor-pointer ${
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                         orderStatusFilter === filter.id
-                          ? 'bg-[#1C1E21] text-white shadow-xs'
-                          : 'bg-[#F1F5F9] text-neutral-600 hover:bg-[#E2E8F0]'
+                          ? filter.isSpecial
+                            ? 'bg-emerald-700 text-white shadow-sm'
+                            : 'bg-[#1C1E21] text-white shadow-xs'
+                          : filter.isSpecial
+                            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
+                            : 'bg-[#F1F5F9] text-neutral-600 hover:bg-[#E2E8F0]'
                       }`}
                     >
-                      {filter.label}
+                      {filter.isSpecial && <CheckCircle2 className="w-3.5 h-3.5" />}
+                      <span>{filter.label}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {filteredOrders.map(order => (
-                  <div 
-                    key={order.id}
-                    className="bg-white rounded-2xl border border-[#E2E8F0] p-4 shadow-xs space-y-3"
-                  >
-                    <div className="flex items-center justify-between pb-2 border-b border-neutral-100">
-                      <div>
-                        <span className="font-mono text-sm font-bold text-neutral-900 block">
-                          #{order.id}
-                        </span>
-                        <span className="text-[11px] text-neutral-400">
-                          {order.date}
-                        </span>
+              {/* Orders Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {filteredOrders.map(order => {
+                  const paid = isOrderPaid(order);
+                  const items = Array.isArray(order.items) ? order.items : [];
+                  const rzpId = order.razorpayPaymentId || (order.paymentMethod === 'Razorpay' ? order.transactionId : null);
+
+                  return (
+                    <div 
+                      key={order.id}
+                      className={`bg-white rounded-2xl border transition-all shadow-xs space-y-4 p-5 ${
+                        paid ? 'border-emerald-300/80 ring-1 ring-emerald-500/20' : 'border-[#E2E8F0]'
+                      }`}
+                    >
+                      {/* Top Header: Order ID, Date, and Badges */}
+                      <div className="flex items-start justify-between gap-2 pb-3 border-b border-neutral-100">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono text-base font-bold text-[#121212]">
+                              #{order.id}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                navigator.clipboard.writeText(order.id);
+                                showToast(`Copied order #${order.id}`);
+                              }}
+                              className="text-neutral-400 hover:text-neutral-700 p-0.5 cursor-pointer"
+                              title="Copy Order ID"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                          <span className="text-[11px] text-neutral-400 block mt-0.5">
+                            {order.date} {order.time ? `• ${order.time}` : ''}
+                          </span>
+                        </div>
+
+                        {/* Status Badges */}
+                        <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                          {paid ? (
+                            <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-900 border border-emerald-300 flex items-center gap-1 shadow-2xs">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                              <span>Paid via Razorpay</span>
+                            </span>
+                          ) : (
+                            <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 flex items-center gap-1">
+                              <Clock className="w-3.5 h-3.5 text-amber-600" />
+                              <span>{order.paymentStatus || 'Pending Confirmation'}</span>
+                            </span>
+                          )}
+                          <span className="px-2.5 py-1 rounded-full text-[10.5px] font-medium bg-[#FAF8F5] text-neutral-700 border border-[#E8E2D8]">
+                            {order.statusTitle || 'Processing'}
+                          </span>
+                        </div>
                       </div>
-                      <span className="px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold bg-[#FAF8F5] text-[#121212] border border-[#E8E2D8]">
-                        {order.statusTitle || 'Processing'}
-                      </span>
-                    </div>
 
-                    <div className="space-y-1 text-xs">
-                      <p className="font-semibold text-neutral-900">{order.customerName}</p>
-                      <p className="text-neutral-500">{order.phone}</p>
-                      <p className="text-neutral-500 text-[11px]">{order.shippingAddress}</p>
-                    </div>
+                      {/* Razorpay Verified Details Banner */}
+                      {paid && (
+                        <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1.5 text-xs text-emerald-900">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-1.5 font-bold text-emerald-950">
+                              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                              <span>Razorpay Verified Payment</span>
+                            </div>
+                            <span className="text-[10.5px] uppercase font-bold tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
+                              Status: Success
+                            </span>
+                          </div>
+                          {rzpId && (
+                            <div className="flex items-center justify-between bg-white/80 p-1.5 px-2.5 rounded-lg border border-emerald-200/80">
+                              <span className="text-[11px] font-mono text-neutral-600">
+                                Payment ID: <strong className="text-emerald-900 font-bold">{rzpId}</strong>
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  navigator.clipboard.writeText(rzpId);
+                                  showToast('Razorpay Payment ID copied!');
+                                }}
+                                className="text-[10.5px] text-emerald-800 hover:text-emerald-950 font-bold cursor-pointer underline"
+                              >
+                                Copy
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
 
-                    <div className="pt-2 border-t border-neutral-100 flex items-center justify-between">
-                      <span className="font-bold text-sm text-[#121212]">
-                        Total: ₹{(order.total || 0).toLocaleString('en-IN')}
-                      </span>
-                      <a
-                        href={`https://wa.me/${order.phone?.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                          `Hello ${order.customerName}! Thank you for your order #${order.id} with Zubaida Sarees. We are preparing your artisanal pieces!`
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-[#1C1E21] hover:bg-neutral-800 text-white rounded-xl text-xs font-medium flex items-center gap-1.5 shadow-xs transition-colors"
-                      >
-                        <MessageCircle className="w-3.5 h-3.5" />
-                        <span>WhatsApp</span>
-                      </a>
+                      {/* Customer Information & Shipping */}
+                      <div className="space-y-1.5 text-xs bg-[#F8FAFC] p-3 rounded-xl border border-neutral-100">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-neutral-900 text-sm">
+                            {order.customerName || order.name || 'Anonymous Patron'}
+                          </span>
+                          <span className="font-mono text-xs font-semibold text-neutral-600">
+                            {order.phone || order.customerPhone}
+                          </span>
+                        </div>
+                        <p className="text-neutral-500 text-[11.5px] leading-relaxed">
+                          📍 {order.shippingAddress || order.location || order.customerLocation || 'Address not provided'}
+                        </p>
+                        {order.notes && (
+                          <p className="text-[11px] text-neutral-600 bg-white p-2 rounded-lg border border-neutral-200 mt-1">
+                            💬 <em>Notes: "{order.notes}"</em>
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Items Ordered List */}
+                      <div className="space-y-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 block">
+                          Purchased Items ({items.length || 1})
+                        </span>
+                        <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
+                          {items.length > 0 ? (
+                            items.map((item, idx) => {
+                              const prod = item.product || item || {};
+                              const img = (Array.isArray(prod.images) && prod.images[0]) || prod.imageUrl || '';
+                              const title = prod.title || prod.name || item.title || 'Banarasi Saree';
+                              const qty = item.quantity || 1;
+                              const price = Number(prod.price || item.price) || 0;
+                              const sz = item.selectedSize || prod.selectedSize;
+
+                              return (
+                                <div 
+                                  key={idx}
+                                  className="flex items-center gap-3 p-2 bg-[#FAF8F5]/80 rounded-xl border border-[#E8E2D8]/60 text-xs"
+                                >
+                                  <div className="w-12 h-14 rounded-lg overflow-hidden shrink-0 bg-white border border-[#E8E2D8]">
+                                    <FashionPlaceholder
+                                      imageUrl={img}
+                                      alt={title}
+                                      type="ethnic_featured"
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h5 className="font-serif font-semibold text-neutral-900 truncate">
+                                      {title}
+                                    </h5>
+                                    <div className="flex items-center gap-2 mt-0.5 text-[11px] text-neutral-500">
+                                      <span>Qty: <strong>{qty}</strong></span>
+                                      {sz && (
+                                        <span className="bg-white px-1.5 py-0.2 rounded border border-neutral-200 text-[10px]">
+                                          Size: {sz}
+                                        </span>
+                                      )}
+                                      <span className="font-bold text-[#121212]">₹{price.toLocaleString('en-IN')}</span>
+                                    </div>
+                                  </div>
+                                  <span className="font-bold font-sans text-xs text-[#121212] shrink-0 tabular-nums">
+                                    ₹{(price * qty).toLocaleString('en-IN')}
+                                  </span>
+                                </div>
+                              );
+                            })
+                          ) : (
+                            <p className="text-xs text-neutral-400 italic">No specific line items recorded.</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Total & Fulfillment Controls */}
+                      <div className="pt-3 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div>
+                          <span className="text-[10px] text-neutral-400 uppercase font-semibold block">Total Amount</span>
+                          <span className="font-bold text-base text-[#121212] tabular-nums">
+                            ₹{(order.total || order.subtotal || 0).toLocaleString('en-IN')}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                          {/* Status Stage Action */}
+                          {order.decision === 'pending' && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                updateOrderDecision(order.id, 'accepted');
+                                showToast(`Order #${order.id} accepted!`);
+                              }}
+                              className="px-3 py-1.5 bg-neutral-900 hover:bg-black text-white rounded-xl text-xs font-semibold cursor-pointer transition-colors"
+                            >
+                              Accept Order
+                            </button>
+                          )}
+
+                          {order.status !== 'delivered' && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                updateOrderStatus(order.id, 'delivered', 4);
+                                showToast(`Order #${order.id} marked as Delivered!`);
+                              }}
+                              className="px-3 py-1.5 bg-[#FAF8F5] hover:bg-[#F3EBE1] text-[#121212] border border-[#DEC49E] rounded-xl text-xs font-semibold cursor-pointer transition-colors"
+                            >
+                              Mark Delivered
+                            </button>
+                          )}
+
+                          {/* WhatsApp Customer */}
+                          <a
+                            href={`https://wa.me/${String(order.phone || order.customerPhone || '').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
+                              `Hello ${order.customerName || order.name || 'Patron'}! Thank you for ordering with Zubaida Sarees.\nOrder Reference: #${order.id}\n${paid ? `Payment Status: Paid via Razorpay (${rzpId || 'Verified'})\n` : ''}Total: ₹${(order.total || 0).toLocaleString('en-IN')}.\nWe are preparing your authentic Banarasi handloom pieces from our Varanasi looms!`
+                            )}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-medium flex items-center gap-1.5 shadow-xs transition-colors shrink-0"
+                          >
+                            <MessageCircle className="w-3.5 h-3.5" />
+                            <span>WhatsApp</span>
+                          </a>
+                        </div>
+                      </div>
+
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
 
                 {filteredOrders.length === 0 && (
-                  <div className="col-span-full py-12 text-center bg-white rounded-2xl border border-dashed border-[#CBD5E1] p-6 text-neutral-400 text-xs">
-                    No matching orders found.
+                  <div className="col-span-full py-16 text-center bg-white rounded-2xl border border-dashed border-[#CBD5E1] p-6 space-y-2">
+                    <ShoppingBag className="w-10 h-10 text-neutral-300 mx-auto" />
+                    <p className="text-neutral-500 font-semibold text-sm">No matching orders found</p>
+                    <p className="text-neutral-400 text-xs">
+                      {orderStatusFilter === 'paid' 
+                        ? 'No orders paid via Razorpay yet. When a customer pays online, details will appear here.'
+                        : 'Try adjusting your search query or status filter.'}
+                    </p>
                   </div>
                 )}
               </div>
@@ -1734,7 +1970,7 @@ export const AdminPanel = ({ onClose }) => {
                       Store Admin Profile
                     </h3>
                     <p className="text-xs text-neutral-400">
-                      Super Administrator • Zubaida Sarees, Pune
+                      Super Administrator • Zubaida Sarees, Varanasi
                     </p>
                   </div>
                 </div>
@@ -3368,24 +3604,110 @@ export const AdminPanel = ({ onClose }) => {
                     </label>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-[#CBD5E1] bg-white flex items-center justify-between">
-                    <div>
-                      <span className="text-xs sm:text-sm font-bold text-[#1C1E21] block">
-                        In stock
-                      </span>
-                      <span className="text-[11px] text-neutral-400">
-                        Turn off to display this product as sold out.
-                      </span>
+                  {/* Stock & Inventory Management */}
+                  <div className="p-4 rounded-2xl border border-[#CBD5E1] bg-white space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-xs sm:text-sm font-bold text-[#1C1E21] block">
+                          Stock &amp; Availability
+                        </span>
+                        <span className="text-[11px] text-neutral-400">
+                          Control inventory count. Products with 0 stock display as Sold Out.
+                        </span>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={productForm.inStock}
+                          onChange={(e) => setProductForm(prev => ({ ...prev, inStock: e.target.checked }))}
+                          className="sr-only peer"
+                        />
+                        <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
+                      </label>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer shrink-0">
-                      <input
-                        type="checkbox"
-                        checked={productForm.inStock}
-                        onChange={(e) => setProductForm(prev => ({ ...prev, inStock: e.target.checked }))}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
-                    </label>
+
+                    <div className="pt-2 border-t border-neutral-100 flex items-center justify-between gap-3">
+                      <div>
+                        <label className="text-xs font-semibold text-neutral-700 block">
+                          Stock Quantity (Units in Loom Inventory)
+                        </label>
+                        <span className="text-[10.5px] text-neutral-400">
+                          e.g. 1 for exclusive single handloom saree, 5 or 10 for batch
+                        </span>
+                      </div>
+                      <div className="w-28 shrink-0">
+                        <input
+                          type="number"
+                          min="0"
+                          value={productForm.stock}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setProductForm(prev => ({
+                              ...prev,
+                              stock: val,
+                              inStock: val === '' || Number(val) > 0 ? prev.inStock : false
+                            }));
+                          }}
+                          placeholder="10"
+                          className="w-full px-3 py-2 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs sm:text-sm text-center font-bold text-[#1C1E21] focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Sizing / Variations Management (Disabled by default for Banarasi Sarees) */}
+                  <div className="p-4 rounded-2xl border border-[#CBD5E1] bg-white space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-xs sm:text-sm font-bold text-[#1C1E21] block">
+                          Product Sizes / Variations
+                        </span>
+                        <span className="text-[11px] text-neutral-400">
+                          Disabled by default. Banarasi sarees are standard 5.5m + blouse piece with no size. Enable only if needed.
+                        </span>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={productForm.hasSizes}
+                          onChange={(e) => setProductForm(prev => ({
+                            ...prev,
+                            hasSizes: e.target.checked,
+                            sizesInput: e.target.checked && !prev.sizesInput ? 'Free Size, Unstitched' : prev.sizesInput
+                          }))}
+                          className="sr-only peer"
+                        />
+                        <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#121212]"></div>
+                      </label>
+                    </div>
+
+                    {productForm.hasSizes && (
+                      <div className="pt-2 border-t border-neutral-100 space-y-2">
+                        <label className="text-xs font-semibold text-neutral-700 block">
+                          Allowed Sizes / Variants (comma-separated)
+                        </label>
+                        <input
+                          type="text"
+                          value={productForm.sizesInput}
+                          onChange={(e) => setProductForm(prev => ({ ...prev, sizesInput: e.target.value }))}
+                          placeholder="e.g. Free Size, XS, S, M, L, XL"
+                          className="w-full px-3.5 py-2 bg-[#F8FAFC] border border-[#CBD5E1] rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#121212]/20 focus:border-[#121212]"
+                        />
+                        <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                          <span className="text-[10px] text-neutral-400">Presets:</span>
+                          {['Free Size', 'Unstitched, Stitched Blouse', 'XS, S, M, L, XL', 'S, M, L, XL, XXL'].map(preset => (
+                            <button
+                              key={preset}
+                              type="button"
+                              onClick={() => setProductForm(prev => ({ ...prev, sizesInput: preset }))}
+                              className="text-[10px] bg-[#F1F5F9] hover:bg-neutral-200 px-2 py-0.5 rounded-md text-neutral-700 transition-colors cursor-pointer"
+                            >
+                              {preset}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 

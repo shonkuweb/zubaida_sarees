@@ -62,7 +62,7 @@
       "https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/house-of-taaga/assets/category-festive.jpg",
       "https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/house-of-taaga/assets/founders.jpg"
     ],
-    "description": "Worn by co-founder Neeta in our Pune studio, this royal mulberry purple kaftan kurta features a rich yoke of intricate threadwork, gota border detailing, and delicate mirror highlights. Effortlessly regal yet supremely comfortable for festive gatherings and intimate evenings.",
+    "description": "Hand-crafted on our Varanasi looms, this royal mulberry purple ensemble features a rich yoke of intricate threadwork, antique zari border detailing, and delicate highlights. Effortlessly regal yet supremely comfortable for festive gatherings and intimate evenings.",
     "fabric": "Silk Viscose Satin with Hand-Embroidered Yoke",
     "care": "Dry clean only to preserve delicate zari and embroidery work.",
     "fit": "Fluid relaxed kaftan drape with drawstring cinch for versatile styling.",
@@ -204,9 +204,9 @@
   },
   {
     "id": "taaga_prod_6",
-    "slug": "bagh-e-pune-silk-brocade-saree",
-    "title": "Bagh-e-Pune Silk Brocade Saree",
-    "name": "Bagh-e-Pune Silk Brocade Saree",
+    "slug": "bagh-e-varanasi-silk-brocade-saree",
+    "title": "Bagh-e-Varanasi Silk Brocade Saree",
+    "name": "Bagh-e-Varanasi Silk Brocade Saree",
     "category": "Festive Edit",
     "categorySlug": "festive-edit",
     "categoryIds": [
@@ -223,7 +223,7 @@
     "images": [
       "https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/house-of-taaga/assets/category-festive.jpg"
     ],
-    "description": "Inspired by the royal courts and gardens of historical Pune, this heritage silk brocade saree weaves traditional floral vine meenakari into deep jewel tones with an opulent antique zari pallu. An heirloom keepsake for festive milestones.",
+    "description": "Inspired by the royal courts and historic ghats of Varanasi, this heritage silk brocade saree weaves traditional floral vine meenakari into deep jewel tones with an opulent antique zari pallu. An heirloom keepsake for festive milestones.",
     "fabric": "Pure Woven Silk Brocade with Antiqued Zari",
     "care": "Professional dry clean only.",
     "fit": "6.5 meters with blouse piece.",

@@ -4,6 +4,7 @@ import { Heart, ShoppingBag, Sparkles, ChevronRight, ArrowLeft } from 'lucide-re
 import { useStore } from '../context/StoreContext';
 import { TrustFeaturesSection } from '../components/TrustFeaturesSection';
 import { PuneHeritageSection } from '../components/PuneHeritageSection';
+import { FashionPlaceholder } from '../components/Placeholders';
 import { Footer } from '../components/Footer';
 
 export const CategoryPage = () => {
@@ -47,7 +48,7 @@ export const CategoryPage = () => {
       id: slug,
       slug,
       name: fallbackName,
-      subtitle: 'HANDCRAFTED IN OUR PUNE STUDIO'
+      subtitle: 'HANDCRAFTED ON OUR VARANASI LOOMS'
     };
   }, [categories, slug]);
 
@@ -240,11 +241,11 @@ export const CategoryPage = () => {
 
                   {/* Product Image Frame */}
                   <div className="relative w-full aspect-[3/3.8] overflow-hidden bg-[#FAF8F5]">
-                    <img 
-                      src={product.imageUrl || (product.images && product.images[0]) || '/category-kurtas.jpg'} 
+                    <FashionPlaceholder 
+                      imageUrl={product.imageUrl || (product.images && product.images[0]) || ''} 
                       alt={product.title || product.name}
+                      type="ethnic_featured"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-106"
-                      loading="lazy"
                     />
 
                     {/* Gradient Overlay */}

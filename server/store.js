@@ -25,23 +25,23 @@ const INITIAL_CONFIG = {
   announcement: 'A little tradition, a lot of love',
   heroSubtitle: 'Rooted in love. Worn with grace.',
   promoBanner: 'Artisanal Indian Wear • Thoughtful Details',
-  whatsappNumber: '+91 90966 69212',
-  supportEmail: 'care@houseoftaaga.com',
-  location: 'House of Taaga Studio, Pune, Maharashtra, India',
-  city: 'Pune',
-  instagram: 'house_of_taaga',
-  owner: 'House of Taaga',
-  facebook: 'House of Taaga',
-  westernWear: 'house_of_taaga',
+  whatsappNumber: '+91 63925 31412',
+  supportEmail: 'contact@zubaidasarees.com',
+  location: 'Zubaida Sarees Looms, Varanasi, Uttar Pradesh, India',
+  city: 'Varanasi',
+  instagram: 'zubaida_sarees63',
+  owner: 'Zubaida Sarees',
+  facebook: 'Zubaida Sarees',
+  westernWear: 'zubaida_sarees63',
   shipping: {
-    standardCharge: 40,
-    freeDeliveryMin: 3999
+    standardCharge: 0,
+    freeDeliveryMin: 0
   },
   offers: {
     showAnnouncement: true,
-    announcementMessage: 'A little tradition, a lot of love',
+    announcementMessage: 'Manufacturing Authentic Banarasi Sarees Since 1965 • Direct From Loom',
     enableDiscount: false,
-    discountTitle: 'Festive Celebration',
+    discountTitle: 'Loom Direct Special',
     discountType: 'percentage',
     discountPercentage: 10,
     minOrderSubtotal: 999,
@@ -51,8 +51,8 @@ const INITIAL_CONFIG = {
   heroBanners: {
     mobile: [],
     desktop: [],
-    belowTicker: 'House of Taaga · Pune Studio, Maharashtra, India | WhatsApp: +91 90966 69212',
-    endTicker: 'Each piece is handcrafted with care in small batches. Please allow 2-4 days for careful packaging and quality check.'
+    belowTicker: 'Zubaida Sarees · Varanasi Looms, Uttar Pradesh, India | WhatsApp: +91 63925 31412',
+    endTicker: 'Each Banarasi saree is hand-woven on our Varanasi looms since 1965. GST verified authentic craftsmanship.'
   }
 };
 

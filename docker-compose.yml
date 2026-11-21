@@ -1,42 +1,46 @@
+name: zubaida-sarees
+
 services:
   # ==========================================
-  # 1. PostgreSQL Database Service
+  # 1. PostgreSQL Database Service (Internal)
   # ==========================================
-  houseoftaaga-db:
+  zubaidasarees-db:
     image: postgres:16-alpine
-    container_name: houseoftaaga-db
+    container_name: zubaidasarees-db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-houseoftaaga}
-      POSTGRES_USER: ${POSTGRES_USER:-taaga_admin}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-taaga_secure_pass_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-zubaidasarees}
+      POSTGRES_USER: ${POSTGRES_USER:-zubaida_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-zubaida_secure_pass_2026}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-taaga_admin} -d ${POSTGRES_DB:-houseoftaaga}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-zubaida_admin} -d ${POSTGRES_DB:-zubaidasarees}"]
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
-      - houseoftaaga-net
+      - zubaidasarees-net
+    # No host ports exposed to avoid conflict with other PostgreSQL instances on the VPS
 
   # ==========================================
-  # 2. Node.js Express REST API Service
+  # 2. Node.js Express REST API Service (Internal)
   # ==========================================
-  houseoftaaga-api:
+  zubaidasarees-api:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: houseoftaaga-api
+    container_name: zubaidasarees-api
     restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 5000
-      POSTGRES_HOST: houseoftaaga-db
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-kundanadmin2026}
+      POSTGRES_HOST: zubaidasarees-db
       POSTGRES_PORT: 5432
-      POSTGRES_DB: ${POSTGRES_DB:-houseoftaaga}
-      POSTGRES_USER: ${POSTGRES_USER:-taaga_admin}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-taaga_secure_pass_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-zubaidasarees}
+      POSTGRES_USER: ${POSTGRES_USER:-zubaida_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-zubaida_secure_pass_2026}
       R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:-d098e896b8f7dc0403ad3a16f592dfe6}
       R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:-f95b6dce449f4bb721ce54aa3b2f4e2b}
       R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:-401cb76e46f0f908fcd78b5b2fbd75e92a4bbc1d26adbffbb3c37ef14fcc2ca1}
@@ -46,42 +50,43 @@ services:
       - uploads_data:/app/uploads
       - store_data:/app/data
     depends_on:
-      houseoftaaga-db:
+      zubaidasarees-db:
         condition: service_healthy
     networks:
-      - houseoftaaga-net
+      - zubaidasarees-net
+    # No host ports exposed to avoid port conflict on the VPS
 
   # ==========================================
   # 3. Nginx Web & Reverse Proxy Service
   # ==========================================
-  houseoftaaga-web:
+  zubaidasarees-web:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: houseoftaaga-web
+    container_name: zubaidasarees-web
     restart: unless-stopped
     ports:
-      # Host HTTP Port on VPS (mapped to container's internal port 80).
-      # If port 3050 is in use by another app on your VPS, change PORT in .env
-      - "${PORT:-3050}:80"
+      # Exposes ONLY this port to the VPS host.
+      # Default: 3060. If 3060 is taken by another project, change PORT in .env
+      - "${PORT:-3060}:80"
     environment:
       - NODE_ENV=production
     depends_on:
-      - houseoftaaga-api
+      - zubaidasarees-api
     labels:
-      - "project=houseoftaaga"
+      - "project=zubaidasarees"
     networks:
-      - houseoftaaga-net
+      - zubaidasarees-net
 
 volumes:
   postgres_data:
-    name: houseoftaaga_postgres_data
+    name: zubaidasarees_postgres_data
   uploads_data:
-    name: houseoftaaga_uploads_data
+    name: zubaidasarees_uploads_data
   store_data:
-    name: houseoftaaga_store_data
+    name: zubaidasarees_store_data
 
 networks:
-  houseoftaaga-net:
-    name: houseoftaaga-net
+  zubaidasarees-net:
+    name: zubaidasarees-net
     driver: bridge

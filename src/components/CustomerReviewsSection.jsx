@@ -17,15 +17,14 @@ const StarRating = () => (
   </div>
 );
 
-// Individual Regal Review Card (Elegant Rectangle with Soft Rounded Corners, No Oval)
+// Individual Regal Review Card
 const ReviewCard = ({ review }) => {
-  // Extract initials for patron monogram
   const initials = review.name
     ? review.name.split(' ').map(n => n[0]).join('').slice(0, 2)
-    : 'HT';
+    : 'ZS';
 
   return (
-    <div className="relative w-[320px] sm:w-[370px] shrink-0 bg-[#FFFFFF] rounded-2xl sm:rounded-3xl border border-[#DEC49E]/80 shadow-[0_4px_20px_-4px_rgba(56,32,23,0.06)] hover:shadow-[0_12px_32px_-6px_rgba(92,6,28,0.15)] hover:border-[#121212]/50 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between cursor-default group/card hover:-translate-y-1 select-none overflow-hidden">
+    <div className="relative w-[320px] sm:w-[370px] shrink-0 bg-[#FFFFFF] rounded-2xl sm:rounded-3xl border border-[#DEC49E]/80 shadow-[0_4px_20px_-4px_rgba(18,18,18,0.06)] hover:shadow-[0_12px_32px_-6px_rgba(18,18,18,0.15)] hover:border-[#121212]/50 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between cursor-default group/card hover:-translate-y-1 select-none overflow-hidden">
       
       {/* Delicate Corner Floral Line Art (Top Right) */}
       <svg 
@@ -43,7 +42,7 @@ const ReviewCard = ({ review }) => {
       {/* Top Row: Stars + Verified Badge */}
       <div className="flex items-center justify-between mb-3 relative z-10">
         <StarRating />
-        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#C5A059] bg-[#FCE7E6] px-2 py-0.5 rounded-full flex items-center gap-1">
+        <span className="text-[9px] font-sans font-bold uppercase tracking-wider text-[#C5A059] bg-[#FAF5EC] px-2 py-0.5 rounded-full flex items-center gap-1 border border-[#DEC49E]/50">
           <span className="text-[#C5A059] text-[10px]">✓</span>
           <span>Verified Patron</span>
         </span>
@@ -74,7 +73,7 @@ const ReviewCard = ({ review }) => {
               {review.name}
             </h4>
             <span className="text-[10px] font-sans text-[#71717A] tracking-wide">
-              {review.city}, India
+              {review.city}
             </span>
           </div>
         </div>
@@ -94,91 +93,91 @@ export const CustomerReviewsSection = () => {
   const strip1Reviews = [
     {
       id: 'rev_1',
-      text: "The Chanderi drape is sheer poetry! Subtle, majestic gold sheen.",
+      text: "The pure Katan silk Banarasi drape is sheer majesty! Real gold zari and breathtaking fall.",
       name: "Ananya Deshmukh",
-      city: "Pune",
-      tag: "Chanderi Saree"
+      city: "Mumbai, India",
+      tag: "Pure Katan Silk"
     },
     {
       id: 'rev_2',
-      text: "Softest mulmul I have ever worn. Breathable, flattering fit.",
+      text: "Wore this bridal Banarasi for my wedding pheras. The Kadwa hand-weaving is poetry in silk.",
       name: "Rhea Sen",
-      city: "Kolkata",
-      tag: "Festive Kurta"
+      city: "Kolkata, India",
+      tag: "Bridal Banarasi"
     },
     {
       id: 'rev_3',
-      text: "Wore this for Diwali puja. Compliments simply didn't stop!",
+      text: "Direct from Varanasi looms with certified silk purity. 60 years of master craftsmanship shows!",
       name: "Pooja Hegde",
-      city: "Bangalore",
-      tag: "Bandhani Silk"
+      city: "Bengaluru, India",
+      tag: "Rangkat Silk Saree"
     },
     {
       id: 'rev_4',
-      text: "Bespoke tailoring, heirloom vibe & divine pure cotton comfort.",
+      text: "Flawless international delivery to California. Pristine silk packaging and authentic zari luster.",
       name: "Dr. Meenakshi Iyer",
-      city: "Chennai",
-      tag: "Zari Kaftan"
+      city: "San Jose, USA",
+      tag: "Shikarghar Saree"
     },
     {
       id: 'rev_5',
-      text: "The packaging with dried rose petals felt so thoughtful & luxe.",
+      text: "The lightweight Kaddi Georgette Banarasi was effortless to carry for my daughter's reception.",
       name: "Sanya Malhotra",
-      city: "Mumbai",
-      tag: "Handloom Edit"
+      city: "New Delhi, India",
+      tag: "Kaddi Georgette"
     },
     {
       id: 'rev_6',
-      text: "A true gem from Pune! Exceptional craftsmanship and finish.",
+      text: "Loom-direct pricing without retail markups. GST verified invoice and master weaver authenticity.",
       name: "Tanvi Kulkarni",
-      city: "Pune",
-      tag: "Heirloom Weave"
+      city: "Varanasi, India",
+      tag: "Zari Brocade"
     },
   ];
 
-  // Strip 2: Customer reviews (moving Right to Left - vice versa)
+  // Strip 2: Customer reviews (moving Right to Left)
   const strip2Reviews = [
     {
       id: 'rev_7',
-      text: "Timeless silhouettes that bridge heirloom roots with modern grace.",
+      text: "An heirloom saree I will proudly pass down to my daughter. The Meenakari motifs are divine.",
       name: "Radhika Sharma",
-      city: "Delhi",
-      tag: "Festive Edit"
+      city: "Lucknow, India",
+      tag: "Meenakari Banarasi"
     },
     {
       id: 'rev_8',
-      text: "The Kashmiri yoke embroidery is delicate, neat, and stunning.",
+      text: "Ordered via WhatsApp concierge directly with the loom studio. Impeccable service and guidance.",
       name: "Avantika Rao",
-      city: "Hyderabad",
-      tag: "Kashmiri Yoke"
+      city: "Hyderabad, India",
+      tag: "Tissue Organza"
     },
     {
       id: 'rev_9',
-      text: "Felt so graceful at my best friend's sangeet. Gorgeous fall!",
+      text: "The contrast rich pallu and heavy border drape so royally. The best Banarasi in my wardrobe.",
       name: "Kritika Joshi",
-      city: "Ahmedabad",
-      tag: "Silk Co-ord"
+      city: "Ahmedabad, India",
+      tag: "Jangla Silk Saree"
     },
     {
       id: 'rev_10',
-      text: "Quiet luxury that doesn't scream. Elegant in every single stitch.",
+      text: "True Varanasi heritage since 1965. No synthetic blends, only certified pure handloom silk.",
       name: "Sunita Bajaj",
-      city: "Jaipur",
-      tag: "Chanderi Kurta"
+      city: "Jaipur, India",
+      tag: "Tanchoi Silk Saree"
     },
     {
       id: 'rev_11',
-      text: "Delivered in 3 days in pristine condition. Loved the handwritten note!",
+      text: "Shipped to Dubai in 4 days in a regal hard box with silk care instructions. Five stars!",
       name: "Bhavna Patel",
-      city: "Surat",
-      tag: "Heritage Saree"
+      city: "Dubai, UAE",
+      tag: "Bridal Trousseau"
     },
     {
       id: 'rev_12',
-      text: "You can truly feel the artisanal love and soul in every thread.",
+      text: "You can feel the master artisan's heartbeat in every warp and weft. Zubaida Sarees is legendary.",
       name: "Gayatri Chitnis",
-      city: "Pune",
-      tag: "Mulmul Set"
+      city: "Varanasi, India",
+      tag: "Handloom Brocade"
     },
   ];
 
@@ -216,31 +215,31 @@ export const CustomerReviewsSection = () => {
         {/* Section Heading & Subtitle using authentic brand FloralDivider */}
         <FloralDivider 
           title="Loved by Our Patrons"
-          subtitle="PATRON STORIES • CHERISHED ACROSS INDIA"
+          subtitle="PATRON STORIES • CHERISHED ACROSS INDIA & GLOBALLY"
           className="mb-2"
         />
         <p className="text-xs sm:text-sm font-serif italic text-[#71717A] max-w-md mx-auto mt-2">
-          "Heirloom textiles, thoughtful details, and heartfelt notes crafted with love."
+          "Authentic Banarasi handloom sarees crafted directly on our Varanasi looms since 1965."
         </p>
       </div>
 
-      {/* Two Running Strips in Continuous Loop */}
+      {/* Dual Opposing Running Strips */}
       <div className="space-y-4 sm:space-y-6">
         
-        {/* STRIP 1: Running Left to Right (LTR) */}
-        <div className="w-full overflow-hidden marquee-track">
-          <div className="animate-marquee-ltr gap-4 sm:gap-6 px-3">
-            {duplicatedStrip1.map((review, index) => (
-              <ReviewCard key={`s1-${review.id}-${index}`} review={review} />
+        {/* Strip 1: Left to Right */}
+        <div className="relative overflow-hidden w-full">
+          <div className="animate-marquee-ltr flex gap-4 sm:gap-6">
+            {duplicatedStrip1.map((review, idx) => (
+              <ReviewCard key={`strip1_${review.id}_${idx}`} review={review} />
             ))}
           </div>
         </div>
 
-        {/* STRIP 2: Running Right to Left (RTL - Vice Versa) */}
-        <div className="w-full overflow-hidden marquee-track">
-          <div className="animate-marquee-rtl gap-4 sm:gap-6 px-3">
-            {duplicatedStrip2.map((review, index) => (
-              <ReviewCard key={`s2-${review.id}-${index}`} review={review} />
+        {/* Strip 2: Right to Left */}
+        <div className="relative overflow-hidden w-full">
+          <div className="animate-marquee-rtl flex gap-4 sm:gap-6">
+            {duplicatedStrip2.map((review, idx) => (
+              <ReviewCard key={`strip2_${review.id}_${idx}`} review={review} />
             ))}
           </div>
         </div>

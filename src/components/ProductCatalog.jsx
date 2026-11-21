@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, Eye, Sparkles } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { FloralDivider } from './FloralDecorations';
+import { FashionPlaceholder } from './Placeholders';
 
 export const ProductCatalog = () => {
   const navigate = useNavigate();
@@ -65,8 +66,8 @@ export const ProductCatalog = () => {
         {/* Section Heading with floral divider */}
         <div className="mb-6 sm:mb-10">
           <FloralDivider 
-            title="New & Noteworthy" 
-            subtitle="FRESH FROM THE PUNE STUDIO • LIMITED ARTISANAL RUNS"
+            title="Featured Banarasi Sarees" 
+            subtitle="FRESH FROM OUR VARANASI LOOMS • MASTER WEAVERS SINCE 1965"
           />
         </div>
 
@@ -113,11 +114,11 @@ export const ProductCatalog = () => {
                 >
                   {/* Compact Portrait Product Image Card */}
                   <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-[#FAF8F5]">
-                    <img
-                      src={product.imageUrl || (product.images && product.images[0]) || '/category-kurtas.jpg'}
+                    <FashionPlaceholder
+                      imageUrl={product.imageUrl || (product.images && product.images[0]) || ''}
                       alt={product.title}
+                      type="ethnic_featured"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
                     />
 
                     {/* Top-Left Bestseller / Tag Badge */}

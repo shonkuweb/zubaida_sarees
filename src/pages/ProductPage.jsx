@@ -37,13 +37,31 @@ export const ProductPage = () => {
   const product = products.find(p => p.id === id || p.slug === id);
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('M');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  // Available apparel sizes
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  // Available product sizes (empty by default unless set by admin)
+  const availableSizes = useMemo(() => {
+    if (!product) return [];
+    if (Array.isArray(product.sizes) && product.sizes.length > 0) {
+      return product.sizes.filter(s => typeof s === 'string' && s.trim());
+    }
+    if (typeof product.sizes === 'string' && product.sizes.trim()) {
+      return product.sizes.split(',').map(s => s.trim()).filter(Boolean);
+    }
+    return [];
+  }, [product]);
+
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  useEffect(() => {
+    if (availableSizes.length > 0) {
+      setSelectedSize(availableSizes[0]);
+    } else {
+      setSelectedSize(null);
+    }
+  }, [availableSizes]);
 
   const phone = storeConfig?.whatsappNumber || '+91 63925 31412';
   const cleanPhone = phone.replace(/[^0-9]/g, '');
@@ -134,7 +152,8 @@ export const ProductPage = () => {
     );
   }
 
-  const isSoldOut = product.stock !== undefined && product.stock <= 0;
+  const isSoldOut = (product.stock !== undefined && Number(product.stock) <= 0) || product.inStock === false;
+  const currentStock = product.stock !== undefined ? Number(product.stock) : (product.inStock === false ? 0 : 10);
   const wishlisted = isWishlisted ? isWishlisted(product.id) : false;
   const hasDiscount = product.originalPrice && product.originalPrice > product.price;
   const discountPercent = hasDiscount 
@@ -148,13 +167,21 @@ export const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (isSoldOut) return;
-    addToCart({ ...product, selectedSize }, quantity);
+    const itemToAdd = {
+      ...product,
+      ...(selectedSize ? { selectedSize } : {})
+    };
+    addToCart(itemToAdd, quantity);
     setIsCartOpen(true);
   };
 
   const handleCheckout = () => {
     if (isSoldOut) return;
-    addToCart({ ...product, selectedSize }, quantity);
+    const itemToAdd = {
+      ...product,
+      ...(selectedSize ? { selectedSize } : {})
+    };
+    addToCart(itemToAdd, quantity);
     navigate('/checkout');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -169,8 +196,9 @@ export const ProductPage = () => {
   };
 
   const handleWhatsAppInquiry = () => {
+    const sizePart = selectedSize ? `, Size/Variant: ${selectedSize}` : '';
     const text = encodeURIComponent(
-      `Hello Zubaida Sarees, I am interested in: ${product.title} (₹${product.price.toLocaleString('en-IN')}, Size: ${selectedSize}). Could you share more details? Link: ${window.location.href}`
+      `Hello Zubaida Sarees, I am interested in: ${product.title} (₹${product.price.toLocaleString('en-IN')}${sizePart}). Could you share more details? Link: ${window.location.href}`
     );
     window.open(`https://wa.me/${cleanPhone}?text=${text}`, '_blank');
   };
@@ -364,8 +392,22 @@ export const ProductPage = () => {
                   </span>
                 </div>
                 <p className="text-[11px] text-[#71717A] mt-1 font-sans">
-                  Inclusive of all taxes • Handcrafted in Pune, Maharashtra
+                  Inclusive of all taxes • Handcrafted in Varanasi, Uttar Pradesh
                 </p>
+                {/* Stock Indicator */}
+                {isSoldOut ? (
+                  <span className="inline-block mt-2 text-[11px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-full">
+                    Sold Out / Out of Stock
+                  </span>
+                ) : currentStock <= 5 ? (
+                  <span className="inline-block mt-2 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full">
+                    Limited Loom Stock: Only {currentStock} piece{currentStock > 1 ? 's' : ''} left
+                  </span>
+                ) : (
+                  <span className="inline-block mt-2 text-[11px] font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                    In Stock • Ready to Dispatch
+                  </span>
+                )}
               </div>
 
               {/* Description */}
@@ -378,33 +420,42 @@ export const ProductPage = () => {
                 </p>
               </div>
 
-              {/* Size Selector */}
-              <div className="space-y-2 pt-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#18181B] uppercase tracking-wider">
-                    Select Size
-                  </span>
-                  <span className="text-[11px] text-[#71717A] italic">
-                    Regular Comfort Fit
-                  </span>
+              {/* Size Selector (Only shown if sizes are explicitly defined by admin) */}
+              {availableSizes.length > 0 ? (
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-[#18181B] uppercase tracking-wider">
+                      Select Size / Variant
+                    </span>
+                    <span className="text-[11px] text-[#71717A] italic">
+                      Artisan Cut
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {availableSizes.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => setSelectedSize(s)}
+                        className={`px-3.5 h-10 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer ${
+                          selectedSize === s
+                            ? 'bg-[#121212] text-[#FFFFFF] shadow-sm ring-2 ring-[#121212]/30'
+                            : 'bg-[#FAF8F5] text-[#18181B] border border-[#DEC49E]/70 hover:border-[#121212]'
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  {sizes.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => setSelectedSize(s)}
-                      className={`w-11 h-10 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer ${
-                        selectedSize === s
-                          ? 'bg-[#121212] text-[#FFFFFF] shadow-sm ring-2 ring-[#121212]/30'
-                          : 'bg-[#FAF8F5] text-[#18181B] border border-[#DEC49E]/70 hover:border-[#121212]'
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
+              ) : (
+                <div className="pt-1">
+                  <div className="bg-[#FAF8F5] p-3 rounded-xl border border-[#DEC49E]/60 flex items-center justify-between text-xs text-[#71717A]">
+                    <span className="font-medium text-[#18181B]">Authentic Banarasi Cut</span>
+                    <span className="text-[11px]">5.5m Handloom Saree + 0.8m Blouse Piece</span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Quantity Selector */}
               <div className="pt-1">
@@ -485,7 +536,7 @@ export const ProductPage = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span>Direct from Pune Mother-Daughter Label</span>
+                  <span>Direct from Varanasi Master Weavers</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <button 
@@ -538,9 +589,10 @@ export const ProductPage = () => {
                     className="group flex flex-col bg-[#FAF8F5] rounded-2xl overflow-hidden border border-[#DEC49E]/80 shadow-xs hover:shadow-xl transition-all duration-500 cursor-pointer select-none relative"
                   >
                     <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-[#FAF8F5]">
-                      <img
-                        src={item.imageUrl || (item.images && item.images[0]) || '/category-kurtas.jpg'}
+                      <FashionPlaceholder 
+                        imageUrl={item.imageUrl || (item.images && item.images[0]) || ''}
                         alt={item.title}
+                        type="ethnic_featured"
                         className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
                       <span className="absolute top-2 left-2 bg-[#121212] text-[#FFFFFF] text-[8.5px] font-sans font-bold tracking-wider uppercase px-2 py-0.5 rounded-full shadow-md">
@@ -559,7 +611,7 @@ export const ProductPage = () => {
                       <div className="bg-[#FFFFFF] px-3 pt-0.5 pb-2.5 flex flex-col flex-1 justify-between">
                         <div>
                           <span className="text-[8.5px] font-sans font-bold tracking-[0.18em] text-[#C5A059] uppercase block">
-                            {item.category || 'KURTAS'}
+                            {item.category || 'BANARASI SAREES'}
                           </span>
                           <h4 className="font-serif text-[13px] font-medium text-[#18181B] group-hover:text-[#121212] transition-colors truncate mt-0.5 leading-tight">
                             {item.title}

@@ -628,7 +628,7 @@ export const AccountPage = () => {
                             {order.items?.length || 1} item(s) • ₹{(order.total || order.subtotal || 0).toLocaleString('en-IN')}
                           </p>
                           <p className="text-[10px] text-neutral-400 mt-0.5">
-                            {order.date} • {order.location || 'Pune Studio Dispatch'}
+                            {order.date} • {order.location || 'Varanasi Loom Dispatch'}
                           </p>
                         </div>
 
@@ -651,7 +651,7 @@ export const AccountPage = () => {
               <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC49E]/70 flex items-center justify-between gap-3 text-xs">
                 <div>
                   <span className="font-bold text-[#121212] block">Need assistance with your account?</span>
-                  <span className="text-[#71717A]">Our Pune studio team is available on WhatsApp</span>
+                  <span className="text-[#71717A]">Our Varanasi studio team is available on WhatsApp</span>
                 </div>
                 <a
                   href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I need help with my account.')}`}

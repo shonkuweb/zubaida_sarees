@@ -29,7 +29,7 @@ export const BottomNavigation = () => {
       setIsCartOpen(false);
       const boutiquePhone = storeConfig?.whatsappNumber || '+91 63925 31412';
       const cleanPhone = boutiquePhone.replace(/[^0-9]/g, '');
-      window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I would like to get in touch with your Pune studio.')}`, '_blank');
+      window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello Zubaida Sarees, I would like to get in touch with your Varanasi studio.')}`, '_blank');
     } else if (tab === 'order') {
       setIsCartOpen(false);
       navigate('/order');

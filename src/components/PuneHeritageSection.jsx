@@ -4,6 +4,7 @@ export const PuneHeritageSection = () => {
   return (
     <section 
       id="varanasi-heritage-section"
+      data-legacy-id="pune-heritage-section"
       aria-label="Varanasi Heritage Artwork"
       className="w-full bg-[#FAF8F5] overflow-hidden py-0 md:pt-8 md:pb-6 relative select-none"
     >
@@ -32,3 +33,6 @@ export const PuneHeritageSection = () => {
     </section>
   );
 };
+
+export const VaranasiHeritageSection = PuneHeritageSection;
+export default PuneHeritageSection;

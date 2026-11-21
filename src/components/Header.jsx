@@ -115,7 +115,7 @@ export const Header = () => {
     setIsDrawerOpen(false);
     navigate('/');
     setTimeout(() => {
-      const el = document.getElementById('pune-heritage-section') || document.getElementById('footer-section');
+      const el = document.getElementById('varanasi-heritage-section') || document.getElementById('pune-heritage-section') || document.getElementById('footer-section');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 150);
   };
