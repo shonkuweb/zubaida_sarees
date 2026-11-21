@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # ================================================================
-# Automated Deployment Script for House of Taaga on VPS
+# Automated Deployment Script for Zubaida Sarees on VPS
 # Stack: PostgreSQL 16 + Express REST API + React SPA Nginx
 # Completely isolated for multi-project VPS deployment
 # ================================================================
@@ -9,7 +9,7 @@
 set -e
 
 echo "=========================================="
-echo " Starting House of Taaga Full-Stack Deploy"
+echo " Starting Zubaida Sarees Full-Stack Deploy"
 echo " Stack: PostgreSQL + Node API + Web SPA   "
 echo "=========================================="
 
@@ -25,8 +25,8 @@ if [ -f .env ]; then
     export $(grep -v '^#' .env | xargs)
 fi
 
-# Set host port (default: 3050)
-export PORT=${PORT:-3050}
+# Set host port (default: 3060)
+export PORT=${PORT:-3060}
 echo "✓ Host Port configured: $PORT"
 
 # Rebuild and launch containers
@@ -46,28 +46,28 @@ if curl -s http://127.0.0.1:$PORT/healthz | grep -q "healthy"; then
     echo "✅ Web Nginx container is UP on port $PORT"
 else
     echo "⚠️ Checking Web container logs:"
-    docker logs --tail 20 houseoftaaga-web || true
+    docker logs --tail 20 zubaidasarees-web || true
 fi
 
 # Check API + PostgreSQL health
 if curl -s http://127.0.0.1:$PORT/api/healthz | grep -q "connected"; then
     echo "✅ PostgreSQL Database & API are CONNECTED & HEALTHY"
     echo "=========================================="
-    echo "🎉 Full-Stack House of Taaga is RUNNING!"
+    echo "🎉 Full-Stack Zubaida Sarees is RUNNING!"
     echo "=========================================="
 else
     echo "⚠️ Checking API container logs:"
-    docker logs --tail 30 houseoftaaga-api || true
+    docker logs --tail 30 zubaidasarees-api || true
 fi
 
 echo ""
-echo "Next Steps to link with your domain (e.g., demo.shonku.site):"
-echo "1. Point DNS A-Record for your domain to your VPS IP."
-echo "2. If using host Nginx as reverse proxy, configure proxy_pass to http://127.0.0.1:$PORT;"
-echo "   sudo cp vps/demo.shonku.site.conf /etc/nginx/sites-available/"
-echo "   sudo ln -sf /etc/nginx/sites-available/demo.shonku.site.conf /etc/nginx/sites-enabled/"
+echo "Next Steps to link with your domain (zubaidasarees.shonku.site):"
+echo "1. Point DNS A-Record for zubaidasarees.shonku.site to your VPS IP."
+echo "2. If using host Nginx as reverse proxy, copy the virtual host config:"
+echo "   sudo cp vps/zubaidasarees.shonku.site.conf /etc/nginx/sites-available/"
+echo "   sudo ln -sf /etc/nginx/sites-available/zubaidasarees.shonku.site.conf /etc/nginx/sites-enabled/"
 echo "   sudo nginx -t && sudo systemctl reload nginx"
 echo "3. Issue free SSL Certificate with Certbot:"
-echo "   sudo certbot --nginx -d yourdomain.com"
+echo "   sudo certbot --nginx -d zubaidasarees.shonku.site"
 echo ""
-echo "Done! Your site is running on port $PORT"
+echo "Done! Your site is running on port $PORT and accessible at https://zubaidasarees.shonku.site"
