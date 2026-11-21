@@ -2,7 +2,6 @@ import React from 'react';
 import { HeroSection } from '../components/HeroSection';
 import { ShopByCategory } from '../components/ShopByCategory';
 import { ProductCatalog } from '../components/ProductCatalog';
-import { OurStorySection } from '../components/OurStorySection';
 import { CustomerReviewsSection } from '../components/CustomerReviewsSection';
 import { TrustFeaturesSection } from '../components/TrustFeaturesSection';
 import { PuneHeritageSection } from '../components/PuneHeritageSection';
@@ -31,13 +30,6 @@ export const HomePage = () => {
         wishlist heart, INR prices, dynamic products.
       */}
       <ProductCatalog />
-
-      {/* 
-        SECTION 6: OUR STORY
-        Warm handmade-paper texture with soft torn edges, bougainvillea corners,
-        rotated photo frame with mother-daughter photo, story narrative, terracotta CTA.
-      */}
-      <OurStorySection />
 
       {/* 
         SECTION 7: CUSTOMER REVIEWS (OVAL STRIPS IN DUAL OPPOSING LOOPS)

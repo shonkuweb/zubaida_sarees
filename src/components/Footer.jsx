@@ -195,17 +195,7 @@ export const Footer = () => {
               <ul className="space-y-1.5 text-xs font-sans font-normal text-white/80">
                 <li>
                   <button 
-                    onClick={() => {
-                      const el = document.getElementById('our-story-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      else {
-                        navigate('/');
-                        setTimeout(() => {
-                          const target = document.getElementById('our-story-section');
-                          if (target) target.scrollIntoView({ behavior: 'smooth' });
-                        }, 150);
-                      }
-                    }} 
+                    onClick={() => setIsAboutOpen(true)} 
                     className="hover:text-white transition-colors cursor-pointer text-left"
                   >
                     Our Story

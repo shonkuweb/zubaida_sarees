@@ -108,11 +108,7 @@ export const Header = () => {
 
   const scrollToStory = () => {
     setIsDrawerOpen(false);
-    navigate('/');
-    setTimeout(() => {
-      const el = document.getElementById('our-story-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
+    setIsAboutOpen(true);
   };
 
   const scrollToContact = () => {
